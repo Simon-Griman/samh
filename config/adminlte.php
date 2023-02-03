@@ -307,82 +307,42 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'        => 'Inicio',
+            'url'         => 'home',
+            'icon'        => 'fas fa-home',
         ],
         [
-            'text'        => 'pages',
+            'text'        => 'Equipos',
             'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'icon'        => 'fas fa-desktop',
         ],
-        ['header' => 'account_settings'],
+        [
+            'text'        => 'Mis Equipos',
+            'url'         => 'admin/pages',
+            'icon'        => 'fas fa-desktop',
+        ],
+        [
+            'text'        => 'Solicitar',
+            'url'         => 'admin/pages',
+            'icon'        => 'fas fa-pen',
+        ],
+        [
+            'text'        => 'Solicitudes',
+            'url'         => 'admin/pages',
+            'icon'        => 'fas fa-folder-open',
+        ],
+        ['header' => 'CONFIGURACIÓN'],
+        [
+            'text'        => 'Nombre de Equipos',
+            'url'         => 'admin/pages',
+            'icon'        => 'far fa-clipboard',
+        ],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        
     ],
 
     /*
