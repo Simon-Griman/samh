@@ -29,4 +29,6 @@ Route::middleware([
     Route::get('/home', function () {
         return view('index');
     })->name('home');
+
+    //Route::get('/equipos')
 });
