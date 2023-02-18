@@ -14,7 +14,7 @@ class AddTipoequipoIdToEquipos extends Migration
     public function up()
     {
         Schema::table('equipos', function (Blueprint $table) {
-            $table->unsignedBigInteger('tipoequipo_id');
+            $table->unsignedBigInteger('tipoequipo_id')->after('id');
             $table->foreign('tipoequipo_id')->references('id')->on('tipoequipos')->onDelete('cascade');
         });
     }

@@ -27,6 +27,14 @@
                 </div>
 
                 <div class="mb-3">
+                    <x-jet-label value="Cedula" />
+
+                    <x-jet-input class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" type="number" name="cedula"
+                                 :value="old('cedula')" required />
+                    <x-jet-input-error for="cedula"></x-jet-input-error>
+                </div>
+
+                <div class="mb-3">
                     <x-jet-label value="{{ __('Password') }}" />
 
                     <x-jet-input class="{{ $errors->has('password') ? 'is-invalid' : '' }}" type="password"
