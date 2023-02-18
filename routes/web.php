@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EquipoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +31,5 @@ Route::middleware([
         return view('index');
     })->name('home');
 
-    //Route::get('/equipos')
+    Route::get('/equipos', [EquipoController::class, 'index']);
 });

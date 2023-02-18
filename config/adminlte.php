@@ -313,7 +313,7 @@ return [
         ],
         [
             'text'        => 'Equipos',
-            'url'         => 'admin/pages',
+            'url'         => 'equipos',
             'icon'        => 'fas fa-desktop',
         ],
         [
