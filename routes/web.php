@@ -31,5 +31,5 @@ Route::middleware([
         return view('index');
     })->name('home');
 
-    Route::get('/equipos', [EquipoController::class, 'index']);
+    Route::resource('/equipos', EquipoController::class);
 });

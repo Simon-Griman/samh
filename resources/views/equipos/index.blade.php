@@ -16,6 +16,7 @@
                             <th>Bien Nacional</th>
                             <th>Rol Equipo</th>
                             <th>Usuario</th>
+                            <th colspan="2" class="text-center">Acciones</th>
                         </thead>
                         <tbody>
                             @foreach ($equipos as $equipo)
@@ -26,6 +27,12 @@
                             <td>{{ $equipo->bien_nacional }}</td>
                             <td>{{ $equipo->rol }}</td>
                             <td>{{ $equipo->name }}</td>
+                            <td style="padding: 2px;"><a href="" class="btn btn-primary">Modificar</a></td>
+                            <td style="padding: 2px;">
+                                <form action="" method="">
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+                            </td>
                             @endforeach
                         </tbody>
                     </table>
