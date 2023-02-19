@@ -14,7 +14,7 @@ class EquipoController extends Controller
      */
     public function index()
     {
-        $equipos = Equipo::select('tipoequipos.nombre as equipo', 'marcas.nombre as marca', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rol', 'name')
+        $equipos = Equipo::select('equipos.id', 'tipoequipos.nombre as equipo', 'marcas.nombre as marca', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rol', 'name')
             ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
             ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
             ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
@@ -66,7 +66,17 @@ class EquipoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $equipo = Equipo::select('equipos.id', 'tipoequipos.nombre as equipo', 'marcas.nombre as marca', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rol', 'name')
+            ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
+            ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
+            ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
+            ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
+            ->join('users', 'users.id', '=', 'equipos.user_id')
+            ->where('equipos.id', $id)
+            ->first()
+        ;
+
+        return view('equipos.actualizar', compact('equipo'));
     }
 
     /**

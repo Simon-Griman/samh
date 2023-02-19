@@ -3,6 +3,7 @@
 @section('title', 'Equipos')
 
 @section('content')
+
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="card mt-2">
@@ -19,7 +20,7 @@
                             <th colspan="2" class="text-center">Acciones</th>
                         </thead>
                         <tbody>
-                            @foreach ($equipos as $equipo)
+                            
                             <td>{{ $equipo->equipo }}</td>
                             <td>{{ $equipo->marca }}</td>
                             <td>{{ $equipo->modelo }}</td>
@@ -33,11 +34,12 @@
                                     <button type="submit" class="btn btn-danger">Eliminar</button>
                                 </form>
                             </td>
-                            @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
 @stop
