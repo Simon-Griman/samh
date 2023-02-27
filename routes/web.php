@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EquipoController;
+use App\Http\Livewire\Equipos;
 use Illuminate\Support\Facades\Route;
 
 /*

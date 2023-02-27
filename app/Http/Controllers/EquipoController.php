@@ -7,6 +7,18 @@ use Illuminate\Http\Request;
 
 class EquipoController extends Controller
 {
+    public $equipos;
+
+    public function __construct()
+    {
+        $this->equipos = Equipo::select('equipos.id', 'tipoequipos.nombre as equipo', 'marcas.nombre as marca', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rol', 'name')
+            ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
+            ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
+            ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
+            ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
+            ->join('users', 'users.id', '=', 'equipos.user_id')
+        ;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,14 +26,7 @@ class EquipoController extends Controller
      */
     public function index()
     {
-        $equipos = Equipo::select('equipos.id', 'tipoequipos.nombre as equipo', 'marcas.nombre as marca', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rol', 'name')
-            ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
-            ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
-            ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
-            ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
-            ->join('users', 'users.id', '=', 'equipos.user_id')
-            ->get()
-        ;
+        $equipos = $this->equipos->get();
 
         return view('equipos.index', compact('equipos'));
     }
@@ -66,15 +71,7 @@ class EquipoController extends Controller
      */
     public function edit($id)
     {
-        $equipo = Equipo::select('equipos.id', 'tipoequipos.nombre as equipo', 'marcas.nombre as marca', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rol', 'name')
-            ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
-            ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
-            ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
-            ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
-            ->join('users', 'users.id', '=', 'equipos.user_id')
-            ->where('equipos.id', $id)
-            ->first()
-        ;
+        $equipo = $this->equipos->where('equipos.id', $id)->first();
 
         return view('equipos.actualizar', compact('equipo'));
     }
