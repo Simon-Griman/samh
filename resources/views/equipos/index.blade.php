@@ -2,6 +2,8 @@
 
 @section('title', 'Equipos')
 
+@livewireStyles
+
 @section('content')
 
     @if (session('actualizar'))
@@ -18,3 +20,5 @@
 
     @livewire('equipo.index', ['equipos' => $equipos])
 @stop
+
+@livewireScripts

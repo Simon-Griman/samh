@@ -65,6 +65,11 @@ class Edit extends Component
 
         $equipo = Equipo::find($this->equipo->id);
 
+        if (!$this->bien_nacional)
+        {
+            $this->bien_nacional = 0;
+        }
+
         $equipo->update([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,
