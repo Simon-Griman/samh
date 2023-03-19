@@ -7,8 +7,6 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    //public $equipos;
-
     public $borrar, $bn_borrar;
 
     public function confirBorrar($id)
