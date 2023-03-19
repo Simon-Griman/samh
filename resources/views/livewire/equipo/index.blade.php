@@ -5,15 +5,50 @@
                 <table class="table table-responsive table-hover">
                     <thead>
                         <tr>
-                            <th>Equipo</th>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>Serial</th>
-                            <th>Bien Nacional</th>
-                            <th>Rol Equipo</th>
-                            <th>Usuario</th>
+                            <th>
+                                <select class="form-control" wire:model="tipo">
+                                    <option value="">Todo</option>                            
+                                    @foreach ($tipos as $tipo)
+                                        <option value="{{ $tipo->nombre }}">{{ $tipo->nombre }}</option>
+                                    @endforeach
+                                </select>
+                                <br>Equipo
+                            </th>
+                            <th>
+                                <select class="form-control" wire:model="marca">
+                                    <option value="">Todo</option>                            
+                                    @foreach ($marcas as $marca)
+                                        <option value="{{ $marca->nombre }}">{{ $marca->nombre }}</option>
+                                    @endforeach
+                                </select>
+                                <br>Marca
+                            </th>
+                            <th><input wire:model="modelo" type="text" class="form-control" placeholder="Buscar:"><br>Modelo</th>
+                            <th><input wire:model="serial" type="text" class="form-control" placeholder="Buscar:"><br>Serial</th>
+                            <th><input wire:model="bien_nacional" type="text" class="form-control" placeholder="Buscar:"><br>Bien N.</th>
+                            <th>
+                                <select class="form-control" wire:model="rol">
+                                    <option value="">Todo</option>                            
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->rol }}">{{ $role->rol }}</option>
+                                    @endforeach
+                                </select>
+                                <br>Rol
+                            </th>
+                            <th>
+                                <select class="form-control" wire:model="usuario">
+                                    <option value="">Todo</option>                            
+                                    @foreach ($usuarios as $user)
+                                        <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                                <br>Usuario
+                            </th>
                             <th colspan="2" class="text-center">Acciones</th>
                         </tr>
+
+                            
+
                     </thead>
                     <tbody>
                         @foreach ($equipos as $equipo)
@@ -25,9 +60,9 @@
                             <td>{{ $equipo->bien_nacional }}</td>
                             <td>{{ $equipo->rol }}</td>
                             <td>{{ $equipo->name }}</td>
-                            <td style="padding: 2px;"><a href="{{ route('equipos.edit', $equipo->id) }}" class="btn btn-primary">Modificar</a></td>
+                            <td style="padding: 2px;"><a href="{{ route('equipos.edit', $equipo->id) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a></td>
                             <td style="padding: 2px;">
-                                <button class="btn btn-danger" wire:click="confirBorrar({{ $equipo->id }})" data-toggle="modal" data-target="#borrar">Eliminar</button>
+                                <button class="btn btn-danger" wire:click="confirBorrar({{ $equipo->id }})" data-toggle="modal" data-target="#borrar"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                         @endforeach
