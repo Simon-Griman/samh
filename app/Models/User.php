@@ -30,6 +30,7 @@ class User extends Authenticatable
         'password',
         'cedula',
         'profile_photo_path',
+        'departamento_id',
     ];
 
     /**

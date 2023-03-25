@@ -1,3 +1,6 @@
+@php
+    $departamentos = App\Models\Departamento::all();
+@endphp
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
@@ -32,6 +35,18 @@
                     <x-jet-input class="{{ $errors->has('cedula') ? 'is-invalid' : '' }}" type="number" name="cedula"
                                  :value="old('cedula')" required />
                     <x-jet-input-error for="cedula"></x-jet-input-error>
+                </div>
+
+                <div class="mb-3">
+                    <x-jet-label value="Departamento" />
+
+                    <select name="departamento_id" id="" class="form-control {{ $errors->has('cedula') ? 'is-invalid' : '' }}" required>
+                        <option value="">-- Seleccionar --</option>
+                        @foreach ($departamentos as $departamento)
+                        <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                        @endforeach
+                    </select>
+                    <x-jet-input-error for="departamento_id"></x-jet-input-error>
                 </div>
 
                 <div class="mb-3">
