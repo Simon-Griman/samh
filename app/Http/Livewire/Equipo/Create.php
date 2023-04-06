@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Equipo;
 
+use App\Models\Departamento;
 use App\Models\Equipo;
 use App\Models\Marca;
 use App\Models\Modelo;
@@ -12,9 +13,9 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $usuario;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $departamento, $usuario;
 
-    public $marcas = [], $modelos = [];
+    public $marcas = [], $modelos = [], $departamentos = [], $users = [];
 
     protected $rules = [
         'tipo' => 'required',
@@ -23,19 +24,29 @@ class Create extends Component
         'serial' => 'nullable|min:5|unique:equipos,serial',
         'bien_nacional' => 'nullable|integer|min:100|max:4999|unique:equipos,bien_nacional',
         'rol' => 'required',
+        'departamento' => 'required',
         'usuario' => 'required',
     ];
 
     public function mount()
     {
         $this->marcas = Marca::all();
+        $this->departamentos = Departamento::all();
+
         $this->modelos = collect();
+        $this->users = collect();
     }
 
     public function updatedMarca($value)
     {
         $this->modelos = Modelo::where('marca_id', $value)->get();
         $this->modelo = $this->modelos->first()->id ?? null;
+    }
+
+    public function updatedDepartamento($value)
+    {
+        $this->users = User::where('departamento_id', $value)->get();
+        $this->usuario = $this->users->first()->id ?? null;
     }
 
     public function updated($propertyName)
@@ -47,6 +58,16 @@ class Create extends Component
     {
         $this->validate();
 
+        if (!$this->bien_nacional)
+        {
+            $this->bien_nacional = 0;
+        }
+
+        if (!$this->serial)
+        {
+            $this->serial = ' ';
+        }
+
         Equipo::create([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,
@@ -54,6 +75,7 @@ class Create extends Component
             'serial' => $this->serial,
             'bien_nacional' => $this->bien_nacional,
             'rolequipo_id' => $this->rol,
+            'departamento_id' => $this->departamento,
             'user_id' => $this->usuario,
         ]);
 
@@ -64,8 +86,7 @@ class Create extends Component
     {
         $equipos = Tipoequipo::all();
         $roles = Rolequipo::all();
-        $users = User::all();
 
-        return view('livewire.equipo.create', compact('equipos', 'roles', 'users'));
+        return view('livewire.equipo.create', compact('equipos', 'roles'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Equipo;
 
+use App\Models\Departamento;
 use App\Models\Equipo;
 use App\Models\Marca;
 use App\Models\Modelo;
@@ -15,7 +16,7 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $usuario;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $departamento, $usuario;
 
     public $borrar, $bn_borrar;
 
@@ -51,6 +52,11 @@ class Index extends Component
         $this->resetPage();
     }
 
+    public function updatingDepartamento()
+    {
+        $this->resetPage();
+    }
+
     public function updatingUsuario()
     {
         $this->resetPage();
@@ -71,11 +77,12 @@ class Index extends Component
     
     public function render()
     {
-        $equipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rolequipos.id as id_rol', 'rol', 'users.id as id_user', 'name')
+        $equipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rolequipos.id as id_rol', 'rol', 'departamentos.id as id_departamento', 'departamentos.nombre as departamento', 'users.id as id_user', 'name')
             ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
             ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
             ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
             ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
+            ->join('departamentos', 'departamentos.id', '=', 'equipos.departamento_id')
             ->join('users', 'users.id', '=', 'equipos.user_id')
             ->where('tipoequipos.nombre', 'LIKE', '%' . $this->tipo . '%')
             ->where('marcas.nombre', 'LIKE', '%' . $this->marca . '%')
@@ -83,6 +90,7 @@ class Index extends Component
             ->where('serial', 'LIKE', '%' . $this->serial . '%')
             ->where('bien_nacional', 'LIKE', '%' . $this->bien_nacional . '%')
             ->where('rol', 'LIKE', '%' . $this->rol . '%')
+            ->where('departamentos.nombre', 'LIKE', '%' . $this->departamento . '%')
             ->where('name', 'LIKE', '%' . $this->usuario . '%')
             ->get()
         ;
@@ -91,8 +99,9 @@ class Index extends Component
         $marcas = Marca::all();
         $modelos = Modelo::all();
         $roles = Rolequipo::all();
+        $departamentos = Departamento::all();
         $usuarios = User::all();
 
-        return view('livewire.equipo.index', compact('equipos', 'tipos', 'marcas', 'modelos', 'roles', 'usuarios'));
+        return view('livewire.equipo.index', compact('equipos', 'tipos', 'marcas', 'modelos', 'roles', 'departamentos', 'usuarios'));
     }
 }

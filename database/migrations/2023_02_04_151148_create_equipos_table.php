@@ -17,8 +17,8 @@ class CreateEquiposTable extends Migration
             $table->id();
             $table->unsignedBigInteger('marca_id');
             $table->unsignedBigInteger('modelo_id');
-            $table->string('serial', 45)->unique()->nullable();
-            $table->integer('bien_nacional')->unique()->nullable();
+            $table->string('serial', 45);
+            $table->integer('bien_nacional');
             $table->unsignedBigInteger('rolequipo_id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');

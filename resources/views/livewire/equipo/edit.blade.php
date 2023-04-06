@@ -7,8 +7,7 @@
                         <div class="form-group col-12">
                             <label for="equipo">Equipo</label>
                             <select name="" id="equipo" class="form-control" wire:model="tipo">
-                                <option value="{{ $equipo->id_equipo }}" disabled>{{ $equipo->equipo }}</option>
-                                
+                                <option value="">-- Seleccionar --</option>                                
                                 @foreach ($equipos as $tipo)
                                 <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
                                 @endforeach
@@ -18,8 +17,7 @@
                         <div class="form-group col-12">
                             <label for="marca">Marca</label>
                             <select name="" id="marca" class="form-control" wire:model="marca">
-                                <option value="{{ $equipo->id_marca }}" disabled>{{ $equipo->marca }}</option>
-
+                                <option value="">-- Seleccionar --</option>
                                 @foreach ($marcas as $marca)
                                 <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
                                 @endforeach
@@ -29,9 +27,7 @@
                         <div class="form-group col-12">
                             <label for="modelo">Modelo</label>
                             <select name="" id="modelo" class="form-control" wire:model="modelo">
-                                
-                                <option value="{{ $equipo->id_modelo }}" disabled>{{ $equipo->modelo }}</option>
-
+                                <option value="">-- Seleccionar --</option>
                                 @foreach ($modelos as $modelo)
                                 <option value="{{ $modelo->id }}">{{ $modelo->nombre }}</option>
                                 @endforeach
@@ -51,8 +47,7 @@
                         <div class="form-group col-12">
                             <label for="equipo">Rol Equipo</label>
                             <select name="" id="equipo" class="form-control" wire:model="rol">
-                                <option value="{{ $equipo->id_rol }}" disabled>{{ $equipo->rol }}</option>
-
+                                <option value="">-- Seleccionar --</option>
                                 @foreach ($roles as $rol)
                                 <option value="{{ $rol->id }}">{{ $rol->rol }}</option>
                                 @endforeach
@@ -60,10 +55,19 @@
                             @error('rol') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-12">
+                            <label for="equipo">Departamento</label>
+                            <select name="" id="equipo" class="form-control @error('departamento') is-invalid @enderror" wire:model="departamento">
+                                <option value="">-- Seleccionar --</option>
+                                @foreach ($departamentos as $departament)
+                                <option value="{{ $departament->id }}">{{ $departament->nombre }}</option>
+                                @endforeach
+                            </select>
+                            @error('departamento') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-12">
                             <label for="equipo">Usuario</label>
                             <select name="" id="equipo" class="form-control" wire:model="usuario">
-                                <option value="{{ $equipo->id_user }}" disabled>{{ $equipo->name }}</option>
-
+                                <option value="">-- Seleccionar --</option>
                                 @foreach ($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @endforeach

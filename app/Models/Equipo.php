@@ -16,6 +16,7 @@ class Equipo extends Model
         'serial',
         'bien_nacional',
         'rolequipo_id',
+        'departamento_id',
         'user_id',
     ];
 }

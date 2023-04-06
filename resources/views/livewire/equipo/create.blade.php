@@ -54,6 +54,18 @@
                             </select>
                             @error('rol') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
+
+                        <div class="form-group col-12">
+                            <label for="equipo">Departamento</label>
+                            <select name="" id="equipo" class="form-control @error('departamento') is-invalid @enderror" wire:model="departamento">
+                                <option value="">-- Seleccionar --</option>
+                                @foreach ($departamentos as $departament)
+                                <option value="{{ $departament->id }}">{{ $departament->nombre }}</option>
+                                @endforeach
+                            </select>
+                            @error('departamento') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
+
                         <div class="form-group col-12">
                             <label for="equipo">Usuario</label>
                             <select name="" id="equipo" class="form-control @error('usuario') is-invalid @enderror" wire:model="usuario">
