@@ -46,14 +46,25 @@
             {!! Form::model($user, ['route' => ['users.update', $user], 'method' => 'put']) !!}
 
                 @foreach ($roles as $role)
+                    @can('super-admin')
+                        @if ($role->name == 'Super-Admin')
+                        <div class="">
+                            <label for="">
+                                {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
+                                {{ $role->name }}
+                            </label>
+                        </div>
+                        @endif
+                    @endcan
 
+                    @if ($role->name != 'Super-Admin')
                     <div class="">
                         <label for="">
                             {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
                             {{ $role->name }}
                         </label>
                     </div>
-                    
+                    @endif
                 @endforeach
                 
                 {!! Form::submit('Asignar Rol', ['class' => 'btn btn-primary mt-2']) !!}

@@ -33,7 +33,7 @@ Route::middleware([
         return view('index');
     })->name('home');
 
-    Route::resource('/equipos', EquipoController::class)->names('equipos');
+    Route::resource('/equipos', EquipoController::class)->middleware('can:equipos.index')->names('equipos');
 
-    Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->names('users');
+    Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->middleware('can:users.index')->names('users');
 });

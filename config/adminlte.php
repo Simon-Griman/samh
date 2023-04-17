@@ -315,6 +315,7 @@ return [
             'text'        => 'Equipos',
             'url'         => 'equipos',
             'icon'        => 'fas fa-desktop',
+            'can'         => 'equipos.index'
         ],
         [
             'text'        => 'Mis Equipos',
@@ -341,6 +342,7 @@ return [
             'text'        => 'Usuarios',
             'url'         => 'users',
             'icon'        => 'fas fa-users',
+            'can'         => 'users.index'
         ],
         [
             'text' => 'profile',

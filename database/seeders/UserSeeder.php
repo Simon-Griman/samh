@@ -20,6 +20,6 @@ class UserSeeder extends Seeder
             'cedula' => '26716044',
             'password' => bcrypt('simonG20'),
             'departamento_id' => '1',
-        ])->assignRole('Admin'); //un solo rol
+        ])->assignRole('Super-Admin'); //un solo rol
     }
 }
