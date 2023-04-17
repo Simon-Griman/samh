@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Livewire\Equipos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,4 +36,6 @@ Route::middleware([
     Route::resource('/equipos', EquipoController::class)->middleware('can:equipos.index')->names('equipos');
 
     Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->middleware('can:users.index')->names('users');
+
+    Route::resource('/roles', RoleController::class)->names('roles');
 });

@@ -345,6 +345,12 @@ return [
             'can'         => 'users.index'
         ],
         [
+            'text'        => 'Roles',
+            'url'         => 'roles',
+            'icon'        => 'fas fa-users',
+            'can'         => 'users.index'
+        ],
+        [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
