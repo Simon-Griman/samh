@@ -338,6 +338,11 @@ return [
             'icon'        => 'far fa-clipboard',
         ],
         [
+            'text'        => 'Usuarios',
+            'url'         => 'users',
+            'icon'        => 'fas fa-users',
+        ],
+        [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
