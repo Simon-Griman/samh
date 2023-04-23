@@ -319,7 +319,7 @@ return [
         ],
         [
             'text'        => 'Mis Equipos',
-            'url'         => 'admin/pages',
+            'url'         => 'mis-equipos',
             'icon'        => 'fas fa-desktop',
         ],
         [
@@ -347,12 +347,12 @@ return [
         [
             'text'        => 'Roles',
             'url'         => 'roles',
-            'icon'        => 'fas fa-users',
+            'icon'        => 'fas fa-wrench',
             'can'         => 'users.index'
         ],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
         

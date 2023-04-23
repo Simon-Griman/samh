@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\MiEquipoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,8 @@ Route::middleware([
     })->name('home');
 
     Route::resource('/equipos', EquipoController::class)->middleware('can:equipos.index')->names('equipos');
+
+    Route::resource('/mis-equipos', MiEquipoController::class)->names('mis_equipos');
 
     Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->middleware('can:users.index')->names('users');
 
