@@ -5,7 +5,13 @@
 @livewireStyles
 
 @section('content')
+
+    <div class="text-center pt-2">
+        <a href="{{ route('mis_equipos.pdf') }}" class="btn btn-danger"><i class="fas fa-file-pdf"></i>&nbsp;Exportar</a>
+    </div>
+
     @livewire('mi-equipo.index')
+
 @stop
 
 @livewireScripts

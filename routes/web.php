@@ -36,7 +36,8 @@ Route::middleware([
 
     Route::resource('/equipos', EquipoController::class)->middleware('can:equipos.index')->names('equipos');
 
-    Route::resource('/mis-equipos', MiEquipoController::class)->names('mis_equipos');
+    Route::get('/mis-equipos', [MiEquipoController::class, 'index'])->middleware('can:mis_equipos.index')->name('mis_equipos');
+    Route::get('/mis-equipos-pdf', [MiEquipoController::class, 'downloadEquipos'])->middleware('can:mis_equipos.index')->name('mis_equipos.pdf');
 
     Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->middleware('can:users.index')->names('users');
 
