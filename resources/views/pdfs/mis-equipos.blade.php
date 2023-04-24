@@ -16,6 +16,9 @@
         <div class="row d-flex justify-content-center">
             <div class="card mt-2">
                 <div class="card-body">
+
+                    <h2>{{ $user->name }}</h2>
+
                     <table class="table table-responsive table-hover">
                         <thead>
                             <tr>
@@ -27,15 +30,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach ($misEquipos as $miEquipo)
                             <tr>
-                            @foreach ($misEquipos as $miEquipo)
                                 <td>{{ $miEquipo->equipo }}</td>
                                 <td>{{ $miEquipo->marca }}</td>
                                 <td>{{ $miEquipo->modelo }}</td>
                                 <td>{{ $miEquipo->serial }}</td>
                                 <td>{{ $miEquipo->bien_nacional }}</td>
-                            @endforeach
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

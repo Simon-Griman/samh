@@ -16,7 +16,7 @@ class MiEquipoController extends Controller
 
     public function downloadEquipos()
     {
-        $user = Auth::User()->id;
+        $user = Auth::User();
 
         $misEquipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rolequipos.id as id_rol', 'rol', 'departamentos.id as id_departamento', 'departamentos.nombre as departamento', 'users.id as id_user', 'name')
             ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
@@ -25,11 +25,11 @@ class MiEquipoController extends Controller
             ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
             ->join('departamentos', 'departamentos.id', '=', 'equipos.departamento_id')
             ->join('users', 'users.id', '=', 'equipos.user_id')
-            ->where('user_id', $user)
+            ->where('user_id', $user->id)
             ->get()
         ;
 
-        $pdf = Pdf::loadView('pdfs.mis-equipos', ['misEquipos' => $misEquipos])->setOptions(['defaultFont' => 'arial']);
+        $pdf = Pdf::loadView('pdfs.mis-equipos', ['misEquipos' => $misEquipos, 'user' => $user])->setOptions(['defaultFont' => 'arial']);
 
         return $pdf->download('mis-equipos.pdf');
     }
