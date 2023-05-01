@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\MiEquipoController;
+use App\Http\Controllers\NombreEquipoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::middleware([
 
     Route::get('/mis-equipos', [MiEquipoController::class, 'index'])->middleware('can:mis_equipos.index')->name('mis_equipos');
     Route::get('/mis-equipos-pdf', [MiEquipoController::class, 'downloadEquipos'])->middleware('can:mis_equipos.index')->name('mis_equipos.pdf');
+
+    Route::resource('/nombre-equipos', NombreEquipoController::class)->names('nombre_equipos');
 
     Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->middleware('can:users.index')->names('users');
 

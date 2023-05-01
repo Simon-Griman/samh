@@ -335,7 +335,7 @@ return [
         ['header' => 'CONFIGURACIÓN'],
         [
             'text'        => 'Nombre de Equipos',
-            'url'         => 'admin/pages',
+            'url'         => 'nombre-equipos',
             'icon'        => 'far fa-clipboard',
         ],
         [
