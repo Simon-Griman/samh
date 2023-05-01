@@ -37,12 +37,12 @@ Route::middleware([
 
     Route::resource('/equipos', EquipoController::class)->middleware('can:equipos.index')->names('equipos');
 
-    Route::get('/mis-equipos', [MiEquipoController::class, 'index'])->middleware('can:mis_equipos.index')->name('mis_equipos');
-    Route::get('/mis-equipos-pdf', [MiEquipoController::class, 'downloadEquipos'])->middleware('can:mis_equipos.index')->name('mis_equipos.pdf');
+    Route::get('/mis-equipos', [MiEquipoController::class, 'index'])->middleware('can:mis_equipos')->name('mis_equipos');
+    Route::get('/mis-equipos-pdf', [MiEquipoController::class, 'downloadEquipos'])->middleware('can:mis_equipos')->name('mis_equipos.pdf');
 
-    Route::resource('/nombre-equipos', NombreEquipoController::class)->names('nombre_equipos');
+    Route::resource('/nombre-equipos', NombreEquipoController::class)->middleware('can:nombre_equipos.index')->names('nombre_equipos');
 
     Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->middleware('can:users.index')->names('users');
 
-    Route::resource('/roles', RoleController::class)->names('roles');
+    Route::resource('/roles', RoleController::class)->middleware('can:roles.index')->names('roles');
 });

@@ -24,9 +24,25 @@ class RoleSedeer extends Seeder
         Permission::create(['name' => 'equipos.edit'])->syncRoles([$rolAdmin]);
         Permission::create(['name' => 'equipos.delete'])->syncRoles([$rolAdmin]);
 
+        Permission::create(['name' => 'mis_equipos'])->syncRoles([$rolAdmin, $rolStandar]);
+
+        Permission::create(['name' => 'solicitar'])->syncRoles([$rolAdmin, $rolStandar]);
+
+        Permission::create(['name' => 'solicitudes'])->syncRoles([$rolAdmin]);
+
+        Permission::create(['name' => 'nombre_equipos.index'])->syncRoles([$rolAdmin]);
+        Permission::create(['name' => 'nombre_equipos.create'])->syncRoles([$rolAdmin]);
+        Permission::create(['name' => 'nombre_equipos.edit'])->syncRoles([$rolAdmin]);
+        Permission::create(['name' => 'nombre_equipos.delete'])->syncRoles([$rolAdmin]);
+
         Permission::create(['name' => 'users.index'])->syncRoles([$rolAdmin]);
         Permission::create(['name' => 'users.create'])->syncRoles([$rolAdmin]);
         Permission::create(['name' => 'users.edit'])->syncRoles([$rolAdmin]);
         Permission::create(['name' => 'users.delete'])->syncRoles([$rolAdmin]);
+
+        Permission::create(['name' => 'roles.index'])->syncRoles([$rolAdmin]);
+        Permission::create(['name' => 'roles.create'])->syncRoles([$rolAdmin]);
+        Permission::create(['name' => 'roles.edit'])->syncRoles([$rolAdmin]);
+        Permission::create(['name' => 'roles.delete'])->syncRoles([$rolAdmin]);
     }
 }

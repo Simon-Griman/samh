@@ -321,22 +321,26 @@ return [
             'text'        => 'Mis Equipos',
             'url'         => 'mis-equipos',
             'icon'        => 'fas fa-desktop',
+            'can'         => 'mis_equipos'
         ],
         [
             'text'        => 'Solicitar',
             'url'         => 'admin/pages',
             'icon'        => 'fas fa-pen',
+            'can'         => 'solicitar'
         ],
         [
             'text'        => 'Solicitudes',
             'url'         => 'admin/pages',
             'icon'        => 'fas fa-folder-open',
+            'can'         => 'solicitudes'
         ],
         ['header' => 'CONFIGURACIÓN'],
         [
             'text'        => 'Nombre de Equipos',
             'url'         => 'nombre-equipos',
             'icon'        => 'far fa-clipboard',
+            'can'         => 'nombre_equipos.index'
         ],
         [
             'text'        => 'Usuarios',
@@ -348,7 +352,7 @@ return [
             'text'        => 'Roles',
             'url'         => 'roles',
             'icon'        => 'fas fa-wrench',
-            'can'         => 'users.index'
+            'can'         => 'roles.index'
         ],
         [
             'text' => 'profile',
