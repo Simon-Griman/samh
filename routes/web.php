@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\MiEquipoController;
 use App\Http\Controllers\NombreEquipoController;
 use App\Http\Controllers\RoleController;
@@ -36,6 +37,8 @@ Route::middleware([
     })->name('home');
 
     Route::resource('/equipos', EquipoController::class)->middleware('can:equipos.index')->names('equipos');
+
+    Route::resource('/inventario', InventarioController::class)->middleware('can:inventario.index')->names('inventario');
 
     Route::get('/mis-equipos', [MiEquipoController::class, 'index'])->middleware('can:mis_equipos')->name('mis_equipos');
     Route::get('/mis-equipos-pdf', [MiEquipoController::class, 'downloadEquipos'])->middleware('can:mis_equipos')->name('mis_equipos.pdf');

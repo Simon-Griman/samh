@@ -15,7 +15,6 @@ class RolequipoSeeder extends Seeder
     public function run()
     {
         Rolequipo::create(['rol' => 'Dañado']);
-        Rolequipo::create(['rol' => 'Disponible']);
         Rolequipo::create(['rol' => 'En Uso']);
     }
 }

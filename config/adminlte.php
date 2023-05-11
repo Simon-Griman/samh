@@ -318,6 +318,12 @@ return [
             'can'         => 'equipos.index'
         ],
         [
+            'text'        => 'Inventario',
+            'url'         => 'inventario',
+            'icon'        => 'fas fa-boxes',
+            'can'         => 'inventario.index'
+        ],
+        [
             'text'        => 'Mis Equipos',
             'url'         => 'mis-equipos',
             'icon'        => 'fas fa-desktop',

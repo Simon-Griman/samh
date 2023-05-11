@@ -24,6 +24,11 @@ class RoleSedeer extends Seeder
         Permission::create(['name' => 'equipos.edit'])->syncRoles([$rolAdmin]);
         Permission::create(['name' => 'equipos.delete'])->syncRoles([$rolAdmin]);
 
+        Permission::create(['name' => 'inventario.index'])->syncRoles([$rolAdmin]);
+        Permission::create(['name' => 'inventario.create'])->syncRoles([$rolAdmin]);
+        Permission::create(['name' => 'inventario.edit'])->syncRoles([$rolAdmin]);
+        Permission::create(['name' => 'inventario.delete'])->syncRoles([$rolAdmin]);
+
         Permission::create(['name' => 'mis_equipos'])->syncRoles([$rolAdmin, $rolStandar]);
 
         Permission::create(['name' => 'solicitar'])->syncRoles([$rolAdmin, $rolStandar]);

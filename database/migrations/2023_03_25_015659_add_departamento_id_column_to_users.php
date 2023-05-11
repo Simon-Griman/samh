@@ -14,7 +14,7 @@ class AddDepartamentoIdColumnToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('departamento_id')->after('password');
+            $table->unsignedBigInteger('departamento_id')->after('password')->nullable();
             $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
         });
     }
