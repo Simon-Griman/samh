@@ -14,7 +14,7 @@ class AddDepartamentoIdColumnToEquiposTable extends Migration
     public function up()
     {
         Schema::table('equipos', function (Blueprint $table) {
-            $table->unsignedBigInteger('departamento_id')->after('rolequipo_id');
+            $table->unsignedBigInteger('departamento_id')->after('rolequipo_id')->nullable();
             $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
         });
     }

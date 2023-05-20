@@ -30,7 +30,9 @@
                                 <select class="form-control" wire:model="rol">
                                     <option value="">Todo</option>                            
                                     @foreach ($roles as $role)
+                                        @if ($role->rol != 'Disponible')
                                         <option value="{{ $role->rol }}">{{ $role->rol }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                                 <br>Rol

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipo;
 use Illuminate\Http\Request;
 
 class InventarioController extends Controller
@@ -56,7 +57,9 @@ class InventarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $equipo = Equipo::find($id);
+
+        return view('inventario.actualizar', compact('equipo'));
     }
 
     /**
