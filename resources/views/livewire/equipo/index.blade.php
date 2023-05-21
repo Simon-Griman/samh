@@ -57,9 +57,6 @@
                             </th>
                             <th colspan="2" class="text-center">Acciones</th>
                         </tr>
-
-                            
-
                     </thead>
                     <tbody>
                         @foreach ($equipos as $equipo)

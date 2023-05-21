@@ -6,11 +6,33 @@
 
 @section('content')
 
-    @can('inventario.create')
+    @if (session('crear'))
+        @section('js')
+            <script>
+                Swal.fire(
+                    "¡Hecho!",
+                    "{{ session('crear') }}",
+                    "success"
+                )
+            </script>
+        @stop
+    @endif
+
+    @if (session('actualizar'))
+        @section('js')
+            <script>
+                Swal.fire(
+                    "¡Hecho!",
+                    "{{ session('actualizar') }}",
+                    "success"
+                )
+            </script>
+        @stop
+    @endif
+
     <div class="text-center">
-        <a href="{{ route('equipos.create') }}" class="btn btn-success mt-2">Nuevo Equipo</a>
+        <a href="{{ route('inventario.create') }}" class="btn btn-success mt-2">Nuevo Equipo</a>
     </div>
-    @endcan
 
     @livewire('inventario.index')
 @stop

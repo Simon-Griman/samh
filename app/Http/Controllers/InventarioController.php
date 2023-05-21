@@ -24,7 +24,7 @@ class InventarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('inventario.crear');
     }
 
     /**
