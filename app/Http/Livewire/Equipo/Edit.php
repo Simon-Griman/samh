@@ -82,6 +82,11 @@ class Edit extends Component
             $this->bien_nacional = 0;
         }
 
+        if (!$this->serial)
+        {
+            $this->serial = ' ';
+        }
+
         $equipo->update([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,

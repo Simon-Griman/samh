@@ -2,14 +2,90 @@
 
 namespace App\Http\Livewire\Inventario;
 
+use App\Models\Equipo;
+use App\Models\Marca;
+use App\Models\Modelo;
+use App\Models\Tipoequipo;
 use Livewire\Component;
 
 class Edit extends Component
 {
     public $equipo;
 
+    public $tipo, $marca, $modelo, $serial, $bien_nacional;
+
+    public $marcas = [], $modelos = [];
+
+    public function mount()
+    {
+        $marca = $this->equipo->marca_id;
+
+        $this->marcas = Marca::all();
+        $this->modelos = Modelo::all()->where('marca_id', $marca);
+
+        $this->tipo = $this->equipo->tipoequipo_id;
+        $this->marca = $this->equipo->marca_id;
+        $this->modelo = $this->equipo->modelo_id;
+        $this->serial = $this->equipo->serial;
+        $this->bien_nacional = $this->equipo->bien_nacional;
+    }
+
+    protected function rules()
+    {
+        return [
+            'tipo' => 'required',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'serial' => 'nullable|min:5|unique:equipos,serial,' . $this->equipo->id,
+            'bien_nacional' => 'nullable|integer|min:100|max:4999|unique:equipos,bien_nacional,' . $this->equipo->id,
+        ];
+    }
+
+    public function updatedMarca($value)
+    {
+        $this->modelos = Modelo::where('marca_id', $value)->get();
+        $this->modelo = $this->modelos->first()->id ?? null;
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
+    public function actualizar()
+    {
+        $this->validate();
+
+        $equipo = Equipo::find($this->equipo->id);
+
+        if (!$this->bien_nacional)
+        {
+            $this->bien_nacional = 0;
+        }
+
+        if (!$this->serial)
+        {
+            $this->serial = ' ';
+        }
+
+        $equipo->update([
+            'tipoequipo_id' => $this->tipo,
+            'marca_id' => $this->marca,
+            'modelo_id' => $this->modelo,
+            'serial' => $this->serial,
+            'bien_nacional' => $this->bien_nacional,
+        ]);
+
+        return redirect()
+            ->route('inventario.index')
+            ->with('actualizar', 'Registro actualizado con exito')
+        ;
+    }
+
     public function render()
     {
-        return view('livewire.inventario.edit');
+        $equipos = Tipoequipo::all();
+
+        return view('livewire.inventario.edit', compact('equipos'));
     }
 }

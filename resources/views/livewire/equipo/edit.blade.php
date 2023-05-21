@@ -6,7 +6,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="equipo">Equipo</label>
-                            <select name="" id="equipo" class="form-control" wire:model="tipo">
+                            <select name="" id="equipo" class="form-control @error('tipo') is-invalid @enderror" wire:model="tipo">
                                 <option value="">-- Seleccionar --</option>                                
                                 @foreach ($equipos as $tipo)
                                 <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group col-12">
                             <label for="marca">Marca</label>
-                            <select name="" id="marca" class="form-control" wire:model="marca">
+                            <select name="" id="marca" class="form-control @error('marca') is-invalid @enderror" wire:model="marca">
                                 <option value="">-- Seleccionar --</option>
                                 @foreach ($marcas as $marca)
                                 <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group col-12">
                             <label for="modelo">Modelo</label>
-                            <select name="" id="modelo" class="form-control" wire:model="modelo">
+                            <select name="" id="modelo" class="form-control @error('modelo') is-invalid @enderror" wire:model="modelo">
                                 <option value="">-- Seleccionar --</option>
                                 @foreach ($modelos as $modelo)
                                 <option value="{{ $modelo->id }}">{{ $modelo->nombre }}</option>
@@ -45,18 +45,20 @@
                             @error('bien_nacional') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-12">
-                            <label for="equipo">Rol Equipo</label>
-                            <select name="" id="equipo" class="form-control" wire:model="rol">
+                            <label for="rol-equipo">Rol Equipo</label>
+                            <select name="" id="rol-equipo" class="form-control @error('rol') is-invalid @enderror" wire:model="rol">
                                 <option value="">-- Seleccionar --</option>
                                 @foreach ($roles as $rol)
-                                <option value="{{ $rol->id }}">{{ $rol->rol }}</option>
+                                    @if($rol->rol != 'Disponible')
+                                    <option value="{{ $rol->id }}">{{ $rol->rol }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             @error('rol') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-12">
-                            <label for="equipo">Departamento</label>
-                            <select name="" id="equipo" class="form-control @error('departamento') is-invalid @enderror" wire:model="departamento">
+                            <label for="departamento">Departamento</label>
+                            <select name="" id="departamento" class="form-control @error('departamento') is-invalid @enderror" wire:model="departamento">
                                 <option value="">-- Seleccionar --</option>
                                 @foreach ($departamentos as $departament)
                                 <option value="{{ $departament->id }}">{{ $departament->nombre }}</option>
@@ -65,8 +67,8 @@
                             @error('departamento') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-12">
-                            <label for="equipo">Usuario</label>
-                            <select name="" id="equipo" class="form-control" wire:model="usuario">
+                            <label for="usuario">Usuario</label>
+                            <select name="" id="usuario" class="form-control @error('usuario') is-invalid @enderror" wire:model="usuario">
                                 <option value="">-- Seleccionar --</option>
                                 @foreach ($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
