@@ -331,13 +331,13 @@ return [
         ],
         [
             'text'        => 'Solicitar',
-            'url'         => 'admin/pages',
+            'url'         => 'solicitar',
             'icon'        => 'fas fa-pen',
             'can'         => 'solicitar'
         ],
         [
             'text'        => 'Solicitudes',
-            'url'         => 'admin/pages',
+            'url'         => 'solicitudes',
             'icon'        => 'fas fa-folder-open',
             'can'         => 'solicitudes'
         ],

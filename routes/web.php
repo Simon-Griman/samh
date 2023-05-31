@@ -5,6 +5,7 @@ use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\MiEquipoController;
 use App\Http\Controllers\NombreEquipoController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,10 @@ Route::middleware([
 
     Route::get('/mis-equipos', [MiEquipoController::class, 'index'])->middleware('can:mis_equipos')->name('mis_equipos');
     Route::get('/mis-equipos-pdf', [MiEquipoController::class, 'downloadEquipos'])->middleware('can:mis_equipos')->name('mis_equipos.pdf');
+
+    Route::get('/solicitar', [SolicitudController::class, 'solicitar'])->middleware('can:solicitar')->name('solicitar');
+
+    Route::get('/solicitudes', [SolicitudController::class, 'solicitudes'])->middleware('can:solicitudes')->name('solicitudes');
 
     Route::resource('/nombre-equipos', NombreEquipoController::class)->middleware('can:nombre_equipos.index')->names('nombre_equipos');
 
