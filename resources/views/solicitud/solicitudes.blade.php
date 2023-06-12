@@ -5,8 +5,7 @@
 @livewireStyles
 
 @section('content')
-    <br>
-    
+    @livewire('solicitud.solicitudes')
 @stop
 
 @livewireScripts

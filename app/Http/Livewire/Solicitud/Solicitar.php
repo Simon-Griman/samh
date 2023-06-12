@@ -34,7 +34,28 @@ class Solicitar extends Component
     {
         $equipos = Tipoequipo::all();
 
-        $users = User::all();
+        $myuser = Auth::User();
+
+        $rolUsers = $myuser->getRoleNames();
+
+        foreach($rolUsers as $rolUser)
+        {
+            if ($rolUser == 'Super-Admin')
+            {
+                $users = User::all();
+                break;
+            }
+            elseif ($rolUser == 'Admin')
+            {
+                $users = User::all();
+                break;
+            }
+            elseif ($rolUser == 'Jefe')
+            {
+                $users = User::where('departamento_id', $myuser->departamento_id)->get();
+                break;
+            }
+        }
 
         return view('livewire.solicitud.solicitar', compact('equipos', 'users'));
     }
