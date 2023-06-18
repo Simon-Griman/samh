@@ -28,7 +28,7 @@ class Create extends Component
         $this->marcas = Marca::all();
         $this->modelos = collect();
 
-        $this->rol = Rolequipo::where('rol', 'disponible')->first();
+        $this->rol = Rolequipo::where('rol', 'Disponible')->first();
     }
 
     public function updatedMarca($value)
