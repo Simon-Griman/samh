@@ -18,6 +18,7 @@ class CreateSolicitudsTable extends Migration
             $table->unsignedBigInteger('equipo_id');
             $table->unsignedBigInteger('destinatario_id');
             $table->unsignedBigInteger('user_id');
+            $table->enum('estado', [1, 2, 3]);
             $table->foreign('equipo_id')->references('id')->on('tipoequipos')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('destinatario_id')->references('id')->on('users')->onDelete('cascade');

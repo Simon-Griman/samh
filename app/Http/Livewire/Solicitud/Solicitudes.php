@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire\Solicitud;
 
+use App\Models\Departamento;
 use App\Models\Equipo;
 use App\Models\Rolequipo;
 use App\Models\Solicitud;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Solicitudes extends Component
@@ -41,7 +43,9 @@ class Solicitudes extends Component
             {
                 $solicitud = Solicitud::find($id_solicitud);
 
-                $solicitud->delete();
+                $solicitud->update([
+                    'estado' => 2
+                ]);
 
                 $this->dispatchBrowserEvent('aceptado');
             }
@@ -57,22 +61,21 @@ class Solicitudes extends Component
     {
         $solicitud = Solicitud::find($id);
 
-        $solicitud->delete();
+        $solicitud->update([
+            'estado' => 3
+        ]);
 
         $this->dispatchBrowserEvent('rechazado');
     }
 
-    //NO borrar los registros, sino, crear un campo "estado" en la tabla solicituds
-    //Este campo se llenara con tres posibles opciones (en proceso, aceptado, rechazado)
-    //De esta forma queda un registro de las acciones y los solicitantes podran ver el estado de su solicitud
-    //En la vista de solicitudes solo deben aparecer los equipos con el "estado" "en proceso"
-    //(Opcional) Crear un historico de operaciones
+    //Los jefes solo deben ver las solicitudes de su departamento
 
     public function render()
     {
-        $solicitudes = Solicitud::select('solicituds.id', 'tipoequipos.nombre as equipo', 'tipoequipos.id as id_equipo', 'users.name as user', 'users.id as id_user')
+        $solicitudes = Solicitud::select('solicituds.id', 'tipoequipos.nombre as equipo', 'tipoequipos.id as id_equipo', 'users.name as user', 'users.id as id_user', 'users.departamento_id', 'estado')
             ->join('tipoequipos', 'tipoequipos.id', '=', 'solicituds.equipo_id')
-            ->join('users', 'users.id', '=', 'solicituds.destinatario_id')    
+            ->join('users', 'users.id', '=', 'solicituds.destinatario_id')
+            ->orderBy('solicituds.created_at', 'desc')                
             ->get()
         ;
 
@@ -81,6 +84,8 @@ class Solicitudes extends Component
             ->get()    
         ;
 
-        return view('livewire.solicitud.solicitudes', compact('solicitudes', 'solicitante'));
+        $departamento = Auth::User()->departamento_id;
+
+        return view('livewire.solicitud.solicitudes', compact('solicitudes', 'solicitante', 'departamento'));
     }
 }

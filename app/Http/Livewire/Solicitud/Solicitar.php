@@ -25,6 +25,7 @@ class Solicitar extends Component
             'equipo_id' => $this->tipo_equipo,
             'destinatario_id' => $this->destinatario,
             'user_id' => $user,
+            'estado' => 1, //en proceso
         ]);
 
         $this->dispatchBrowserEvent('solicitar');

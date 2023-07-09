@@ -12,6 +12,7 @@ class Solicitud extends Model
     protected $fillable = [
         'user_id',
         'destinatario_id',
-        'equipo_id'
+        'equipo_id',
+        'estado',
     ];
 }
