@@ -4,6 +4,7 @@ use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\MiEquipoController;
 use App\Http\Controllers\NombreEquipoController;
+use App\Http\Controllers\NombreMarcaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UserController;
@@ -49,6 +50,8 @@ Route::middleware([
     Route::get('/solicitudes', [SolicitudController::class, 'solicitudes'])->middleware('can:solicitudes')->name('solicitudes');
 
     Route::resource('/nombre-equipos', NombreEquipoController::class)->middleware('can:nombre_equipos.index')->names('nombre_equipos');
+
+    Route::resource('/nombre-marcas', NombreMarcaController::class)->middleware('can:nombre_equipos.index')->names('nombre_marcas');
 
     Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->middleware('can:users.index')->names('users');
 

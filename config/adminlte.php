@@ -349,6 +349,12 @@ return [
             'can'         => 'nombre_equipos.index'
         ],
         [
+            'text'        => 'Nombre de Marcas',
+            'url'         => 'nombre-marcas',
+            'icon'        => 'far fa-clipboard',
+            'can'         => 'nombre_equipos.index'
+        ],
+        [
             'text'        => 'Usuarios',
             'url'         => 'users',
             'icon'        => 'fas fa-users',
