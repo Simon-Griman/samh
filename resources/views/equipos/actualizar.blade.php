@@ -6,6 +6,7 @@
 
 @section('content')
     @livewire('equipo.edit', ['equipo' => $equipo])
+    
 @stop
 
 @livewireScripts
