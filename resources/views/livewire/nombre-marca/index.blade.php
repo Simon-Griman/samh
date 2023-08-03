@@ -3,7 +3,7 @@
         <div class="card mt-2">
             <div class="card-body">
                 <div class="text-center">
-                    <a wire:click="modalCrear()" class="btn btn-primary" data-toggle="modal" data-target="#crear">Nuevo Equipo</a>
+                    <a wire:click="modalCrear()" class="btn btn-primary" data-toggle="modal" data-target="#crear">Nueva Marca</a>
                 </div>
                 <table class="table table-responsive table-hover">
                     <thead>
