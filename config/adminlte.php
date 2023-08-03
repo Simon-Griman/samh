@@ -361,6 +361,12 @@ return [
             'can'         => 'nombre_equipos.index'
         ],
         [
+            'text'        => 'Roles de Equipos',
+            'url'         => 'rol-equipos',
+            'icon'        => 'far fa-clipboard',
+            'can'         => 'nombre_equipos.index'
+        ],
+        [
             'text'        => 'Usuarios',
             'url'         => 'users',
             'icon'        => 'fas fa-users',

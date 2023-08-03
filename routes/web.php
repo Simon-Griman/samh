@@ -7,6 +7,7 @@ use App\Http\Controllers\NombreEquipoController;
 use App\Http\Controllers\NombreMarcaController;
 use App\Http\Controllers\NombreModeloController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolEquipoController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,8 @@ Route::middleware([
     Route::resource('/nombre-marcas', NombreMarcaController::class)->middleware('can:nombre_equipos.index')->names('nombre_marcas');
 
     Route::resource('/nombre-modelos', NombreModeloController::class)->middleware('can:nombre_equipos.index')->names('nombre_modelos');
+
+    Route::resource('/rol-equipos', RolEquipoController::class)->middleware('can:nombre_equipos.index')->names('rol_equipos');
 
     Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->middleware('can:users.index')->names('users');
 
