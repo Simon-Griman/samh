@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\MiEquipoController;
@@ -58,6 +59,8 @@ Route::middleware([
     Route::resource('/nombre-modelos', NombreModeloController::class)->middleware('can:nombre_equipos.index')->names('nombre_modelos');
 
     Route::resource('/rol-equipos', RolEquipoController::class)->middleware('can:nombre_equipos.index')->names('rol_equipos');
+
+    Route::resource('/departamentos', DepartamentoController::class)->middleware('can:nombre_equipos.index')->names('departamentos');
 
     Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->middleware('can:users.index')->names('users');
 

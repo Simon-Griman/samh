@@ -367,6 +367,12 @@ return [
             'can'         => 'nombre_equipos.index'
         ],
         [
+            'text'        => 'Departamentos',
+            'url'         => 'departamentos',
+            'icon'        => 'fas fa-building',
+            'can'         => 'nombre_equipos.index'
+        ],
+        [
             'text'        => 'Usuarios',
             'url'         => 'users',
             'icon'        => 'fas fa-users',
