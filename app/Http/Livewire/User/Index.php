@@ -10,7 +10,7 @@ class Index extends Component
 {
     use WithPagination;
     
-    public $nombre, $email, $cedula;
+    public $nombre, $email, $cedula, $borrar, $user_borrar;
 
     protected $paginationTheme = "bootstrap";
 
@@ -29,6 +29,19 @@ class Index extends Component
         $this->resetPage();
     }
     
+    public function confirBorrar($id)
+    {
+        $this->borrar = $id;
+        $this->user_borrar = User::find($id)->name;
+    }
+
+    public function borrar()
+    {
+        User::find($this->borrar)->delete();
+        
+        $this->dispatchBrowserEvent('borrar');
+    }
+
     public function render()
     {
         $users = User::where('name', 'LIKE', '%' . $this->nombre . '%')

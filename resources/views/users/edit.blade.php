@@ -41,6 +41,8 @@
             <h5>Nombre</h5>
             <p class="form-control">{{ $user->name }}</p>
 
+            @livewire('user.edit', ['id_user' => $user->id])
+
             <h5>Listado de Roles</h5>
 
             {!! Form::model($user, ['route' => ['users.update', $user], 'method' => 'put']) !!}

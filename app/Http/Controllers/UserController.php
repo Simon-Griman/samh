@@ -14,6 +14,11 @@ class UserController extends Controller
         return view('users.index');
     }
 
+    public function create()
+    {
+        return view('users.create');
+    }
+
     public function edit($id)
     {
         $user = User::find($id);
@@ -50,5 +55,4 @@ class UserController extends Controller
 
         return redirect()->route('users.edit', $user)->with('info', 'Se asigno los roles correctamente');
     }
-
 }

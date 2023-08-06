@@ -62,7 +62,7 @@ Route::middleware([
 
     Route::resource('/departamentos', DepartamentoController::class)->middleware('can:nombre_equipos.index')->names('departamentos');
 
-    Route::resource('/users', UserController::class)->only('index', 'edit', 'update')->middleware('can:users.index')->names('users');
+    Route::resource('/users', UserController::class)->only('index', 'edit', 'update', 'create')->middleware('can:users.index')->names('users');
 
     Route::resource('/roles', RoleController::class)->middleware('can:roles.index')->names('roles');
 });
