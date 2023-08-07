@@ -49,7 +49,9 @@
                             <select name="" id="equipo" class="form-control @error('rol') is-invalid @enderror" wire:model="rol">
                                 <option value="">-- Seleccionar --</option>
                                 @foreach ($roles as $rol)
-                                <option value="{{ $rol->id }}">{{ $rol->rol }}</option>
+                                    @if($rol->rol != 'Disponible')
+                                    <option value="{{ $rol->id }}">{{ $rol->rol }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             @error('rol') <span class="text-red">{{ $message }}</span> @enderror
