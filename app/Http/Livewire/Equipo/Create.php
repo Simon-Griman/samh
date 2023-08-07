@@ -13,7 +13,7 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $departamento, $usuario;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $observacion, $departamento, $usuario;
 
     public $marcas = [], $modelos = [], $departamentos = [], $users = [];
 
@@ -22,8 +22,9 @@ class Create extends Component
         'marca' => 'required',
         'modelo' => 'required',
         'serial' => 'nullable|min:5|unique:equipos,serial',
-        'bien_nacional' => 'nullable|integer|min:100|max:4999|unique:equipos,bien_nacional',
+        'bien_nacional' => 'nullable|integer|min:1|max:4999|unique:equipos,bien_nacional',
         'rol' => 'required',
+        'observacion' => 'nullable',
         'departamento' => 'required',
         'usuario' => 'required',
     ];
@@ -75,6 +76,7 @@ class Create extends Component
             'serial' => $this->serial,
             'bien_nacional' => $this->bien_nacional,
             'rolequipo_id' => $this->rol,
+            'observacion' => $this->observacion,
             'departamento_id' => $this->departamento,
             'user_id' => $this->usuario,
         ]);
