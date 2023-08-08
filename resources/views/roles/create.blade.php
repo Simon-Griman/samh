@@ -2,10 +2,31 @@
 
 @section('title', 'Roles')
 
+@section('css')
+    <link rel="stylesheet" href="{{ url('css/toastr.css') }}">
+@stop
+
 @livewireStyles
 
 @section('content')
     <br>
+
+    @if (session('info'))
+    @section('js')
+        <script src="{{ url('js/jquery.js') }}"></script>
+        <script src="{{ url('js/toastr.js') }}"></script>
+        <script>
+            toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            }
+
+            Command: toastr["info"]("{{ session('info') }}", "Hecho");
+        </script>
+    @stop
+    @endif
+
     <button class="btn btn-danger mb-4"><a class="text-light" href="{{ route('roles.index') }}"><i class="fas fa-caret-left"></i> Volver</a></button>
     <div class="card">
         <div class="card-body">

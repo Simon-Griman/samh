@@ -2,12 +2,18 @@
 
 @section('title', 'Roles')
 
+@section('css')
+    <link rel="stylesheet" href="{{ url('css/toastr.css') }}">
+@stop
+
 @livewireStyles
 
 @section('content')
     
     @if (session('info'))
         @section('js')
+        <script src="{{ url('js/jquery.js') }}"></script>
+        <script src="{{ url('js/toastr.js') }}"></script>
         <script>
             toastr.options = {
             "closeButton": true,

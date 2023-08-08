@@ -49,7 +49,7 @@
     </div>
 
     <script src="{{ url('js/jquery.js') }}"></script>
-    
+    <script src="{{ url('js/toastr.js') }}"></script>
     <script>
         $(document).ready(function() {
 
