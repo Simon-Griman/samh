@@ -2,6 +2,13 @@
 
 @section('title', 'Inicio')
 
+@livewireStyles
+
 @section('content')
-    hola
+    <br>
+    @can('nuevo_usuario')
+        @livewire('nuevo-usuario.index')
+    @endcan
 @stop
+
+@livewireScripts

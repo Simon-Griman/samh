@@ -20,6 +20,7 @@ class RoleSedeer extends Seeder
         $rolBN = Role::create(['name' => 'Bien-Nacional']);
         $rolJefe = Role::create(['name' => 'Jefe']);
         $rolStandar = Role::create(['name' => 'Standar']);
+        $rolNuevoUsuario = Role::create(['name' => 'Nuevo-Usuario']);
 
         Permission::create(['name' => 'equipos.index'])->syncRoles([$rolAdmin, $rolBN]);
         Permission::create(['name' => 'equipos.create'])->syncRoles([$rolAdmin, $rolBN]);
@@ -51,5 +52,7 @@ class RoleSedeer extends Seeder
         Permission::create(['name' => 'roles.create'])->syncRoles([$rolAdmin]);
         Permission::create(['name' => 'roles.edit'])->syncRoles([$rolAdmin]);
         Permission::create(['name' => 'roles.delete'])->syncRoles([$rolAdmin]);
+
+        Permission::create(['name' => 'nuevo_usuario'])->syncRoles([$rolNuevoUsuario]);
     }
 }

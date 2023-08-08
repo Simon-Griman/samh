@@ -37,6 +37,7 @@
                                 </select>
                                 <br>Rol
                             </th>
+                            <th>Observación</th>
                             <th>
                                 <select class="form-control" wire:model="departamento">
                                     <option value="">Todo</option>
@@ -67,6 +68,7 @@
                             <td>{{ $equipo->serial }}</td>
                             <td>{{ $equipo->bien_nacional }}</td>
                             <td>{{ $equipo->rol }}</td>
+                            <td>{{ $equipo->observacion }}</td>
                             <td>{{ $equipo->departamento }}</td>
                             <td>{{ $equipo->name }}</td>
                             <td style="padding: 2px;"><a href="{{ route('equipos.edit', $equipo->id) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a></td>

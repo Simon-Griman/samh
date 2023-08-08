@@ -41,7 +41,7 @@ class Create extends Component
             'cedula' => $this->cedula,
             'password' => bcrypt($this->password),
             'departamento_id' => $this->departamento,
-        ])->assignRole('Standar');
+        ])->assignRole('Nuevo-Usuario');
 
         return redirect()->route('users.index')->with('info', 'Usuario Registrado con Exito');
     }
