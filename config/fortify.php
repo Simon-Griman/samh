@@ -132,7 +132,7 @@ return [
     */
 
     'features' => [
-        Features::registration(),
+        //Features::registration(), //es el responsable de la ruta register
         Features::resetPasswords(),
         // Features::emailVerification(),
         Features::updateProfileInformation(),
