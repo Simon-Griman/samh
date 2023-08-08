@@ -57,6 +57,11 @@
                             @error('rol') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-12">
+                            <label for="observacion">Observacion</label>
+                            <input type="text" class="form-control @error('observacion') is-invalid @enderror" id="observacion" wire:model="observacion" value="{{ $equipo->observacion }}">
+                            @error('observacion') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-12">
                             <label for="departamento">Departamento</label>
                             <select name="" id="departamento" class="form-control @error('departamento') is-invalid @enderror" wire:model="departamento">
                                 <option value="">-- Seleccionar --</option>
