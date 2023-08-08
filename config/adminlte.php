@@ -498,7 +498,7 @@ return [
             ],
         ],
         'Toastr' => [
-            'active' => true,
+            'active' => false,
             'files' => [
                 [
                     'type' => 'css',
