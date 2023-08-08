@@ -9,7 +9,7 @@
        <!--<link rel="shortcut icon" href="{{ url ('favicons/favicon.ico') }}" type="image/x-icon">-->
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet"> -->
 
         <!-- Styles -->
         
