@@ -8,6 +8,7 @@
 
     @if (session('crear'))
         @section('js')
+            <script src="{{ url('js/sweetalert2.js') }}"></script>
             <script>
                 Swal.fire(
                     "¡Hecho!",
@@ -20,6 +21,7 @@
 
     @if (session('actualizar'))
         @section('js')
+            <script src="{{ url('js/sweetalert2.js') }}"></script>
             <script>
                 Swal.fire(
                     "¡Hecho!",
