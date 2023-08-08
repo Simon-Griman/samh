@@ -105,27 +105,4 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    
-    <script>
-        $(document).ready(function() {
-
-            toastr.options = {
-                "positionClass": "toast-bottom-right",
-                "progressBar": true,
-                "closeButton": true,
-            }
-            window.addEventListener('miModal', event => {
-                $('#exampleModal').modal('hide');
-                toastr.success(event.detail.message, "¡Hecho!");
-            });
-
-            window.addEventListener('borrar', event => {
-
-                $('#borrar').modal('hide');
-                toastr.success("El registro ha sido eliminado", "¡Hecho!");
-            });
-
-        });
-    </script>
 </div>
