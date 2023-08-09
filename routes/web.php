@@ -33,13 +33,12 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    /*Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');*/
 
     Route::get('/home', function () {
         return view('index');
     })->name('home');
+
+    Route::get('/desincorporaciones', function () { return view('desincorporaciones.index'); })->name('desincorporaciones');
 
     Route::resource('/equipos', EquipoController::class)->middleware('can:equipos.index')->names('equipos');
 

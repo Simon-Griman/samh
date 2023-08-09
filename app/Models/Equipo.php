@@ -19,5 +19,6 @@ class Equipo extends Model
         'observacion',
         'departamento_id',
         'user_id',
+        'desincorporacion',
     ];
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Inventario;
+namespace App\Http\Livewire\Desincorporacion;
 
 use App\Models\Equipo;
 use App\Models\Marca;
@@ -52,9 +52,7 @@ class Index extends Component
 
     public function borrar()
     {
-        $equipo = Equipo::find($this->borrar);
-
-        $equipo->update(['desincorporacion' => '1']);
+        Equipo::find($this->borrar)->delete();
         
         $this->dispatchBrowserEvent('borrar');
     }
@@ -68,8 +66,7 @@ class Index extends Component
             ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
             ->whereNull('equipos.departamento_id')
             ->whereNull('user_id')
-            ->where('rolequipos.rol', 'Disponible')
-            ->where('desincorporacion', '0')
+            ->where('desincorporacion', '1')
             ->where('tipoequipos.nombre', 'LIKE', '%' . $this->tipo . '%')
             ->where('marcas.nombre', 'LIKE', '%' . $this->marca . '%')
             ->where('modelos.nombre', 'LIKE', '%' . $this->modelo . '%')
@@ -82,6 +79,6 @@ class Index extends Component
         $marcas = Marca::all();
         $modelos = Modelo::all();
 
-        return view('livewire.inventario.index', compact('equipos', 'tipos', 'marcas', 'modelos'));
+        return view('livewire.desincorporacion.index', compact('equipos', 'tipos', 'marcas', 'modelos'));
     }
 }

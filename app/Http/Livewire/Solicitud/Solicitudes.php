@@ -18,7 +18,8 @@ class Solicitudes extends Component
             ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
             ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
             ->where('rolequipos.rol', 'Disponible')
-            ->where('tipoequipos.id', $id)   
+            ->where('tipoequipos.id', $id)
+            ->where('desincorporacion', '0')   
         ;
 
         if ($disponibilidad->count())

@@ -324,6 +324,12 @@ return [
             'can'         => 'inventario.index'
         ],
         [
+            'text'        => 'Desincorporaciones',
+            'url'         => 'desincorporaciones',
+            'icon'        => 'fas fa-trash',
+            'can'         => 'inventario.index'
+        ],
+        [
             'text'        => 'Mis Equipos',
             'url'         => 'mis-equipos',
             'icon'        => 'fas fa-desktop',
