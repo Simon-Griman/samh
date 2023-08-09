@@ -16,7 +16,7 @@
         <!-- Scripts -->
         
 
-        <link rel="stylesheet" href="{{ url('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ url('css/app.css') }}">
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="bg-light font-sans antialiased">
