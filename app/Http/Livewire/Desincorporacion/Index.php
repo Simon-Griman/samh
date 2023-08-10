@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Desincorporacion;
 use App\Models\Equipo;
 use App\Models\Marca;
 use App\Models\Modelo;
+use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -13,7 +14,7 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $reincorporar, $bn_reincorporar;
 
     public $borrar, $bn_borrar;
 
@@ -55,6 +56,54 @@ class Index extends Component
         Equipo::find($this->borrar)->delete();
         
         $this->dispatchBrowserEvent('borrar');
+    }
+
+    public function borrarTodo()
+    {
+        $equipos = Equipo::where('desincorporacion', '1');
+
+        if ($equipos->count())
+        {
+            $equipos->delete();
+
+            $this->dispatchBrowserEvent('borrarTodo');
+        }
+
+        else
+        {
+            $this->dispatchBrowserEvent('sinRegistros');
+        }
+    }
+
+    public function confirReincorporar($id)
+    {
+        $this->reincorporar = $id;
+        $this->bn_reincorporar = Equipo::find($id)->bien_nacional;
+    }
+
+    public function reincorporar()
+    {
+        $equipo = Equipo::find($this->reincorporar);
+
+        $rolequipos = Rolequipo::all();
+
+        $id_rol = 0;
+
+        foreach ($rolequipos as $rolequipo)
+        {
+            if ($rolequipo->rol == "Disponible")
+            {
+                $id_rol = $rolequipo->id;
+                break;
+            }
+        }
+
+        $equipo->update([
+            'rolequipo_id' => $id_rol,
+            'desincorporacion' => '0',
+        ]);
+
+        $this->dispatchBrowserEvent('editar');
     }
 
     public function render()

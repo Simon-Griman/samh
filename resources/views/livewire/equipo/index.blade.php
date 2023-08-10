@@ -96,6 +96,7 @@
                                         <i>"sin bien nacional"?</i>
                                     @endif
                                 </h5>
+                                <h5>El usuario asignado perdera el equipo</h5>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

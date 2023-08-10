@@ -70,7 +70,13 @@ class Index extends Component
 
     public function borrar()
     {
-        Equipo::find($this->borrar)->delete();
+        $equipo = Equipo::find($this->borrar);
+
+        $equipo->update([
+            'departamento_id' => null,
+            'user_id' => null,
+            'desincorporacion' => '1'
+        ]);
         
         $this->dispatchBrowserEvent('borrar');
     }
@@ -92,6 +98,7 @@ class Index extends Component
             ->where('rol', 'LIKE', '%' . $this->rol . '%')
             ->where('departamentos.nombre', 'LIKE', '%' . $this->departamento . '%')
             ->where('name', 'LIKE', '%' . $this->usuario . '%')
+            ->orderBy('equipos.updated_at', 'desc')
             ->get()
         ;
 
