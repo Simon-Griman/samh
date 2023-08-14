@@ -1,7 +1,9 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <div class="text-center mb-4">
+                <img src="{{ url('vendor/adminlte/dist/img/LOGO_SAMH.jpg') }}" alt="logo samh" width="150">
+            </div>
         </x-slot>
 
         <div class="card-body">
@@ -20,7 +22,7 @@
                     <x-jet-label value="{{ __('Email') }}" />
 
                     <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email"
-                                 name="email" :value="old('email')" required />
+                                 name="email" :value="old('email')" required autofocus/>
                     <x-jet-input-error for="email"></x-jet-input-error>
                 </div>
 
@@ -43,12 +45,6 @@
 
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
-                        @if (Route::has('password.request'))
-                            <a class="text-muted me-3" href="{{ route('password.request') }}">
-                                {{ __('Forgot your password?') }}
-                            </a>
-                        @endif
-
                         <x-jet-button>
                             {{ __('Log in') }}
                         </x-jet-button>
