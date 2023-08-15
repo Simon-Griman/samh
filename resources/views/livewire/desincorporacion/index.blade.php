@@ -29,6 +29,9 @@
                             <th><input wire:model="modelo" type="text" class="form-control" placeholder="Buscar:"><br>Modelo</th>
                             <th><input wire:model="serial" type="text" class="form-control" placeholder="Buscar:"><br>Serial</th>
                             <th><input wire:model="bien_nacional" type="text" class="form-control" placeholder="Buscar:"><br>Bien N.</th>
+                            @can('users.index')
+                            <th>Borrado</th>
+                            @endcan
                             <th colspan="2">Acciones</th>
                         </tr>
                     </thead>
@@ -40,6 +43,9 @@
                             <td>{{ $equipo->modelo }}</td>
                             <td>{{ $equipo->serial }}</td>
                             <td>{{ $equipo->bien_nacional }}</td>
+                            @can('users.index')
+                            <td>{{ $equipo->borrado }}</td>
+                            @endcan
                             <td style="padding: 2px;"><a wire:click="confirReincorporar({{ $equipo->id }})" class="btn btn-success" data-toggle="modal" data-target="#crear" title="reincorporar"><i class="fas fa-arrow-up"></i></a></td>
                             <td style="padding: 2px;">
                                 <button class="btn btn-danger" wire:click="confirBorrar({{ $equipo->id }})" data-toggle="modal" data-target="#borrar" title="borrar"><i class="fas fa-trash"></i></button>

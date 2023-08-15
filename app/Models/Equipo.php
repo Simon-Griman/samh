@@ -22,5 +22,6 @@ class Equipo extends Model
         'desincorporacion',
         'creado',
         'actualizado',
+        'borrado'
     ];
 }

@@ -9,6 +9,7 @@ use App\Models\Modelo;
 use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -72,10 +73,13 @@ class Index extends Component
     {
         $equipo = Equipo::find($this->borrar);
 
+        $user = Auth::User()->name;
+
         $equipo->update([
             'departamento_id' => null,
             'user_id' => null,
-            'desincorporacion' => '1'
+            'desincorporacion' => '1',
+            'borrado' => $user,
         ]);
         
         $this->dispatchBrowserEvent('borrar');
