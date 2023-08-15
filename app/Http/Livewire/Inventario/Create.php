@@ -7,6 +7,7 @@ use App\Models\Marca;
 use App\Models\Modelo;
 use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Create extends Component
@@ -46,6 +47,8 @@ class Create extends Component
     {
         $this->validate();
 
+        $user = Auth::User()->name;
+
         if (!$this->bien_nacional)
         {
             $this->bien_nacional = 0;
@@ -63,6 +66,7 @@ class Create extends Component
             'serial' => $this->serial,
             'bien_nacional' => $this->bien_nacional,
             'rolequipo_id' => $this->rol->id,
+            'creado' => $user
         ]);
 
         return redirect()->route('inventario.index')->with('crear', 'Equipo Registrado con Exito');

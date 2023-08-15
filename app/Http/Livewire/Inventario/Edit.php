@@ -6,6 +6,7 @@ use App\Models\Equipo;
 use App\Models\Marca;
 use App\Models\Modelo;
 use App\Models\Tipoequipo;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Edit extends Component
@@ -56,6 +57,8 @@ class Edit extends Component
     {
         $this->validate();
 
+        $user = Auth::User()->name;
+
         $equipo = Equipo::find($this->equipo->id);
 
         if (!$this->bien_nacional)
@@ -74,6 +77,7 @@ class Edit extends Component
             'modelo_id' => $this->modelo,
             'serial' => $this->serial,
             'bien_nacional' => $this->bien_nacional,
+            'actualizado' => $user,
         ]);
 
         return redirect()
