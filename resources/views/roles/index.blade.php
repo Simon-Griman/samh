@@ -9,7 +9,6 @@
 @livewireStyles
 
 @section('content')
-    <br>
     @if (session('info'))
     @section('js')
         <script src="{{ url('js/jquery.js') }}"></script>
@@ -25,6 +24,8 @@
         </script>
     @stop
     @endif
+    <img src="{{ url('storage/profile-photos/cintillo_osti.jpg') }}" alt="" class="cintillo" style="width:100%">
+    <br><br>
     <div class="card">
         <div class="card-body">
             <a href="{{ route('roles.create') }}" class="btn btn-success float-right mb-2" >Crear Rol</a>

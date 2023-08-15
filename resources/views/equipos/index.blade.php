@@ -35,6 +35,8 @@
             </script>
         @stop
     @endif
+
+    <img src="{{ url('storage/profile-photos/cintillo_osti.jpg') }}" alt="" class="cintillo" style="width:100%">
     
     @can('equipos.create')
     <div class="text-center">

@@ -1,6 +1,7 @@
 @section('title', 'Perfil')
 
 <x-app-layout>
+    <img src="{{ url('storage/profile-photos/cintillo_osti.jpg') }}" alt="" class="w-100">
     {{--<x-slot name="header">
         <h2 class="h4 font-weight-bold">
             {{ __('Profile') }}
@@ -28,10 +29,6 @@
 
         @livewire('profile.logout-other-browser-sessions-form')
 
-        @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-            <x-jet-section-border />
-
-            @livewire('profile.delete-user-form')
-        @endif
+        
     </div>
 </x-app-layout>

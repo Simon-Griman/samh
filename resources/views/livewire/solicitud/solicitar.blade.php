@@ -1,13 +1,9 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
+        <h3 class="text-center mt-2 col-12">Solicitar Equipos</h3>
         <div class="card mt-2">
             <div class="card-body">
                 <table class="table table-responsive table-hover">
-                    <thead>
-                        <tr>
-                            <th colspan="2" class="text-center">Solicitar Equipo</th>
-                        </tr>
-                    </thead>
                     <tbody>
                     @foreach($equipos as $equipo)
                         <tr>

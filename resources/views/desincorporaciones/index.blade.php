@@ -9,7 +9,8 @@
 @livewireStyles
 
 @section('content')
-    <br>
+    <img src="{{ url('storage/profile-photos/cintillo_osti.jpg') }}" alt="" class="cintillo" style="width:100%">
+    <br><br>
     @livewire('desincorporacion.index')
 @stop
 

@@ -9,6 +9,8 @@
 @livewireStyles
 
 @section('content')
+
+    <img src="{{ url('storage/profile-photos/cintillo_osti.jpg') }}" alt="" class="cintillo" style="width:100%">
     
     @livewire('solicitud.solicitar')
 @stop
