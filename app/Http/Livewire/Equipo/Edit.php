@@ -9,6 +9,7 @@ use App\Models\Modelo;
 use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Edit extends Component
@@ -75,7 +76,9 @@ class Edit extends Component
 
     public function actualizar()
     {
-        $validatedData = $this->validate();
+        $this->validate();
+
+        $user = Auth::User()->name;
 
         $equipo = Equipo::find($this->equipo->id);
 
@@ -99,6 +102,7 @@ class Edit extends Component
             'observacion' => $this->observacion,
             'departamento_id' => $this->departamento,
             'user_id' => $this->usuario,
+            'actualizado' => $user,
         ]);
 
         return redirect()

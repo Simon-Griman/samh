@@ -20,5 +20,7 @@ class Equipo extends Model
         'departamento_id',
         'user_id',
         'desincorporacion',
+        'creado',
+        'actualizado',
     ];
 }

@@ -9,6 +9,7 @@ use App\Models\Modelo;
 use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Create extends Component
@@ -59,6 +60,8 @@ class Create extends Component
     {
         $this->validate();
 
+        $user = Auth::User()->name;
+
         if (!$this->bien_nacional)
         {
             $this->bien_nacional = 0;
@@ -79,6 +82,7 @@ class Create extends Component
             'observacion' => $this->observacion,
             'departamento_id' => $this->departamento,
             'user_id' => $this->usuario,
+            'creado' => $user,
         ]);
 
         return redirect()->route('equipos.index')->with('crear', 'Equipo Registrado con Exito');

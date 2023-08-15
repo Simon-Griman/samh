@@ -56,6 +56,10 @@
                                 </select>
                                 <br>Usuario
                             </th>
+                            @can('users.index')
+                            <th>Creado</th>
+                            <th>Actulizado</th>
+                            @endcan
                             <th colspan="2" class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -71,6 +75,10 @@
                             <td>{{ $equipo->observacion }}</td>
                             <td>{{ $equipo->departamento }}</td>
                             <td>{{ $equipo->name }}</td>
+                            @can('users.index')
+                            <td>{{ $equipo->creado }}</td>
+                            <td>{{ $equipo->actualizado }}</td>
+                            @endcan
                             <td style="padding: 2px;"><a href="{{ route('equipos.edit', $equipo->id) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a></td>
                             <td style="padding: 2px;">
                                 <button class="btn btn-danger" wire:click="confirBorrar({{ $equipo->id }})" data-toggle="modal" data-target="#borrar"><i class="fas fa-trash"></i></button>
