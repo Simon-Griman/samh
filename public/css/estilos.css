@@ -1,7 +1,28 @@
-table, tr, th, td{
+.tabla tr th, .tabla tr td{
     border: 1px solid !important;
 }
 
 th, td{
     padding: 5px !important;
+}
+
+.gris{
+    background-color: #ccc;
+}
+
+.bienes, .usuario{
+    border: .5px solid #000;
+    background-color: #000;
+}
+
+#linea tr td{
+    border-top: 1px solid;
+}
+
+#linea tr td.none{
+    border: none;
+}
+
+#linea tr td.yes{
+    width: 45%;
 }

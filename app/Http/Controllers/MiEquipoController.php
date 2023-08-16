@@ -29,7 +29,13 @@ class MiEquipoController extends Controller
             ->get()
         ;
 
-        $pdf = Pdf::loadView('pdfs.mis-equipos', ['misEquipos' => $misEquipos, 'user' => $user])->setOptions(['defaultFont' => 'arial']);
+        foreach($misEquipos as $miEquipo)
+        {
+            $departamento = $miEquipo->departamento;
+            break;
+        }
+
+        $pdf = Pdf::loadView('pdfs.mis-equipos', ['misEquipos' => $misEquipos, 'user' => $user, 'departamento' => $departamento])->setOptions(['defaultFont' => 'arial', 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
 
         return $pdf->download('mis-equipos.pdf');
     }

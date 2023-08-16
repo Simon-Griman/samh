@@ -12,21 +12,36 @@
     </style>
 </head>
 <body>
+
+    <?php 
+        $imagen = 'storage/profile-photos/cintillo_osti.jpg';
+        $base64 = base64_encode(file_get_contents($imagen));
+    ?>
+
     <div class="container">
         <div class="row d-flex justify-content-center">
+            <img src="data:image/png;base64,<?php echo $base64 ?>" class="w-100">
+            <div class="text-center m-4">
+                <h3>Control de Inventario por Usuario</h3>
+            </div>
             <div class="card mt-2">
                 <div class="card-body">
 
-                    <h2>{{ $user->name }}</h2>
-
-                    <table class="table table-responsive table-hover">
+                    <table class="table table-responsive table-hover tabla">
                         <thead>
                             <tr>
-                                <th>Equipo</th>
-                                <th>Marca</th>
-                                <th>Modelo</th>
-                                <th>Serial</th>
-                                <th>Bien Nacional</th>
+                                <th class="gris">Usuario</th>
+                                <th>{{ $user->name }}</th>
+                                <th>C.I. {{ $user->cedula }}</th>
+                                <th class="gris">Departamento</th>
+                                <th>{{ $departamento }}</th>
+                            </tr>
+                            <tr>
+                                <th class="gris">Equipo</th>
+                                <th class="gris">Marca</th>
+                                <th class="gris">Modelo</th>
+                                <th class="gris">Serial</th>
+                                <th class="gris">Bien Nacional</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,6 +58,16 @@
                     </table>
                 </div>
             </div>
+            <br><br><br>
+            <table class="table" id="linea">
+                <tr>
+                    <td class="yes text-center">Area de Bienes Nacionales</td>
+                    <td class="none"></td>
+                    <td class="yes text-center"> Firma del Usuario</td>
+                </tr>
+            </table>
+            <br>
+            <small><b>NOTA:</b> EL FUNCIONARIO ES RESPONSABLE DEL CUIDADO Y RESGUARDO DE LOS BIENES NACIONALES AQUI SEÑALADOS</small>
         </div>
     </div>
 </body>
