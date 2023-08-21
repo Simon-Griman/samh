@@ -15,7 +15,9 @@
                             <td><strong>{{ $marca->nombre }}</strong></td>
                             <td><button class="btn btn-primary" data-toggle="modal" data-target="#crear" wire:click="modalCrear({{ $marca->id }})">Nuevo</button></td>
                             <td><button class="btn btn-success" data-toggle="modal" data-target="#actualizar" wire:click="modalEditar({{ $marca->id }})">Editar</button></td>
+                            @can('Super-User')
                             <td><button wire:click="confirBorrar({{ $marca->id }})" class="btn btn-danger" data-toggle="modal" data-target="#borrar">Borrar</button></td>
+                            @endcan
                         </tr>                        
                     @endforeach
                     </tbody>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\Equipo;
+use App\Models\Rolequipo;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -37,6 +39,26 @@ class Index extends Component
 
     public function borrar()
     {
+        $roles = Rolequipo::all();
+        $rol_disponible = '';
+
+        foreach($roles as $rol)
+        {
+            if($rol->rol == 'Disponible')
+            {
+                $rol_disponible = $rol->id;
+                break;
+            }
+        }
+
+        $equipos = Equipo::where('user_id', $this->borrar);
+
+        $equipos->update([
+            'departamento_id' => null,
+            'user_id' => null,
+            'rolequipo_id' => $rol_disponible,
+        ]);
+
         User::find($this->borrar)->delete();
         
         $this->dispatchBrowserEvent('borrar');

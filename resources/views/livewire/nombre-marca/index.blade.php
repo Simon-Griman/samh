@@ -19,7 +19,9 @@
                             <td>
                                 <a wire:click="modalEditar({{ $marca->id }})" class="btn btn-success" data-toggle="modal" data-target="#crear">Editar</a>
 
+                                @can('Super-User')
                                 <a wire:click="confirBorrar({{ $marca->id }})" class="btn btn-danger" data-toggle="modal" data-target="#borrar">Borrar</a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

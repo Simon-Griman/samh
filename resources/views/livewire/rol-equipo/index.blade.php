@@ -5,22 +5,26 @@
                 <div class="text-center">
                     <a wire:click="modalCrear()" class="btn btn-primary" data-toggle="modal" data-target="#crear">Nuevo Rol de Equipo</a>
                 </div>
-                <table class="table table-responsive table-hover">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Marca</th>
+                            @can('Super-User')
                             <th class="text-center">Acciones</th>
+                            @endcan
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($roles as $rol)
                         <tr>
                             <td>{{ $rol->rol }}</td>
+                            @can('Super-User')
                             <td>
                                 <a wire:click="modalEditar({{ $rol->id }})" class="btn btn-success" data-toggle="modal" data-target="#crear">Editar</a>
 
-                                <a wire:click="confirBorrar({{ $rol->id }})" class="btn btn-danger" data-toggle="modal" data-target="#borrar">Borrar</a>
+                                <a wire:click="confirBorrar({{ $rol->id }})" class="btn btn-danger" data-toggle="modal" data-target="#borrar">Borrar</a>                           
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                     </tbody>
