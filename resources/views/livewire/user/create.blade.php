@@ -32,18 +32,6 @@
                             </select>
                             @error('departamento') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
-
-                        <div class="form-group col-12">
-                            <label for="password">Contraseña del Usuario</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" wire:model="password">
-                            @error('password') <span class="text-red">{{ $message }}</span> @enderror
-                        </div>
-
-                        <div class="form-group col-12">
-                            <label for="confirpass">Confirmar Contraseña</label>
-                            <input type="password" class="form-control @error('confirPass') is-invalid @enderror" id="confirpass" wire:model="confirPass">
-                            @error('confirPass') <span class="text-red">{{ $message }}</span> @enderror
-                        </div>
                         
                         <div class="text-center col-12">
                             <button class="btn btn-primary m-4" type="submit">Crear</button>

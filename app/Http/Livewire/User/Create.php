@@ -16,8 +16,6 @@ class Create extends Component
         'name' => 'required',
         'email' => 'required|unique:users,email',
         'cedula' => 'required|integer|min:1000000|max:50000000|unique:users,cedula',
-        'password' => 'required|min:8',
-        'confirPass' => 'required|same:password',
         'departamento' => 'required',
     ];
 
@@ -39,7 +37,6 @@ class Create extends Component
             'name' => $this->name,
             'email' => $this->email,
             'cedula' => $this->cedula,
-            'password' => bcrypt($this->password),
             'departamento_id' => $this->departamento,
         ])->assignRole('Nuevo-Usuario');
 
