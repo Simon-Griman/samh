@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'email' => 'simongrimanv@hotmail.com', 
             'cedula' => '26716044',
             'password' => bcrypt('simonG20'),
-            'departamento_id' => '1',
+            'departamento_id' => '2',
         ])->assignRole('Super-Admin'); //un solo rol
     }
 }
