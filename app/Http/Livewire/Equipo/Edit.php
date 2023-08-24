@@ -65,7 +65,7 @@ class Edit extends Component
 
     public function updatedDepartamento($value)
     {
-        $this->users = User::where('departamento_id', $value)->get();
+        $this->users = User::where('departamento_id', $value)->orderBy('name')->get();
         $this->usuario = $this->users->first()->id ?? null;
     }
 

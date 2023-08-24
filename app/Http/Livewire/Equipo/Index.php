@@ -111,7 +111,7 @@ class Index extends Component
         $modelos = Modelo::all();
         $roles = Rolequipo::all();
         $departamentos = Departamento::all();
-        $usuarios = User::all();
+        $usuarios = User::select('name')->orderBy('name')->get();
 
         return view('livewire.equipo.index', compact('equipos', 'tipos', 'marcas', 'modelos', 'roles', 'departamentos', 'usuarios'));
     }
