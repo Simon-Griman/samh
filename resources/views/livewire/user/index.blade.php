@@ -1,12 +1,14 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="card">
-            
-            <div class="card-body">
+        <div class="card" style="max-height: 80vh;">
 
-                <div class="text-center">
+            <div class="car-header">
+                <div class="text-center p-2" style="background-color: #eee;">
                     <a href="{{ route('users.create') }}" class="btn btn-primary">Nuevo Usuario</a>
                 </div>
+            </div>
+            
+            <div class="card-body overflow-auto" >
 
                 <table class="table table-responsive table-hover w-100">
                     <thead>
