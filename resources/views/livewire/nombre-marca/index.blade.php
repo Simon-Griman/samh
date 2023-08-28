@@ -65,7 +65,7 @@
                                     
                                     <div class="mb-3">
                                         <label for="marca" class="col-form-label">Nombre del Equipo:</label>
-                                        <input type="text" class="form-control @error('marca') is-invalid @enderror" id="marca" wire:model.defer="marca" name="marca" require value="{{ old('marca') }}">
+                                        <input type="text" class="form-control @error('marca') is-invalid @enderror" id="marca" wire:model.defer="marca" name="marca" require value="{{ old('marca') }}" autofocus>
 
                                         @error('marca')
 
@@ -118,6 +118,12 @@
 
                 $('#borrar').modal('hide');
                 toastr.success("El registro ha sido eliminado", "¡Hecho!");
+            });
+
+            $(function () {
+                $('#crear').on('shown.bs.modal', function (e) {
+                    $('#marca').focus();
+                })
             });
 
         });
