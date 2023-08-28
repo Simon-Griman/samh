@@ -69,7 +69,7 @@
                                 <div class="modal-body">
                                     
                                     <div class="mb-3">
-                                        <label for="marca" class="col-form-label">Nombre del Modelo:</label>
+                                        <label for="modelo" class="col-form-label">Nombre del Modelo:</label>
                                         
                                         <input type="text" class="form-control @error('modelo') is-invalid @enderror" id="modelo" name="modelo" require value="{{ old('modelo') }}" wire:model.defer="modelo">
 
@@ -181,6 +181,12 @@
 
                 $('#borrar').modal('hide');
                 toastr.success("El registro ha sido eliminado", "¡Hecho!");
+            });
+
+            $(function () {
+                $('#crear').on('shown.bs.modal', function (e) {
+                    $('#modelo').focus();
+                })
             });
 
         });

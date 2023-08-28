@@ -11,7 +11,7 @@ class Index extends Component
     public $borrar, $marca_borrar, $crear = true, $marca, $id_marca;
 
     protected $rules = [
-        'marca' => 'required'
+        'marca' => 'required|unique:marcas,nombre'
     ];
 
     public function modalCrear()

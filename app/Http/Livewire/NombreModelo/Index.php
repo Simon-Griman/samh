@@ -11,7 +11,7 @@ class Index extends Component
     public $borrar, $marca_borrar, $marcas, $nombre_marca, $modelos, $modelo, $id_modelo, $id_marca;
 
     protected $rules = [
-        'modelo' => 'required',
+        'modelo' => 'required|unique:modelos,nombre',
         'id_modelo' => 'required'
     ];
 
