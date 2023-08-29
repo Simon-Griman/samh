@@ -312,7 +312,7 @@ return [
             'icon'        => 'fas fa-home',
         ],
         [
-            'text'        => 'Equipos',
+            'text'        => 'Bienes Nacionales',
             'url'         => 'equipos',
             'icon'        => 'fas fa-desktop',
             'can'         => 'equipos.index'
@@ -330,7 +330,7 @@ return [
             'can'         => 'inventario.index'
         ],
         [
-            'text'        => 'Mis Equipos',
+            'text'        => 'Mis Bienes',
             'url'         => 'mis-equipos',
             'icon'        => 'fas fa-desktop',
             'can'         => 'mis_equipos'
@@ -349,7 +349,7 @@ return [
         ],
         ['header' => 'CONFIGURACIÓN'],
         [
-            'text'        => 'Nombre de Equipos',
+            'text'        => 'Nombre de Bienes',
             'url'         => 'nombre-equipos',
             'icon'        => 'far fa-clipboard',
             'can'         => 'nombre_equipos.index'
@@ -367,7 +367,7 @@ return [
             'can'         => 'nombre_equipos.index'
         ],
         [
-            'text'        => 'Roles de Equipos',
+            'text'        => 'Roles de Bienes',
             'url'         => 'rol-equipos',
             'icon'        => 'far fa-clipboard',
             'can'         => 'nombre_equipos.index'

@@ -8,7 +8,7 @@
                 <table class="table table-responsive table-hover">
                     <thead>
                         <tr>
-                            <th>Equipo</th>
+                            <th>Departamento</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>

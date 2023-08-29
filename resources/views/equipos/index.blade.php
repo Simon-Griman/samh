@@ -40,7 +40,7 @@
     
     @can('equipos.create')
     <div class="text-center">
-        <a href="{{ route('equipos.create') }}" class="btn btn-success mt-2">Nuevo Equipo</a>
+        <a href="{{ route('equipos.create') }}" class="btn btn-success mt-2">Nuevo Bien Nacional</a>
     </div>
     @endcan
 

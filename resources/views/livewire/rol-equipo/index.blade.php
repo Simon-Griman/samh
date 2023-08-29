@@ -3,12 +3,12 @@
         <div class="card mt-2">
             <div class="card-body">
                 <div class="text-center">
-                    <a wire:click="modalCrear()" class="btn btn-primary" data-toggle="modal" data-target="#crear">Nuevo Rol de Equipo</a>
+                    <a wire:click="modalCrear()" class="btn btn-primary" data-toggle="modal" data-target="#crear">Nuevo Rol de Bien Nacional</a>
                 </div>
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Marca</th>
+                            <th>Nombre</th>
                             @can('Super-User')
                             <th class="text-center">Acciones</th>
                             @endcan

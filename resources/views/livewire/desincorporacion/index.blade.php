@@ -15,7 +15,7 @@
                                         <option value="{{ $tipo->nombre }}">{{ $tipo->nombre }}</option>
                                     @endforeach
                                 </select>
-                                <br>Equipo
+                                <br>Nombre
                             </th>
                             <th>
                                 <select class="form-control" wire:model="marca">

@@ -3,12 +3,12 @@
         <div class="card mt-2">
             <div class="card-body">
                 <div class="text-center">
-                    <a wire:click="modalCrear()" class="btn btn-primary" data-toggle="modal" data-target="#crear">Nuevo Equipo</a>
+                    <a wire:click="modalCrear()" class="btn btn-primary" data-toggle="modal" data-target="#crear">Nuevo Bien Nacional</a>
                 </div>
                 <table class="table table-responsive table-hover">
                     <thead>
                         <tr>
-                            <th>Equipo</th>
+                            <th>Nombre</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -64,7 +64,7 @@
                                 <div class="modal-body">
                                     
                                     <div class="mb-3">
-                                        <label for="equipo" class="col-form-label">Nombre del Equipo:</label>
+                                        <label for="equipo" class="col-form-label">Nombre del Bien:</label>
                                         <input type="text" class="form-control @error('equipo') is-invalid @enderror" id="equipo" wire:model.defer="equipo" name="equipo" require value="{{ old('equipo') }}">
 
                                         @error('equipo')

@@ -43,17 +43,17 @@ class Solicitar extends Component
         {
             if ($rolUser == 'Super-Admin')
             {
-                $users = User::all();
+                $users = User::select('name')->orderBy('name')->get();
                 break;
             }
             elseif ($rolUser == 'Admin')
             {
-                $users = User::all();
+                $users = User::select('name')->orderBy('name')->get();
                 break;
             }
             elseif ($rolUser == 'Jefe')
             {
-                $users = User::where('departamento_id', $myuser->departamento_id)->get();
+                $users = User::where('departamento_id', $myuser->departamento_id)->orderBy('name')->get();
                 break;
             }
         }

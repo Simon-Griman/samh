@@ -5,7 +5,7 @@
                 <table class="table table-responsive table-hover">
                     <thead>
                         <tr>
-                            <th>Equipo</th>
+                            <th>Nombre</th>
                             <th>Marca</th>
                             <th>Modelo</th>
                             <th>Serial</th>

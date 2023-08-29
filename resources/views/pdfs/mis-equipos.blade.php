@@ -22,7 +22,7 @@
         <div class="row d-flex justify-content-center">
             <img src="data:image/png;base64,<?php echo $base64 ?>" class="w-100">
             <div class="text-center m-4">
-                <h3>Control de Inventario por Usuario</h3>
+                <h3>Control de Inventario por Ubicación y Usuario</h3>
             </div>
             <div class="card mt-2">
                 <div class="card-body">
@@ -33,11 +33,11 @@
                                 <th class="gris">Usuario</th>
                                 <th>{{ $user->name }}</th>
                                 <th>C.I. {{ $user->cedula }}</th>
-                                <th class="gris">Departamento</th>
+                                <th class="gris">Ubicación</th>
                                 <th>{{ $departamento }}</th>
                             </tr>
                             <tr>
-                                <th class="gris">Equipo</th>
+                                <th class="gris">Nombre</th>
                                 <th class="gris">Marca</th>
                                 <th class="gris">Modelo</th>
                                 <th class="gris">Serial</th>

@@ -5,7 +5,7 @@
                 <form wire:submit.prevent="crear">
                     <div class="form-row">
                         <div class="form-group col-12">
-                            <label for="equipo">Equipo</label>
+                            <label for="equipo">Nombre</label>
                             <select name="" id="equipo" class="form-control @error('tipo') is-invalid @enderror" wire:model="tipo">
                                 <option value="">-- Seleccionar --</option>                                
                                 @foreach ($equipos as $tipo)

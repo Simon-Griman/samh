@@ -10,7 +10,7 @@
                 <table class="table table-responsive table-hover">
                     <thead>
                         <tr>
-                            <th>Equipo</th>
+                            <th>Nombre</th>
                             <th>Solicitante</th>
                             <th>Usuario</th>
                             <th colspan="2"></th>
@@ -64,7 +64,7 @@
                         <table class="table ">
                             <thead>
                                 <tr>
-                                    <th>Equipo</th>
+                                    <th>Nombre</th>
                                     <th>Solicitante</th>
                                     <th>Usuario</th>
                                     <th>Estado</th>

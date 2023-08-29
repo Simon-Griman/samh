@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <h3 class="text-center mt-2 col-12">Solicitar Equipos</h3>
+        <h3 class="text-center mt-2 col-12">Solicitar Bienes</h3>
         <div class="card mt-2">
             <div class="card-body">
                 <table class="table table-responsive table-hover">
@@ -21,11 +21,11 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-success">
-                        <h5 class="modal-title" id="exampleModalLabel">Solicitud de Equipo</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Solicitud de Bienes Nacionales</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <h5>Seleccione el usuario al cual se le asignará el equipo:</h5>
+                        <h5>Seleccione el usuario al cual se le asignará el bien:</h5>
                         
                         <select name="" id="user" class="form-control" wire:model="destinatario">
                             <option value="">-- Seleccionar --</option>                                
