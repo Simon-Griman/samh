@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Equipos')
+@section('title', 'Desincorporaciones')
 
 @section('css')
     <link rel="stylesheet" href="{{ url('css/toastr.css') }}">
