@@ -51,7 +51,11 @@
                                 <td>{{ $miEquipo->marca }}</td>
                                 <td>{{ $miEquipo->modelo }}</td>
                                 <td>{{ $miEquipo->serial }}</td>
-                                <td>{{ $miEquipo->bien_nacional }}</td>
+                                @if ($miEquipo->bien_nacional >= 1000)
+                                <td>0000{{ $miEquipo->bien_nacional }}</td>
+                                @else
+                                <td>00000{{ $miEquipo->bien_nacional }}</td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>
