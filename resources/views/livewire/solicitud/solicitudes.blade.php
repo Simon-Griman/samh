@@ -1,7 +1,7 @@
 <div class="container">
 
     <div class="row d-flex justify-content-center">
-        @can('users.index')
+        @can('asignar_equipos')
         
         <h3 class="text-center mt-2 col-12">Solicitudes</h3>
 
@@ -18,7 +18,7 @@
                     </thead>
                     <tbody>
                     @foreach($solicitudes as $solicitud)
-                        @if($solicitud->estado == 1)
+                        @if($solicitud->estado == 1 && $solicitud->equipo_departamento == $departamento)
                         <tr>
                             <td>{{ $solicitud->equipo }}</td>
 
@@ -45,7 +45,7 @@
         
         @endcan
         
-        @can('users.index')
+        @can('asignar_equipos')
 
         <div class="modal fade" id="historial" tabindex="-1" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
 
@@ -73,7 +73,9 @@
                             <tbody>
 
                             @foreach($solicitudes as $solicitud)
-                                @can('users.index')
+                                @can('asignar_equipos')
+
+                                @if($solicitud->equipo_departamento == $departamento )
 
                                 <tr class="@if($solicitud->estado == 2) bg-success @elseif($solicitud->estado == 3) bg-danger @elseif($solicitud->estado == 1) bg-secondary @endif">
                                     <td>{{ $solicitud->equipo }}</td>
@@ -94,10 +96,10 @@
                                     <td>Rechazado</td>
                                     @endif
                                 </tr>  
-
+                                @endif
                                 @else
                                 
-                                @if($solicitud->departamento_id == $departamento)
+                                @if($solicitud->equipo_departamento == $departamento )
 
                                 <tr class="@if($solicitud->estado == 2) bg-success @elseif($solicitud->estado == 3) bg-danger @elseif($solicitud->estado == 1) bg-secondary @endif">
                                     <td>{{ $solicitud->equipo }}</td>
@@ -125,14 +127,14 @@
                             </tbody>
                         </table>
                     </div>
-                    @can('users.index')
+                    @can('asignar_equipos')
                     <div class="modal-footer text-center">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                     @endcan
                 </div>
             </div>
-        @can('users.index')
+        @can('asignar_equipos')
         </div>
         @endcan
         

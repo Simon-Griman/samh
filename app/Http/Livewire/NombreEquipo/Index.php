@@ -2,15 +2,17 @@
 
 namespace App\Http\Livewire\NombreEquipo;
 
+use App\Models\Departamento;
 use App\Models\Tipoequipo;
 use Livewire\Component;
 
 class Index extends Component
 {
-    public $borrar, $equipo_borrar, $crear = true, $equipo, $id_equipo;
+    public $borrar, $equipo_borrar, $crear = true, $equipo, $id_equipo, $departamento;
 
     protected $rules = [
-        'equipo' => 'required'
+        'equipo' => 'required',
+        'departamento' => 'required'
     ];
 
     public function modalCrear()
@@ -22,7 +24,10 @@ class Index extends Component
     public function crear()
     {
         $this->validate();
-        Tipoequipo::create(['nombre' => $this->equipo]);
+        Tipoequipo::create([
+            'nombre' => $this->equipo,
+            'departamento_id' => $this->departamento
+        ]);
         $this->limpiarCampos();
         $this->dispatchBrowserEvent('crear');
     }
@@ -73,6 +78,8 @@ class Index extends Component
     {
         $equipos = Tipoequipo::all();
 
-        return view('livewire.nombre-equipo.index', compact('equipos'));
+        $departamentos = Departamento::all();
+
+        return view('livewire.nombre-equipo.index', compact('equipos', 'departamentos'));
     }
 }

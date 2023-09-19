@@ -74,7 +74,26 @@
                                         </span>
 
                                         @enderror
-                                    </div>                                        
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="departamento" class="col-form-label">Departamento</label>
+
+                                        <select name="departamento" id="departamento" class="form-control @error('departamento') is-invalid @enderror" wire:model.defer="departamento">
+                                            <option value="">-- Seleccionar --</option>
+                                            @foreach ($departamentos as $departament)
+                                            <option value="{{ $departament->id }}">{{ $departament->nombre }}</option>
+                                            @endforeach
+                                        </select>
+
+                                        @error('departamento')
+
+                                        <span class="invalid-feedback">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+
+                                        @enderror
+                                    </div>       
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

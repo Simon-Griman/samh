@@ -73,7 +73,7 @@ class Solicitudes extends Component
 
     public function render()
     {
-        $solicitudes = Solicitud::select('solicituds.id', 'tipoequipos.nombre as equipo', 'tipoequipos.id as id_equipo', 'users.name as user', 'users.id as id_user', 'users.departamento_id', 'estado')
+        $solicitudes = Solicitud::select('solicituds.id', 'tipoequipos.nombre as equipo', 'tipoequipos.departamento_id as equipo_departamento', 'tipoequipos.id as id_equipo', 'users.name as user', 'users.id as id_user', 'users.departamento_id', 'estado')
             ->join('tipoequipos', 'tipoequipos.id', '=', 'solicituds.equipo_id')
             ->join('users', 'users.id', '=', 'solicituds.destinatario_id')
             ->orderBy('solicituds.created_at', 'desc')                
