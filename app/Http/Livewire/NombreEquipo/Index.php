@@ -48,7 +48,10 @@ class Index extends Component
 
         $equipo = Tipoequipo::find($this->id_equipo);
 
-        $equipo->update(['nombre' => $this->equipo]);
+        $equipo->update([
+            'nombre' => $this->equipo,
+            'departamento_id' => $this->departamento
+        ]);
 
         $this->limpiarCampos();
 
@@ -76,7 +79,10 @@ class Index extends Component
 
     public function render()
     {
-        $equipos = Tipoequipo::all();
+        $equipos = Tipoequipo::select('tipoequipos.id', 'tipoequipos.nombre', 'departamentos.nombre as departamento')
+            ->join('departamentos', 'departamentos.id', '=', 'tipoequipos.departamento_id')
+            ->get()
+        ;
 
         $departamentos = Departamento::all();
 

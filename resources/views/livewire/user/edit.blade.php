@@ -13,4 +13,18 @@
         </div>
     </form>
     <hr>
+    @can('Super-User')
+    <form wire:submit.prevent="editar_departamento" class="mb-0 pl-0">
+        <h5>Actualizar Departamento</h5>
+        <select class="form-control" wire:model="departamento">
+            @foreach ($departamentos as $departament)
+            <option value="{{ $departament->id }}">{{ $departament->nombre }}</option>
+            @endforeach
+        </select>
+        <div class="mt-4 mb-4">
+            <button class="btn btn-primary" type="submit">Actualizar Departamento</button>
+        </div>
+    </form>
+    <hr>
+    @endcan
 </div>

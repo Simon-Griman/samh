@@ -10,7 +10,7 @@
             
             <div class="card-body overflow-auto" >
 
-                <table class="table table-responsive table-hover w-100">
+                <table class="table table-responsive table-hover">
                     <thead>
                         <th><input wire:model="nombre" type="text" class="form-control" placeholder="Buscar:"><br>Nombre</th>
                         <th><input wire:model="email" type="text" class="form-control" placeholder="Buscar:"><br>Email</th>

@@ -1,10 +1,12 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="card mt-2">
-            <div class="card-body">
+        <div class="card mt-2" style="max-height: 80vh;">
+            <div class="card-header" style="background-color: #eee;">
                 <div class="text-center">
                     <a wire:click="modalCrear()" class="btn btn-primary" data-toggle="modal" data-target="#crear">Nuevo Departamento</a>
                 </div>
+            </div>
+            <div class="card-body overflow-auto">
                 <table class="table table-responsive table-hover">
                     <thead>
                         <tr>

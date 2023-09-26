@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="card mt-2">
-            <div class="card-body">
+        <div class="card mt-2" style="max-height: 80vh;">
+            <div class="card-body overflow-auto">
                 <div class="text-center">
                     <a wire:click="modalCrear()" class="btn btn-primary" data-toggle="modal" data-target="#crear">Nuevo Bien Nacional</a>
                 </div>
@@ -9,6 +9,7 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
+                            <th>Departamento</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -16,6 +17,7 @@
                     @foreach($equipos as $equipo)
                         <tr>
                             <td>{{ $equipo->nombre }}</td>
+                            <td>{{ $equipo->departamento }}</td>
                             <td>
                                 <a wire:click="modalEditar({{ $equipo->id }})" class="btn btn-success" data-toggle="modal" data-target="#crear">Editar</a>
 
