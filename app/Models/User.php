@@ -67,12 +67,10 @@ class User extends Authenticatable
 
     public function adminlte_desc(){
 
-        //$myuser = Auth::User();
+        $myuser = Auth::User();
 
-        //$rolUsers = $myuser->getRoleNames();
+        $rolUsers = $myuser->getRoleNames();
 
-        //return $rolUsers;
-
-        return 'Admin'; //provisional
+        return $rolUsers;
     }
 }

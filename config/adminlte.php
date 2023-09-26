@@ -15,7 +15,7 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => 'SAMH | ',
+    'title_prefix' => 'SAAN | ',
     'title_postfix' => '',
 
     /*
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>SAMH</b>',
+    'logo' => '<b>SAAN</b>',
     'logo_img' => 'vendor/adminlte/dist/img/LOGO_SAMH.jpg',
     'logo_img_class' => 'brand-image elevation-3',
     'logo_img_xl' => null,
