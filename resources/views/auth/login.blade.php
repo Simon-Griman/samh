@@ -36,9 +36,8 @@
 
                 <div class="mb-3">
                     <div class="custom-control custom-checkbox">
-                        <x-jet-checkbox id="remember_me" name="remember" />
-                        <label class="custom-control-label" for="remember_me">
-                            {{ __('Remember Me') }}
+                        <label class="custom-control-label">
+                            Contraseña por defecto: <b>password</b>
                         </label>
                     </div>
                 </div>
