@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="card mt-2">
-            <div class="card-body">
+        <div class="card mt-2" style="max-height: 75vh;">
+            <div class="card-body overflow-auto">
                 <table class="table table-responsive table-hover">
                     <thead>
                         <tr>
@@ -53,6 +53,9 @@
                     @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="card-footer">
+                {{ $equipos->links() }}
             </div>
         </div>
 

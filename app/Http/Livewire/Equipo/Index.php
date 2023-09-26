@@ -103,7 +103,7 @@ class Index extends Component
             ->where('departamentos.nombre', 'LIKE', '%' . $this->departamento . '%')
             ->where('name', 'LIKE', '%' . $this->usuario . '%')
             ->orderBy('equipos.updated_at', 'desc')
-            ->get()
+            ->paginate()
         ;
 
         $tipos = Tipoequipo::all();

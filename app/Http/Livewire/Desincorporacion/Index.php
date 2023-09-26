@@ -121,7 +121,7 @@ class Index extends Component
             ->where('modelos.nombre', 'LIKE', '%' . $this->modelo . '%')
             ->where('serial', 'LIKE', '%' . $this->serial . '%')
             ->where('bien_nacional', 'LIKE', '%' . $this->bien_nacional . '%')
-            ->get()
+            ->paginate()
         ;
 
         $tipos = Tipoequipo::all();
