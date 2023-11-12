@@ -9,5 +9,7 @@ class DepartamentoController extends Controller
     public function index()
     {
         return view('departamentos.index');
+
+        //prueba
     }
 }
