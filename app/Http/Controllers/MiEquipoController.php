@@ -29,14 +29,21 @@ class MiEquipoController extends Controller
             ->get()
         ;
 
-        foreach($misEquipos as $miEquipo)
+        if ($misEquipos->count())
         {
-            $departamento = $miEquipo->departamento;
-            break;
+            foreach($misEquipos as $miEquipo)
+            {
+                $departamento = $miEquipo->departamento;
+                break;
+            }
+
+            $pdf = Pdf::loadView('pdfs.mis-equipos', ['misEquipos' => $misEquipos, 'user' => $user, 'departamento' => $departamento])->setOptions(['defaultFont' => 'arial', 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+
+            return $pdf->download('mis-equipos.pdf');
         }
 
-        $pdf = Pdf::loadView('pdfs.mis-equipos', ['misEquipos' => $misEquipos, 'user' => $user, 'departamento' => $departamento])->setOptions(['defaultFont' => 'arial', 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
-
-        return $pdf->download('mis-equipos.pdf');
+        else{
+            return redirect()->route('mis_equipos');
+        }
     }
 }

@@ -32,6 +32,7 @@
                             @can('users.index')
                             <th>Borrado</th>
                             @endcan
+                            <th>Fecha Desincorporación</th>
                             <th colspan="2">Acciones</th>
                         </tr>
                     </thead>
@@ -46,6 +47,7 @@
                             @can('users.index')
                             <td>{{ $equipo->borrado }}</td>
                             @endcan
+                            <td>{{ $equipo->fecha }}</td>
                             <td style="padding: 2px;"><a wire:click="confirReincorporar({{ $equipo->id }})" class="btn btn-success" data-toggle="modal" data-target="#crear" title="reincorporar"><i class="fas fa-arrow-up"></i></a></td>
                             <td style="padding: 2px;">
                                 <button class="btn btn-danger" wire:click="confirBorrar({{ $equipo->id }})" data-toggle="modal" data-target="#borrar" title="borrar"><i class="fas fa-trash"></i></button>

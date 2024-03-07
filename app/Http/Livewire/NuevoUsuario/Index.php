@@ -28,7 +28,7 @@ class Index extends Component
 
         $user->update(['password' => bcrypt($this->password)]);
 
-        $user->roles()->sync([5]);
+        $user->roles()->sync([6]);
 
         return redirect()->route('home');
     }
