@@ -318,7 +318,7 @@ return [
             'can'         => 'equipos.index'
         ],
         [
-            'text'        => 'Inventario',
+            'text'        => 'Bienes Almacen',
             'url'         => 'inventario',
             'icon'        => 'fas fa-boxes',
             'can'         => 'inventario.index'

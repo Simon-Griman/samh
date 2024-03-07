@@ -33,6 +33,7 @@ class User extends Authenticatable
         'cedula',
         'profile_photo_path',
         'departamento_id',
+        'ubicacion_id',
     ];
 
     /**

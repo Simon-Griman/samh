@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\Departamento;
 use App\Models\Equipo;
 use App\Models\Rolequipo;
+use App\Models\Ubicacion;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -12,7 +14,7 @@ class Index extends Component
 {
     use WithPagination;
     
-    public $nombre, $email, $cedula, $borrar, $user_borrar;
+    public $nombre, $email, $cedula, $departamento, $ubicacion, $borrar, $user_borrar;
 
     protected $paginationTheme = "bootstrap";
 
@@ -27,6 +29,16 @@ class Index extends Component
     }
 
     public function updatingCedula()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingDepartamento()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingUbicacion()
     {
         $this->resetPage();
     }
@@ -66,12 +78,20 @@ class Index extends Component
 
     public function render()
     {
-        $users = User::where('name', 'LIKE', '%' . $this->nombre . '%')
+        $users = User::select('users.id' ,'name', 'email', 'cedula', 'departamentos.nombre as departamento', 'ubicacions.nombre as ubicacion')
+            ->join('departamentos', 'departamentos.id', '=', 'users.departamento_id')
+            ->join('ubicacions', 'ubicacions.id', '=', 'users.ubicacion_id')
+            ->where('name', 'LIKE', '%' . $this->nombre . '%')
             ->where('email', 'LIKE', '%' . $this->email . '%')
             ->where('cedula', 'LIKE', $this->cedula . '%')
+            ->where('departamentos.nombre', 'LIKE', '%' . $this->departamento . '%')
+            ->where('ubicacions.nombre', 'LIKE', '%' . $this->ubicacion . '%')
             ->paginate()
         ;
 
-        return view('livewire.user.index', compact('users'));
+        $departamentos = Departamento::all();
+        $ubicaciones = Ubicacion::all();
+
+        return view('livewire.user.index', compact('users', 'departamentos', 'ubicaciones'));
     }
 }

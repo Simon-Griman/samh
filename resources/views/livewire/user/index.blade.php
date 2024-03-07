@@ -15,6 +15,24 @@
                         <th><input wire:model="nombre" type="text" class="form-control" placeholder="Buscar:"><br>Nombre</th>
                         <th><input wire:model="email" type="text" class="form-control" placeholder="Buscar:"><br>Email</th>
                         <th><input wire:model="cedula" type="text" class="form-control" placeholder="Buscar:"><br>Cedula</th>
+                        <th>
+                            <select class="form-control" wire:model="departamento">
+                                <option value="">Todo</option>                            
+                                @foreach ($departamentos as $departament)
+                                    <option value="{{ $departament->nombre }}">{{ $departament->nombre }}</option>
+                                @endforeach
+                            </select>
+                            <br>Departamento
+                        </th>
+                        <th>
+                            <select class="form-control" wire:model="ubicacion">
+                                <option value="">Todo</option>                            
+                                @foreach ($ubicaciones as $ubica)
+                                    <option value="{{ $ubica->nombre }}">{{ $ubica->nombre }}</option>
+                                @endforeach
+                            </select>
+                            <br>Ubicación
+                        </th>
                         <th colspan="2" class="text-center">Acciones</th>                    
                     </thead>
                     @if ($users->count())
@@ -24,8 +42,11 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->cedula }}</td>
+                            <td>{{ $user->departamento }}</td>
+                            <td>{{ $user->ubicacion }}</td>
+                            <td></td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('users.edit', $user) }}">Editar</a>
+                                <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}">Editar</a>
                             </td>
                             <td>
                                 <a class="btn btn-danger" wire:click="confirBorrar({{ $user->id }})" data-toggle="modal" data-target="#borrar">Eliminar</a>
