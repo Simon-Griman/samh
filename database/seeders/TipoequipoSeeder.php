@@ -14,8 +14,8 @@ class TipoequipoSeeder extends Seeder
      */
     public function run()
     {
-        Tipoequipo::create(['nombre' => 'Computadora', 'departamento_id' => '1']);
-        Tipoequipo::create(['nombre' => 'Monitor', 'departamento_id' => '3']);
-        Tipoequipo::create(['nombre' => 'Teclado', 'departamento_id' => '5']);
+        Tipoequipo::create(['nombre' => 'Computadora', 'departamento_id' => '2']);
+        Tipoequipo::create(['nombre' => 'Monitor', 'departamento_id' => '2']);
+        Tipoequipo::create(['nombre' => 'Teclado', 'departamento_id' => '2']);
     }
 }
