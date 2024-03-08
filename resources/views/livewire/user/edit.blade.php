@@ -13,6 +13,18 @@
         </div>
     </form>
     <hr>
+    <form wire:submit.prevent="editar_ubicacion" class="mb-0 pl-0">
+        <h5>Actualizar Ubicación</h5>
+        <select class="form-control" wire:model="ubicacion">
+            @foreach ($ubicaciones as $ubica)
+            <option value="{{ $ubica->id }}">{{ $ubica->nombre }}</option>
+            @endforeach
+        </select>
+        <div class="mt-4 mb-4">
+            <button class="btn btn-primary" type="submit">Actualizar Ubicación</button>
+        </div>
+    </form>
+    <hr>
     @can('Super-User')
     <form wire:submit.prevent="editar_departamento" class="mb-0 pl-0">
         <h5>Actualizar Departamento</h5>

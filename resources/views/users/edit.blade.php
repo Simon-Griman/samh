@@ -51,7 +51,7 @@
                             </label>
                         </div>
                         @endif
-                    @endcan
+                    @endcan 
 
                     @if ($role->name != 'Super-Admin')
                     <div class="">

@@ -3,12 +3,13 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\Departamento;
+use App\Models\Ubicacion;
 use App\Models\User;
 use Livewire\Component;
 
 class Edit extends Component
 {
-    public $password, $confirPass, $id_user, $departamento;
+    public $password, $confirPass, $id_user, $departamento, $ubicacion;
 
     protected $rules = [
         'password' => 'required|min:8',
@@ -18,6 +19,7 @@ class Edit extends Component
     public function mount()
     {
         $this->departamento = User::find($this->id_user)->departamento_id;
+        $this->ubicacion = User::find($this->id_user)->ubicacion_id;
     }
 
     public function updated($propertyName)
@@ -42,13 +44,23 @@ class Edit extends Component
 
         $user->update(['departamento_id' => $this->departamento]);
 
-        return redirect()->route('users.edit', $user)->with('info', 'Contraseña Actualizada con Exito');
+        return redirect()->route('users.edit', $user)->with('info', 'Departamento actualizado con Exito');
+    }
+
+    public function editar_ubicacion()
+    {
+        $user = User::find($this->id_user);
+
+        $user->update(['ubicacion_id' => $this->ubicacion]);
+
+        return redirect()->route('users.edit', $user)->with('info', 'Ubicación Actualizada con Exito');
     }
 
     public function render()
     {
         $departamentos = Departamento::all();
+        $ubicaciones = Ubicacion::all();
 
-        return view('livewire.user.edit', compact('departamentos'));
+        return view('livewire.user.edit', compact('departamentos', 'ubicaciones'));
     }
 }

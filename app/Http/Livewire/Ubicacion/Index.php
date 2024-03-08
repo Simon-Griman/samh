@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\RolEquipo;
+namespace App\Http\Livewire\Ubicacion;
 
-use App\Models\Marca;
-use App\Models\Rolequipo;
+use App\Models\Ubicacion;
 use Livewire\Component;
 
 class Index extends Component
 {
-    public $borrar, $rol_borrar, $crear = true, $rol, $id_rol;
+    public $borrar, $ubicacion_borrar, $crear = true, $ubicacion, $id_ubicacion;
 
     protected $rules = [
-        'rol' => 'required|unique:rolequipos,rol'
+        'ubicacion' => 'required|unique:ubicacions,nombre'
     ];
 
     public function modalCrear()
@@ -23,7 +22,7 @@ class Index extends Component
     public function crear()
     {
         $this->validate();
-        Rolequipo::create(['rol' => $this->rol]);
+        Ubicacion::create(['nombre' => $this->ubicacion]);
         $this->limpiarCampos();
         $this->dispatchBrowserEvent('crear');
     }
@@ -32,19 +31,19 @@ class Index extends Component
     {
         $this->crear = false;
 
-        $rol = Rolequipo::findOrFail($id);
+        $ubicacion = Ubicacion::findOrFail($id);
 
-        $this->id_rol = $id;
-        $this->rol = $rol->rol;
+        $this->id_ubicacion = $id;
+        $this->ubicacion = $ubicacion->nombre;
     }
 
     public function editar()
     {
         $this->validate();
 
-        $rol = Rolequipo::find($this->id_rol);
+        $ubicacion = Ubicacion::find($this->id_ubicacion);
 
-        $rol->update(['rol' => $this->rol]);
+        $ubicacion->update(['nombre' => $this->ubicacion]);
 
         $this->limpiarCampos();
 
@@ -53,19 +52,19 @@ class Index extends Component
 
     public function limpiarCampos()
     {
-        $this->id_rol = '';
-        $this->rol = '';
+        $this->id_ubicacion = '';
+        $this->ubicacion = '';
     }
 
     public function confirBorrar($id)
     {
         $this->borrar = $id;
-        $this->rol_borrar = Rolequipo::find($id)->rol;
+        $this->ubicacion_borrar = Ubicacion::find($id)->nombre;
     }
 
     public function borrar()
     {
-        Rolequipo::find($this->borrar)->delete();
+        Ubicacion::find($this->borrar)->delete();
         
         $this->dispatchBrowserEvent('borrar');
     }
@@ -73,8 +72,8 @@ class Index extends Component
 
     public function render()
     {
-        $roles = Rolequipo::all();
+        $ubicaciones = Ubicacion::all();
 
-        return view('livewire.rol-equipo.index', compact('roles'));
+        return view('livewire.ubicacion.index', compact('ubicaciones'));
     }
 }

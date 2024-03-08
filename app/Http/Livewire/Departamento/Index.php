@@ -11,7 +11,7 @@ class Index extends Component
     public $borrar, $departamento_borrar, $crear = true, $departamento, $id_departamento;
 
     protected $rules = [
-        'departamento' => 'required'
+        'departamento' => 'required|unique:departamentos,nombre'
     ];
 
     public function modalCrear()
