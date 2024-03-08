@@ -8,6 +8,7 @@ use App\Models\Marca;
 use App\Models\Modelo;
 use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
+use App\Models\Ubicacion;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -17,7 +18,7 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $departamento, $usuario;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $departamento, $usuario, $ubicacion;
 
     public $borrar, $bn_borrar;
 
@@ -87,13 +88,14 @@ class Index extends Component
     
     public function render()
     {
-        $equipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rolequipos.id as id_rol', 'rol', 'departamentos.id as id_departamento', 'departamentos.nombre as departamento', 'users.id as id_user', 'name', 'observacion', 'creado', 'actualizado')
+        $equipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rolequipos.id as id_rol', 'rol', 'departamentos.id as id_departamento', 'departamentos.nombre as departamento', 'users.id as id_user', 'name', 'observacion', 'creado', 'actualizado', 'ubicacions.nombre as ubicacion')
             ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
             ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
             ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
             ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
             ->join('departamentos', 'departamentos.id', '=', 'equipos.departamento_id')
             ->join('users', 'users.id', '=', 'equipos.user_id')
+            ->join('ubicacions', 'ubicacions.id', '=', 'users.ubicacion_id')
             ->where('tipoequipos.nombre', 'LIKE', '%' . $this->tipo . '%')
             ->where('marcas.nombre', 'LIKE', '%' . $this->marca . '%')
             ->where('modelos.nombre', 'LIKE', '%' . $this->modelo . '%')
@@ -102,6 +104,7 @@ class Index extends Component
             ->where('rol', 'LIKE', '%' . $this->rol . '%')
             ->where('departamentos.nombre', 'LIKE', '%' . $this->departamento . '%')
             ->where('name', 'LIKE', '%' . $this->usuario . '%')
+            ->where('ubicacions.nombre', 'LIKE', '%' . $this->ubicacion . '%')
             ->orderBy('equipos.updated_at', 'desc')
             ->paginate()
         ;
@@ -112,7 +115,8 @@ class Index extends Component
         $roles = Rolequipo::all();
         $departamentos = Departamento::all();
         $usuarios = User::select('name')->orderBy('name')->get();
+        $ubicaciones = Ubicacion::all();
 
-        return view('livewire.equipo.index', compact('equipos', 'tipos', 'marcas', 'modelos', 'roles', 'departamentos', 'usuarios'));
+        return view('livewire.equipo.index', compact('equipos', 'tipos', 'marcas', 'modelos', 'roles', 'departamentos', 'usuarios', 'ubicaciones'));
     }
 }

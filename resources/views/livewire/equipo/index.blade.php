@@ -56,6 +56,15 @@
                                 </select>
                                 <br>Usuario
                             </th>
+                            <th>
+                                <select class="form-control" wire:model="ubicacion">                                
+                                    <option value="">Todo</option>                            
+                                    @foreach ($ubicaciones as $ubica)
+                                        <option value="{{ $ubica->nombre }}">{{ $ubica->nombre }}</option>
+                                    @endforeach
+                                </select>
+                                <br>ubicación
+                            </th>
                             @can('users.index')
                             <th>Creado</th>
                             <th>Actulizado</th>
@@ -75,6 +84,7 @@
                             <td>{{ $equipo->observacion }}</td>
                             <td>{{ $equipo->departamento }}</td>
                             <td>{{ $equipo->name }}</td>
+                            <td>{{ $equipo->ubicacion }}</td>
                             @can('users.index')
                             <td>{{ $equipo->creado }}</td>
                             <td>{{ $equipo->actualizado }}</td>
