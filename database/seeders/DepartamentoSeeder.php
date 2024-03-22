@@ -23,5 +23,16 @@ class DepartamentoSeeder extends Seeder
         Departamento::create(['nombre' => 'División de Recursos Humanos']);
         Departamento::create(['nombre' => 'División de Administración y Servicios']);
         Departamento::create(['nombre' => 'Estudios y Prácticas Sociopoliticas']);
+        Departamento::create(['nombre' => 'Bajo Grande']);
+        Departamento::create(['nombre' => 'La Salina']);
+        Departamento::create(['nombre' => 'Puerto Miranda']);
+        Departamento::create(['nombre' => 'Amuay']);
+        Departamento::create(['nombre' => 'Cardón']);
+        Departamento::create(['nombre' => 'El Palito']);
+        Departamento::create(['nombre' => 'Catia la Mar']);
+        Departamento::create(['nombre' => 'Carenero']);
+        Departamento::create(['nombre' => 'Cijaa']);
+        Departamento::create(['nombre' => 'Guaraguao']);
+        Departamento::create(['nombre' => 'Guamache']);
     }
 }
