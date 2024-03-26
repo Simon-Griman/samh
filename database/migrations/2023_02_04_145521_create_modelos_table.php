@@ -15,9 +15,10 @@ class CreateModelosTable extends Migration
     {
         Schema::create('modelos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 45)->unique();
+            $table->string('nombre', 45);
             $table->unsignedBigInteger('marca_id');
             $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
+            $table->unique(['nombre', 'marca_id'], 'modelos_nombre_marca_unique');
             $table->timestamps();
         });
     }
