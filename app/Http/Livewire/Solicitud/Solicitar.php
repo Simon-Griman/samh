@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class Solicitar extends Component
 {
-    public $tipo_equipo, $destinatario;
+    public $tipo_equipo, $destinatario, $nombre;
 
     public function equipo($id)
     {
@@ -33,7 +33,7 @@ class Solicitar extends Component
 
     public function render()
     {
-        $equipos = Tipoequipo::all();
+        $equipos = Tipoequipo::select('*')->where('nombre', 'LIKE', '%' . $this->nombre . '%')->get();
 
         $myuser = Auth::User();
 

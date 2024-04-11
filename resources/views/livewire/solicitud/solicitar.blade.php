@@ -1,8 +1,13 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
         <h3 class="text-center mt-2 col-12">Solicitar Bienes</h3>
-        <div class="card mt-2">
-            <div class="card-body">
+        <div class="card mt-2" style="max-height: 70vh;">
+            <div class="card-header">
+                <div class="text-center">
+                    <input wire:model="nombre" type="text" class="form-control" placeholder="Buscar:">
+                </div>
+            </div>
+            <div class="card-body overflow-auto">
                 <table class="table table-responsive table-hover">
                     <tbody>
                     @foreach($equipos as $equipo)
