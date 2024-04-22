@@ -7,17 +7,18 @@ use Illuminate\Http\Request;
 
 class EquipoController extends Controller
 {
-    public $equipos;
+    private $equipos;
 
     public function __construct()
     {
-        $this->equipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rolequipos.id as id_rol', 'rol', 'departamentos.id as id_departamento', 'departamentos.nombre as departamento', 'users.id as id_user', 'name')
+        $this->equipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rolequipos.id as id_rol', 'rol', 'departamentos.id as id_departamento', 'departamentos.nombre as departamento', 'users.id as id_user', 'name', 'observacion', 'creado', 'actualizado', 'ubicacions.nombre as ubicacion')
             ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
             ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
             ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
             ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
             ->join('departamentos', 'departamentos.id', '=', 'equipos.departamento_id')
             ->join('users', 'users.id', '=', 'equipos.user_id')
+            ->join('ubicacions', 'ubicacions.id', '=', 'users.ubicacion_id')
         ;
     }
     /**
@@ -61,7 +62,9 @@ class EquipoController extends Controller
      */
     public function show($id)
     {
-        //
+        $equipo = $this->equipos->find($id);
+
+        return view('equipos.mostrar', compact('equipo'));
     }
 
     /**
@@ -72,7 +75,7 @@ class EquipoController extends Controller
      */
     public function edit($id)
     {
-        $equipo = $this->equipos->where('equipos.id', $id)->first();
+        $equipo = $this->equipos->find($id);
 
         return view('equipos.actualizar', compact('equipo'));
     }

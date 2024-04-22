@@ -89,9 +89,16 @@
                             <td>{{ $equipo->creado }}</td>
                             <td>{{ $equipo->actualizado }}</td>
                             @endcan
-                            <td style="padding: 2px;"><a href="{{ route('equipos.edit', $equipo->id) }}" class="btn btn-primary"><i class="fas fa-pen"></i></a></td>
                             <td style="padding: 2px;">
-                                <button class="btn btn-danger" wire:click="confirBorrar({{ $equipo->id }})" data-toggle="modal" data-target="#borrar"><i class="fas fa-trash"></i></button>
+                                <a href="{{ route('equipos.edit', $equipo->id) }}" class="btn btn-primary" title="editar"><i class="fas fa-pen"></i></a>
+                            </td>
+                            @can('users.index')
+                            <td style="padding: 2px;">
+                                <a href="{{ route('equipos.show', $equipo->id) }}" class="btn btn-secondary" title="ver"><i class="fas fa-eye"></i></a>
+                            </td>
+                            @endcan
+                            <td style="padding: 2px;">
+                                <button class="btn btn-danger" wire:click="confirBorrar({{ $equipo->id }})" data-toggle="modal" data-target="#borrar" title="borrar"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                         @endforeach

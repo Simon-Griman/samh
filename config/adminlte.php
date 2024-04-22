@@ -153,7 +153,7 @@ return [
     'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
-    'layout_dark_mode' => null,
+    'layout_dark_mode' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -291,6 +291,10 @@ return [
 
     'menu' => [
         // Navbar items:
+        [
+            'type'         => 'darkmode-widget',
+            'topnav_right' => true,
+        ],
         [
             'type'         => 'navbar-search',
             'text'         => 'Buscar:',

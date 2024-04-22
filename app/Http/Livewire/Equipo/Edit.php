@@ -37,9 +37,9 @@ class Edit extends Component
         $this->serial = $this->equipo->serial;
         $this->bien_nacional = $this->equipo->bien_nacional;
         $this->rol = $this->equipo->id_rol;
+        $this->observacion = $this->equipo->observacion;
         $this->departamento = $this->equipo->id_departamento;
         $this->usuario = $this->equipo->id_user;
-
     }
 
     protected function rules()
