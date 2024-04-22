@@ -43,6 +43,7 @@
                         <td>Ubicaión:</td>
                         <td>{{ $equipo->ubicacion }}</td>
                     </tr>
+                    @can('user-index')
                     <tr>
                         <td>Creado por:</td>
                         <td>{{ $creado }}</td>
@@ -51,6 +52,7 @@
                         <td>Actualizado por:</td>
                         <td>{{ $equipo->actualizado }}</td>
                     </tr>
+                    @endcan
                 </table>
             </div>
         </div>

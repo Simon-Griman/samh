@@ -37,7 +37,6 @@
                                 </select>
                                 <br>Rol
                             </th>
-                            <th>Observación</th>
                             <th>
                                 <select class="form-control" wire:model="departamento">
                                     <option value="">Todo</option>
@@ -65,11 +64,7 @@
                                 </select>
                                 <br>ubicación
                             </th>
-                            @can('users.index')
-                            <th>Creado</th>
-                            <th>Actulizado</th>
-                            @endcan
-                            <th colspan="2" class="text-center">Acciones</th>
+                            <th colspan="3" class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,22 +76,17 @@
                             <td>{{ $equipo->serial }}</td>
                             <td>{{ $equipo->bien_nacional }}</td>
                             <td>{{ $equipo->rol }}</td>
-                            <td>{{ $equipo->observacion }}</td>
                             <td>{{ $equipo->departamento }}</td>
                             <td>{{ $equipo->name }}</td>
                             <td>{{ $equipo->ubicacion }}</td>
-                            @can('users.index')
-                            <td>{{ $equipo->creado }}</td>
-                            <td>{{ $equipo->actualizado }}</td>
-                            @endcan
                             <td style="padding: 2px;">
                                 <a href="{{ route('equipos.edit', $equipo->id) }}" class="btn btn-primary" title="editar"><i class="fas fa-pen"></i></a>
                             </td>
-                            @can('users.index')
+                            
                             <td style="padding: 2px;">
                                 <a href="{{ route('equipos.show', $equipo->id) }}" class="btn btn-secondary" title="ver"><i class="fas fa-eye"></i></a>
                             </td>
-                            @endcan
+                            
                             <td style="padding: 2px;">
                                 <button class="btn btn-danger" wire:click="confirBorrar({{ $equipo->id }})" data-toggle="modal" data-target="#borrar" title="borrar"><i class="fas fa-trash"></i></button>
                             </td>
