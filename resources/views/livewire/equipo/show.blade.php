@@ -46,11 +46,11 @@
                     @can('user-index')
                     <tr>
                         <td>Creado por:</td>
-                        <td>{{ $creado }}</td>
+                        <td>{{ $creado }} <br> {{ \Carbon\Carbon::createFromTimeStamp(strtotime($equipo->f_creado))->format('d-m-Y') }}</td>
                     </tr>
                     <tr>
                         <td>Actualizado por:</td>
-                        <td>{{ $equipo->actualizado }}</td>
+                        <td>{{ $equipo->actualizado }} <br> @if($equipo->actualizado){{ \Carbon\Carbon::createFromTimeStamp(strtotime($equipo->f_actualizado))->format('d-m-Y') }}@endif</td>
                     </tr>
                     @endcan
                 </table>
