@@ -4,9 +4,9 @@
             <div class="card-body pb-0 w-100">            
                 <form wire:submit.prevent="crear">
                     <div class="form-row">
-                        <div class="form-group col-12">
+                        <div class="form-group col-12" wire:ignore>
                             <label for="equipo">Nombre</label>
-                            <select name="" id="equipo" class="form-control @error('tipo') is-invalid @enderror" wire:model="tipo">
+                            <select name="" id="equipo" class="form-control select2 @error('tipo') is-invalid @enderror" wire:model="tipo">
                                 <option value="">-- Seleccionar --</option>                                
                                 @foreach ($equipos as $tipo)
                                 <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
@@ -14,9 +14,9 @@
                             </select>
                             @error('tipo') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-12">
+                        <div class="form-group col-12" wire:ignore>
                             <label for="marca">Marca</label>
-                            <select name="" id="marca" class="form-control @error('marca') is-invalid @enderror" wire:model="marca">
+                            <select name="" id="marca" class="form-control select2 @error('marca') is-invalid @enderror" wire:model="marca">
                                 <option value="">-- Seleccionar --</option>                                
                                 @foreach ($marcas as $marca)
                                 <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
@@ -54,4 +54,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('livewire:load', function(){
+            $('.select2').select2();
+
+            $('#equipo').on('change', function(){
+                @this.set('tipo', this.value);
+            });
+
+            $('#marca').on('change', function(){
+                @this.set('marca', this.value);
+            });
+        });
+    </script>
+
 </div>

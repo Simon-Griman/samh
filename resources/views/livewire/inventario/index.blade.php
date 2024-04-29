@@ -5,23 +5,23 @@
                 <table class="table table-responsive table-hover">
                     <thead>
                         <tr>
-                            <th>
-                                <select class="form-control" wire:model="tipo">
+                            <th wire:ignore>
+                                <select class="form-control select2" id="equipo" wire:model="tipo">
                                     <option value="">Todo</option>                            
                                     @foreach ($tipos as $tipo)
                                         <option value="{{ $tipo->nombre }}">{{ $tipo->nombre }}</option>
                                     @endforeach
                                 </select>
-                                <br>Nombre
+                                <br><br>Nombre
                             </th>
-                            <th>
-                                <select class="form-control" wire:model="marca">
+                            <th wire:ignore>
+                                <select class="form-control select2" id="marca" wire:model="marca">
                                     <option value="">Todo</option>                            
                                     @foreach ($marcas as $marca)
                                         <option value="{{ $marca->nombre }}">{{ $marca->nombre }}</option>
                                     @endforeach
                                 </select>
-                                <br>Marca
+                                <br><br>Marca
                             </th>
                             <th><input wire:model="modelo" type="text" class="form-control" placeholder="Buscar:"><br>Modelo</th>
                             <th><input wire:model="serial" type="text" class="form-control" placeholder="Buscar:"><br>Serial</th>
@@ -103,6 +103,19 @@
             });
 
         });
+        
+        document.addEventListener('livewire:load', function(){
+            $('.select2').select2();
+
+            $('#equipo').on('change', function(){
+                @this.set('tipo', this.value);
+            });
+
+            $('#marca').on('change', function(){
+                @this.set('marca', this.value);
+            });
+        });
+    
     </script>
 
 </div>

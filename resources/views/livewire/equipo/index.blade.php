@@ -5,29 +5,30 @@
                 <table class="table table-responsive table-hover">
                     <thead>
                         <tr>
-                            <th>
-                                <select class="form-control" wire:model="tipo">
+                            <th wire:ignore>
+                                
+                                <select class="form-control select2" id="sel1" wire:model="tipo">
                                     <option value="">Todo</option>                            
                                     @foreach ($tipos as $tipo)
                                         <option value="{{ $tipo->nombre }}">{{ $tipo->nombre }}</option>
                                     @endforeach
                                 </select>
-                                <br>Nombre
+                                <br><br>Nombre
                             </th>
-                            <th>
-                                <select class="form-control" wire:model="marca">
+                            <th wire:ignore>
+                                <select class="form-control select2" id="sel2" wire:model="marca">
                                     <option value="">Todo</option>                            
                                     @foreach ($marcas as $marca)
                                         <option value="{{ $marca->nombre }}">{{ $marca->nombre }}</option>
                                     @endforeach
                                 </select>
-                                <br>Marca
+                                <br><br>Marca
                             </th>
                             <th><input wire:model="modelo" type="text" class="form-control" placeholder="Buscar:"><br>Modelo</th>
                             <th><input wire:model="serial" type="text" class="form-control" placeholder="Buscar:"><br>Serial</th>
                             <th><input wire:model="bien_nacional" type="text" class="form-control" placeholder="Buscar:"><br>Bien N.</th>
-                            <th>
-                                <select class="form-control" wire:model="rol">
+                            <th wire:ignore>
+                                <select class="form-control select2" id="sel3" wire:model="rol">
                                     <option value="">Todo</option>                            
                                     @foreach ($roles as $role)
                                         @if ($role->rol != 'Disponible')
@@ -35,34 +36,34 @@
                                         @endif
                                     @endforeach
                                 </select>
-                                <br>Rol
+                                <br><br>Rol
                             </th>
-                            <th>
-                                <select class="form-control" wire:model="departamento">
+                            <th wire:ignore>
+                                <select class="form-control select2" id="sel4" wire:model="departamento">
                                     <option value="">Todo</option>
                                     @foreach ($departamentos as $departament)
                                         <option value="{{ $departament->nombre }}">{{ $departament->nombre }}</option>
                                     @endforeach
                                 </select>
-                                <br>Departamento
+                                <br><br>Departamento
                             </th>
-                            <th>
-                                <select class="form-control" wire:model="usuario">                                
+                            <th wire:ignore>
+                                <select class="form-control select2" id="sel5" wire:model="usuario"> 
                                     <option value="">Todo</option>                            
                                     @foreach ($usuarios as $user)
                                         <option value="{{ $user->name }}">{{ $user->name }}</option>
                                     @endforeach
                                 </select>
-                                <br>Usuario
+                                <br><br>Usuario
                             </th>
-                            <th>
-                                <select class="form-control" wire:model="ubicacion">                                
+                            <th wire:ignore>
+                                <select class="form-control select2" id="sel6" wire:model="ubicacion">
                                     <option value="">Todo</option>                            
                                     @foreach ($ubicaciones as $ubica)
                                         <option value="{{ $ubica->nombre }}">{{ $ubica->nombre }}</option>
                                     @endforeach
                                 </select>
-                                <br>ubicación
+                                <br><br>ubicación
                             </th>
                             <th colspan="3" class="text-center">Acciones</th>
                         </tr>
@@ -144,6 +145,34 @@
                 toastr.success("El registro ha sido eliminado", "¡Hecho!");
             });
 
+        });
+
+        document.addEventListener('livewire:load', function(){
+            $('.select2').select2();
+
+            $('#sel1').on('change', function(){
+                @this.set('tipo', this.value);
+            });
+
+            $('#sel2').on('change', function(){
+                @this.set('marca', this.value);
+            });
+
+            $('#sel3').on('change', function(){
+                @this.set('rol', this.value);
+            });
+
+            $('#sel4').on('change', function(){
+                @this.set('departamento', this.value);
+            });
+
+            $('#sel5').on('change', function(){
+                @this.set('usuario', this.value);
+            });
+
+            $('#sel6').on('change', function(){
+                @this.set('ubicacion', this.value);
+            });
         });
     </script>
 
