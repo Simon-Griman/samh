@@ -13,7 +13,7 @@ class Edit extends Component
 {
     public $equipo;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet;
 
     public $marcas = [], $modelos = [];
 
@@ -29,6 +29,8 @@ class Edit extends Component
         $this->modelo = $this->equipo->modelo_id;
         $this->serial = $this->equipo->serial;
         $this->bien_nacional = $this->equipo->bien_nacional;
+        $this->bien_pdvsa = $this->equipo->bien_pdvsa;
+        $this->bien_menpet = $this->equipo->bien_menpet;
     }
 
     protected function rules()

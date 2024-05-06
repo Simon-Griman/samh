@@ -469,12 +469,12 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => url('js/select2.js'),
+                    'location' => 'js/select2.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => url('css/select2.css'),
+                    'location' => 'css/select2.css',
                 ],
             ],
         ],

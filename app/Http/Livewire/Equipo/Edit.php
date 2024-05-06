@@ -16,7 +16,7 @@ class Edit extends Component
 {
     public $equipo;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $observacion, $departamento, $usuario;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario;
 
     public $marcas = [], $modelos = [], $departamentos = [], $users = [];
 
@@ -36,6 +36,8 @@ class Edit extends Component
         $this->modelo = $this->equipo->id_modelo;
         $this->serial = $this->equipo->serial;
         $this->bien_nacional = $this->equipo->bien_nacional;
+        $this->bien_pdvsa = $this->equipo->bien_pdvsa;
+        $this->bien_menpet = $this->equipo->bien_menpet;
         $this->rol = $this->equipo->id_rol;
         $this->observacion = $this->equipo->observacion;
         $this->departamento = $this->equipo->id_departamento;
@@ -49,7 +51,9 @@ class Edit extends Component
             'marca' => 'required',
             'modelo' => 'required',
             'serial' => 'nullable|min:5|unique:equipos,serial,' . $this->equipo->id,
-            'bien_nacional' => 'nullable|integer|min:100|max:4999|unique:equipos,bien_nacional,' . $this->equipo->id,
+            'bien_nacional' => 'nullable|integer|min:1|max:4999|unique:equipos,bien_nacional,' . $this->equipo->id,
+            'bien_pdvsa' => 'nullable|integer|min:100|max:9999999|unique:equipos,bien_pdvsa,' . $this->equipo->id,
+            'bien_menpet' => 'nullable|integer|min:100|max:999999|unique:equipos,bien_menpet,' . $this->equipo->id,
             'rol' => 'required',
             'observacion' => 'nullable',
             'departamento' => 'required',
@@ -98,6 +102,8 @@ class Edit extends Component
             'modelo_id' => $this->modelo,
             'serial' => $this->serial,
             'bien_nacional' => $this->bien_nacional,
+            'bien_pdvsa' => $this->bien_pdvsa,
+            'bien_menpet' => $this->bien_menpet,
             'rolequipo_id' => $this->rol,
             'observacion' => $this->observacion,
             'departamento_id' => $this->departamento,

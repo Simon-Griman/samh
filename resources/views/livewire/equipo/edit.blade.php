@@ -45,6 +45,16 @@
                             @error('bien_nacional') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-12">
+                            <label for="bien-nacional">Bien Nacional PDVSA</label>
+                            <input type="number" class="form-control @error('bien_pdvsa') is-invalid @enderror" id="bien-pdvsa" wire:model="bien_pdvsa" value="{{ $equipo->bien_pdvsa }}">
+                            @error('bien_pdvsa') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="bien-nacional">Bien Nacional Menpet</label>
+                            <input type="number" class="form-control @error('bien_menpet') is-invalid @enderror" id="bien-menpet" wire:model="bien_menpet" value="{{ $equipo->bien_menpet }}">
+                            @error('bien_menpet') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-12">
                             <label for="rol-equipo">Rol Equipo</label>
                             <select name="" id="rol-equipo" class="form-control @error('rol') is-invalid @enderror" wire:model="rol">
                                 <option value="">-- Seleccionar --</option>

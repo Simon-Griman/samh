@@ -24,6 +24,14 @@
                         <td>{{ $bien_nacional }}</td>
                     </tr>
                     <tr>
+                        <td>Bien Nacional PDVSA</td>
+                        <td>{{ $equipo->bien_pdvsa }}</td>
+                    </tr>
+                    <tr>
+                        <td>Bien Nacional Menpet</td>
+                        <td>{{ $equipo->bien_menpet }}</td>
+                    </tr>
+                    <tr>
                         <td>Estado del Equipo:</td>
                         <td>{{ $roles }}</td>
                     </tr>

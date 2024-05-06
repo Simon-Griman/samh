@@ -15,6 +15,8 @@ class Equipo extends Model
         'modelo_id',
         'serial',
         'bien_nacional',
+        'bien_pdvsa',
+        'bien_menpet',
         'rolequipo_id',
         'observacion',
         'departamento_id',

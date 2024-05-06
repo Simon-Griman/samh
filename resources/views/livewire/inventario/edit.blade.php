@@ -44,10 +44,20 @@
                             <input type="number" class="form-control @error('bien_nacional') is-invalid @enderror" id="bien-nacional" wire:model="bien_nacional" value="{{ $equipo->bien_nacional }}">
                             @error('bien_nacional') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
+                        <div class="form-group col-12">
+                            <label for="bien-pdvsa">Bien Nacional PDVSA</label>
+                            <input type="number" class="form-control @error('bien_pdvsa') is-invalid @enderror" id="bien-pdvsa" wire:model="bien_pdvsa" value="{{ $equipo->bien_pdvsa }}">
+                            @error('bien_pdvsa') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="bien-pdvsa">Bien Nacional Menpet</label>
+                            <input type="number" class="form-control @error('bien_menpet') is-invalid @enderror" id="bien-menpet" wire:model="bien_menpet" value="{{ $equipo->bien_menpet }}">
+                            @error('bien_menpet') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
 
                         <div class="text-center col-12">
                             <button class="btn btn-primary m-4" type="submit">Actualizar</button>
-                            <a href="{{ route('equipos.index') }}" class="btn btn-danger">Cancelar</a>
+                            <a href="{{ route('inventario.index') }}" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
                 </form>
