@@ -46,7 +46,9 @@ class InventarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $equipo = Equipo::find($id);
+
+        return view('inventario.mostrar', compact('equipo'));
     }
 
     /**
