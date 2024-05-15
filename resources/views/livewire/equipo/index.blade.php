@@ -28,7 +28,7 @@
                             <th><input wire:model="serial" type="text" class="form-control" placeholder="Buscar:"><br>Serial</th>
                             <th><input wire:model="bien_nacional" type="text" class="form-control" placeholder="Buscar:"><br>Bien N.</th>
                             <th wire:ignore>
-                                <select class="form-control select2" id="sel3" wire:model="rol">
+                                <select class="form-control" wire:model="rol">
                                     <option value="">Todo</option>                            
                                     @foreach ($roles as $role)
                                         @if ($role->rol != 'Disponible')
@@ -36,7 +36,7 @@
                                         @endif
                                     @endforeach
                                 </select>
-                                <br><br>Rol
+                                <br>Rol
                             </th>
                             <th wire:ignore>
                                 <select class="form-control select2" id="sel4" wire:model="departamento">
@@ -249,10 +249,6 @@
 
             $('#sel2').on('change', function(){
                 @this.set('marca', this.value);
-            });
-
-            $('#sel3').on('change', function(){
-                @this.set('rol', this.value);
             });
 
             $('#sel4').on('change', function(){
