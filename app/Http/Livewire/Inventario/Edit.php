@@ -40,7 +40,9 @@ class Edit extends Component
             'marca' => 'required',
             'modelo' => 'required',
             'serial' => 'nullable|min:5|unique:equipos,serial,' . $this->equipo->id,
-            'bien_nacional' => 'nullable|integer|min:100|max:4999|unique:equipos,bien_nacional,' . $this->equipo->id,
+            'bien_nacional' => 'nullable|integer|min:1|max:4999|unique:equipos,bien_nacional,' . $this->equipo->id,
+            'bien_pdvsa' => 'nullable|integer|min:100|max:9999999|unique:equipos,bien_pdvsa,' . $this->equipo->id,
+            'bien_menpet' => 'nullable|integer|min:100|max:999999|unique:equipos,bien_menpet,' . $this->equipo->id,
         ];
     }
 
@@ -79,6 +81,8 @@ class Edit extends Component
             'modelo_id' => $this->modelo,
             'serial' => $this->serial,
             'bien_nacional' => $this->bien_nacional,
+            'bien_pdvsa' => $this->bien_pdvsa,
+            'bien_menpet' => $this->bien_menpet,
             'actualizado' => $user,
         ]);
 

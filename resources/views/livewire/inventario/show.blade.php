@@ -49,6 +49,32 @@
                         <td>{{ $datos->actualizado }} <br> @if($datos->actualizado){{ \Carbon\Carbon::createFromTimeStamp(strtotime($datos->f_actualizado))->format('d-m-Y') }}@endif</td>
                     </tr>
                     @endcan
+
+                    @if($perifericos)
+                        @foreach ($dependientes as $dependiente)
+                        <tr>
+                            <td colspan="2" align="center"><strong>Periferico {{ $cont }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre:</td>
+                            <td>{{ $dependiente->nombre }}</td>
+                        </tr>
+                        <tr>
+                            <td>Marca:</td>
+                            <td>{{ $dependiente->marca }}</td>
+                        </tr>
+                        <tr>
+                            <td>Modelo:</td>
+                            <td>{{ $dependiente->modelo }}</td>
+                        </tr>
+                        <tr>
+                            <td>Serial:</td>
+                            <td>{{ $dependiente->serial }}</td>
+                        </tr>
+
+                        @php $cont++ @endphp
+                        @endforeach
+                    @endif
                 </table>
             </div>
         </div>
