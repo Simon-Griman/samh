@@ -2,43 +2,61 @@
 
 namespace App\Http\Livewire\Equipo;
 
-use App\Models\Departamento;
-use App\Models\Marca;
-use App\Models\Modelo;
-use App\Models\Rolequipo;
-use App\Models\Tipoequipo;
-use App\Models\User;
+use App\Models\Biendependiente;
+use App\Models\Equipo;
 use Livewire\Component;
 
 class Show extends Component
 {
     public $equipo;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $observacion, $departamento, $usuario, $creado;
-
-    public function mount()
-    {
-        $this->tipo = $this->equipo->id_tipo;
-        $this->marca = $this->equipo->id_marca;
-        $this->modelo = $this->equipo->id_modelo;
-        $this->serial = $this->equipo->serial;
-        $this->bien_nacional = $this->equipo->bien_nacional;
-        $this->rol = $this->equipo->id_rol;
-        $this->observacion = $this->equipo->observacion;
-        $this->departamento = $this->equipo->id_departamento;
-        $this->usuario = $this->equipo->id_user;
-        $this->creado = $this->equipo->creado;
-    }
-
     public function render()
     {
-        $equipos = Tipoequipo::find($this->tipo)->nombre;
-        $marcas = Marca::find($this->marca)->nombre;
-        $modelos = Modelo::find($this->modelo)->nombre;
-        $roles = Rolequipo::find($this->rol)->rol;
-        $departamentos = Departamento::find($this->departamento)->nombre;
-        $usuarios = User::find($this->usuario)->name;
+        if($datos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'equipos.serial', 'bien_nacional', 'bien_pdvsa', 'bien_menpet', 'rolequipos.rol as rol', 'creado', 'actualizado', 'equipos.created_at as f_creado', 'equipos.updated_at as f_actualizado', 'users.name as usuario', 'ubicacions.nombre as ubicacion', 'observacion', 'departamentos.nombre as departamento')
+            ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
+            ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
+            ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
+            ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
+            ->join('departamentos', 'departamentos.id', '=', 'equipos.departamento_id')
+            ->join('users', 'users.id', '=', 'equipos.user_id')
+            ->join('ubicacions', 'ubicacions.id', '=', 'users.ubicacion_id')
+            ->join('biendependientes', 'biendependientes.bien_nacional_id', '=', 'equipos.id')
+            ->where('equipos.id', $this->equipo->id)
+            ->first()
+        )
+        {
+            $perifericos = true;
+            $cont = 1;
 
-        return view('livewire.equipo.show', compact('equipos', 'marcas', 'modelos', 'roles', 'departamentos', 'usuarios'));
+            $dependientes = Biendependiente::select('biendependientes.nombre as nombre', 'marcas.nombre as marca', 'modelos.nombre as modelo', 'biendependientes.serial')
+                ->join('marcas', 'marcas.id', '=', 'biendependientes.marca_id')
+                ->join('modelos', 'modelos.id', '=', 'biendependientes.modelo_id')
+                ->join('equipos', 'equipos.id', '=', 'biendependientes.bien_nacional_id')
+                ->where('equipos.id', $this->equipo->id)
+                ->get()
+            ;
+
+            return view('livewire.equipo.show', compact('datos', 'perifericos', 'dependientes', 'cont'));
+        }
+
+        else
+        {
+            $datos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'equipos.serial', 'bien_nacional', 'bien_pdvsa', 'bien_menpet', 'rolequipos.rol as rol', 'creado', 'actualizado', 'equipos.created_at as f_creado', 'equipos.updated_at as f_actualizado', 'users.name as usuario', 'ubicacions.nombre as ubicacion', 'observacion', 'departamentos.nombre as departamento')
+                ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
+                ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
+                ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
+                ->join('rolequipos', 'rolequipos.id', '=', 'equipos.rolequipo_id')
+                ->join('departamentos', 'departamentos.id', '=', 'equipos.departamento_id')
+                ->join('users', 'users.id', '=', 'equipos.user_id')
+                ->join('ubicacions', 'ubicacions.id', '=', 'users.ubicacion_id')
+                //->join('biendependientes', 'biendependientes.bien_nacional_id', '=', 'equipos.id')
+                ->where('equipos.id', $this->equipo->id)
+                ->first()
+            ;
+
+            $perifericos = false;
+
+            return view('livewire.equipo.show', compact('datos', 'perifericos'));
+        }
     }
 }

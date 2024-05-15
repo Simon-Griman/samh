@@ -91,6 +91,11 @@
                             <td style="padding: 2px;">
                                 <button class="btn btn-danger" wire:click="confirBorrar({{ $equipo->id }})" data-toggle="modal" data-target="#borrar" title="borrar"><i class="fas fa-trash"></i></button>
                             </td>
+                            @if($equipo->equipo == 'Computadora')
+                            <td style="padding: 2px;">
+                                <button class="btn btn-info" wire:click="agregar({{ $equipo->id }}, {{ $equipo->id_marca }})" data-toggle="modal" data-target="#dependiente"><i class="fas fa-plus"></i></button>
+                            </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
@@ -121,6 +126,87 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="modal fade" id="dependiente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info">
+                            <h5 class="modal-title" id="exampleModalLabel">Añadir Periferico</h5>
+                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="nombre" class="col-form-label">Nombre:</label>
+                                    
+                                    <select name="nombre" id="nombre" class="form-control @error('nombre') is-invalid @enderror" wire:model.defer="nombre">
+                                        <option value="">-- Seleccionar --</option>
+                                        <option value="Teclado">Teclado</option>
+                                        <option value="Mouse">Mouse</option>
+                                        <option value="Cornetas">Cornetas</option>
+                                    </select>
+
+                                    @error('nombre')
+                                    <span class="invalid-feedback">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="marca_id" class="col-form-label">Marca:</label>
+
+                                    <select class="form-control select2 @error('marca_id') is-invalid @enderror" id="marca_id" wire:model.defer="marca_id">
+                                        <option value="">-- Seleccionar --</option>                            
+                                        @foreach ($marcas as $marca)
+                                            <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('marca_id')
+                                    <span class="invalid-feedback">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="modelo" class="col-form-label">Modelo:</label>
+
+                                    <select class="form-control select2 @error('modelo_id') is-invalid @enderror" id="modelo" wire:model.defer="modelo_id">
+                                        <option value="">-- Seleccionar --</option>                            
+                                        @foreach ($modelos as $modelo)
+                                            @if($modelo->nombre != 'S/M')
+                                            <option value="{{ $modelo->id }}">{{ $modelo->nombre }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+
+                                    @error('modelo_id')
+                                    <span class="invalid-feedback">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="serial">Serial: </label>
+
+                                    <input type="text" class="form-control @error('serial_dependiente') is-invalid @enderror" id="serial" wire:model.defer="serial_dependiente">
+
+                                    @error('serial_dependiente')
+                                    <span class="invalid-feedback">
+                                        <strong>{{$message}}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-success" wire:click.prevent="crear()">Añadir</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             </div>
             <div class="card-footer">
                 {{ $equipos->links() }}
@@ -144,6 +230,12 @@
 
                 $('#borrar').modal('hide');
                 toastr.success("El registro ha sido eliminado", "¡Hecho!");
+            });
+
+            window.addEventListener('crear', event => {
+
+                $('#dependiente').modal('hide');
+                toastr.success("El periferico ha sido añadido con exito", "¡Hecho!");
             });
             
         });

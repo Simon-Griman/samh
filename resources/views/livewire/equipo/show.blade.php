@@ -5,23 +5,23 @@
                 <table class="table">
                     <tr>
                         <td>Nombre:</td>
-                        <td>{{ $equipos }}</td>
+                        <td>{{ $datos->equipo }}</td>
                     </tr>
                     <tr>
                         <td>Marca:</td>
-                        <td>{{ $marcas }}</td>
+                        <td>{{ $datos->marca }}</td>
                     </tr>
                     <tr>
                         <td>Modelo:</td>
-                        <td>{{ $modelos }}</td>
+                        <td>{{ $datos->modelo }}</td>
                     </tr>
                     <tr>
                         <td>Serial:</td>
-                        <td>{{ $serial }}</td>
+                        <td>{{ $datos->serial }}</td>
                     </tr>
                     <tr>
                         <td>Bien Nacional:</td>
-                        <td>{{ $bien_nacional }}</td>
+                        <td>{{ $datos->bien_nacional }}</td>
                     </tr>
                     <tr>
                         <td>Bien Nacional PDVSA</td>
@@ -33,34 +33,60 @@
                     </tr>
                     <tr>
                         <td>Estado del Equipo:</td>
-                        <td>{{ $roles }}</td>
+                        <td>{{ $datos->rol }}</td>
                     </tr>
                     <tr>
                         <td>Departamento:</td>
-                        <td>{{ $departamentos }}</td>
+                        <td>{{ $datos->departamento }}</td>
                     </tr>
                     <tr>
                         <td>Usuario</td>
-                        <td>{{ $usuarios }}</td>
+                        <td>{{ $datos->usuario }}</td>
                     </tr>
                     <tr>
                         <td>Observaciones:</td>
-                        <td>{{ $observacion }}</td>
+                        <td>{{ $datos->observacion }}</td>
                     </tr>
                     <tr>
                         <td>Ubicaión:</td>
-                        <td>{{ $equipo->ubicacion }}</td>
+                        <td>{{ $datos->ubicacion }}</td>
                     </tr>
                     @can('user-index')
                     <tr>
                         <td>Creado por:</td>
-                        <td>{{ $creado }} <br> {{ \Carbon\Carbon::createFromTimeStamp(strtotime($equipo->f_creado))->format('d-m-Y') }}</td>
+                        <td>{{ $datos->creado }} <br> {{ \Carbon\Carbon::createFromTimeStamp(strtotime($datos->f_creado))->format('d-m-Y') }}</td>
                     </tr>
                     <tr>
                         <td>Actualizado por:</td>
-                        <td>{{ $equipo->actualizado }} <br> @if($equipo->actualizado){{ \Carbon\Carbon::createFromTimeStamp(strtotime($equipo->f_actualizado))->format('d-m-Y') }}@endif</td>
+                        <td>{{ $equipo->actualizado }} <br> @if($datos->actualizado){{ \Carbon\Carbon::createFromTimeStamp(strtotime($datos->f_actualizado))->format('d-m-Y') }}@endif</td>
                     </tr>
                     @endcan
+
+                    @if($perifericos)
+                        @foreach ($dependientes as $dependiente)
+                        <tr>
+                            <td colspan="2" align="center"><strong>Periferico {{ $cont }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre:</td>
+                            <td>{{ $dependiente->nombre }}</td>
+                        </tr>
+                        <tr>
+                            <td>Marca:</td>
+                            <td>{{ $dependiente->marca }}</td>
+                        </tr>
+                        <tr>
+                            <td>Modelo:</td>
+                            <td>{{ $dependiente->modelo }}</td>
+                        </tr>
+                        <tr>
+                            <td>Serial:</td>
+                            <td>{{ $dependiente->serial }}</td>
+                        </tr>
+
+                        @php $cont++ @endphp
+                        @endforeach
+                    @endif
                 </table>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Equipo;
 
+use App\Models\Biendependiente;
 use App\Models\Departamento;
 use App\Models\Equipo;
 use App\Models\Marca;
@@ -18,11 +19,18 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $departamento, $usuario, $ubicacion;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $rol, $departamento, $usuario, $ubicacion, $nombre, $marca_id, $id_marca, $modelo_id, $serial_dependiente, $bien_dependiente;
 
     public $borrar, $bn_borrar;
 
     protected $paginationTheme = "bootstrap";
+
+    protected $rules = [
+        'nombre' => 'required',
+        'marca_id' => 'required',
+        'modelo_id' => 'nullable',
+        'serial_dependiente' => 'nullable|min:5|unique:biendependientes,serial',
+    ];
 
     public function updatingTipo()
     {
@@ -84,6 +92,36 @@ class Index extends Component
         ]);
         
         $this->dispatchBrowserEvent('borrar');
+    }
+
+    public function limpiarCampos()
+    {
+        $this->nombre = '';
+        $this->marca_id = $this->id_marca;
+        $this->serial_dependiente = '';
+        $this->modelo_id = '';
+    }
+
+    public function agregar($id, $id_marca=2)
+    {
+        $this->id_marca = $id_marca;
+        $this->limpiarCampos();
+        $this->bien_dependiente = $id;        
+    }
+
+    public function crear()
+    {
+        $this->validate();
+
+        Biendependiente::create([
+            'nombre' => $this->nombre,
+            'marca_id' => $this->marca_id,
+            'modelo_id' => $this->modelo_id,
+            'bien_nacional_id' => $this->bien_dependiente,
+            'serial' => $this->serial_dependiente,
+        ]);
+
+        $this->dispatchBrowserEvent('crear');
     }
     
     public function render()
