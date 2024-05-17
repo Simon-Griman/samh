@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AlmacenController;
+use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\InventarioController;
@@ -45,6 +47,8 @@ Route::middleware([
 
     Route::resource('/inventario', InventarioController::class)->middleware('can:inventario.index')->names('inventario');
 
+    Route::resource('/almacen', AlmacenController::class)->middleware('can:inventario.index')->names('almacen');
+
     Route::get('/mis-equipos', [MiEquipoController::class, 'index'])->middleware('can:mis_equipos')->name('mis_equipos');
     Route::get('/mis-equipos-pdf', [MiEquipoController::class, 'downloadEquipos'])->middleware('can:mis_equipos')->name('mis_equipos.pdf');
 
@@ -63,6 +67,8 @@ Route::middleware([
     Route::resource('/departamentos', DepartamentoController::class)->middleware('can:nombre_equipos.index')->names('departamentos');
 
     Route::resource('/ubicaciones', UbicacionController::class)->middleware('can:nombre_equipos.index')->names('ubicaciones');
+
+    Route::get('/articulos', ArticuloController::class)->middleware('can:nombre_equipos.index')->name('articulos');
 
     Route::resource('/users', UserController::class)->only('index', 'edit', 'update', 'create')->middleware('can:users.index')->names('users');
 

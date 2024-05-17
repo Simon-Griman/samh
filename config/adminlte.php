@@ -334,6 +334,12 @@ return [
             'can'         => 'inventario.index'
         ],
         [
+            'text'        => 'Almacen',
+            'url'         => 'almacen',
+            'icon'        => 'fas fa-boxes',
+            'can'         => 'inventario.index'
+        ],
+        [
             'text'        => 'Mis Bienes',
             'url'         => 'mis-equipos',
             'icon'        => 'fas fa-desktop',
@@ -385,6 +391,12 @@ return [
         [
             'text'        => 'Ubicaciones',
             'url'         => 'ubicaciones',
+            'icon'        => 'far fa-clipboard',
+            'can'         => 'nombre_equipos.index'
+        ],
+        [
+            'text'        => 'Nombre de Articulos',
+            'url'         => 'articulos',
             'icon'        => 'far fa-clipboard',
             'can'         => 'nombre_equipos.index'
         ],

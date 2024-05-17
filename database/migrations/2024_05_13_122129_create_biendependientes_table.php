@@ -16,10 +16,10 @@ class CreateBiendependientesTable extends Migration
         Schema::create('biendependientes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 45);
-            $table->unsignedBigInteger('marca_id');
-            $table->unsignedBigInteger('modelo_id');
+            $table->unsignedBigInteger('marca_id')->nullable();
+            $table->unsignedBigInteger('modelo_id')->nullable();
             $table->unsignedBigInteger('bien_nacional_id');
-            $table->string('serial', 45);
+            $table->string('serial', 45)->nullable();
             $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
             $table->foreign('modelo_id')->references('id')->on('modelos')->onDelete('cascade');
             $table->foreign('bien_nacional_id')->references('id')->on('equipos')->onDelete('cascade');
