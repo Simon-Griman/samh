@@ -10,13 +10,12 @@ class Almacen extends Model
     use HasFactory;
 
     protected $fillable = [
-        'descripcion',
+        'articulo_id',
         'tipo_unidad',
         'entrada',
         'fecha_entrada',
         'salida',
         'fecha_salida',
-        'cantidad',
     ];
 
     protected function casts(): array

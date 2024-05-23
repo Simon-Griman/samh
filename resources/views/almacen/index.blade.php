@@ -5,6 +5,39 @@
 @livewireStyles
 
 @section('content')
+
+    @if (session('crear'))
+        @section('js')
+            <script src="{{ url('js/sweetalert2.js') }}"></script>
+            <script>
+                Swal.fire(
+                    "¡Hecho!",
+                    "{{ session('crear') }}",
+                    "success"
+                )
+            </script>
+        @stop
+    @endif
+
+    @if (session('actualizar'))
+        @section('js')
+            <script src="{{ url('js/sweetalert2.js') }}"></script>
+            <script>
+                Swal.fire(
+                    "¡Hecho!",
+                    "{{ session('actualizar') }}",
+                    "success"
+                )
+            </script>
+        @stop
+    @endif
+
+    <img src="{{ url('storage/profile-photos/cintillo_osti.jpg') }}" alt="cintillo" class="cintillo" style="width:100%">
+
+    <div class="text-center">
+        <a href="{{ route('almacen.create') }}" class="btn btn-success mt-2">Nuevo Articulo</a>
+    </div>
+
     @livewire('almacen.index')
 @stop
 
