@@ -26,3 +26,17 @@ th, td{
 #linea tr td.yes{
     width: 45%;
 }
+
+@page {
+    margin: 150px 15px 15px 15px;
+}
+
+header {
+    position: fixed;
+    top: -135px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    text-align: center;
+    line-height: 35px;
+}

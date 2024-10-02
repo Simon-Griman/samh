@@ -4,11 +4,13 @@ use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\ExportarEquipoController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\MiEquipoController;
 use App\Http\Controllers\NombreEquipoController;
 use App\Http\Controllers\NombreMarcaController;
 use App\Http\Controllers\NombreModeloController;
+use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolEquipoController;
 use App\Http\Controllers\SolicitudController;
@@ -52,6 +54,10 @@ Route::middleware([
     Route::get('/mis-equipos', [MiEquipoController::class, 'index'])->middleware('can:mis_equipos')->name('mis_equipos');
     Route::get('/mis-equipos-pdf', [MiEquipoController::class, 'downloadEquipos'])->middleware('can:mis_equipos')->name('mis_equipos.pdf');
 
+    Route::get('/exportar-equipos', [ExportarEquipoController::class, 'index'])->middleware('can:equipos.index')->name('exportar_equipos');
+
+    Route::get('/exportar-equipos-pdf/{user_id?}/{departamento_id?}/{ubicacion_id?}/{f_adquisicion?}/{rol_id?}', [ExportarEquipoController::class, 'downloadEquipos'])->middleware('can:equipos.index')->name('exportar_equipos.pdf');
+
     Route::get('/solicitar', [SolicitudController::class, 'solicitar'])->middleware('can:solicitar')->name('solicitar');
 
     Route::get('/solicitudes', [SolicitudController::class, 'solicitudes'])->middleware('can:solicitudes')->name('solicitudes');
@@ -67,6 +73,8 @@ Route::middleware([
     Route::resource('/departamentos', DepartamentoController::class)->middleware('can:nombre_equipos.index')->names('departamentos');
 
     Route::resource('/ubicaciones', UbicacionController::class)->middleware('can:nombre_equipos.index')->names('ubicaciones');
+
+    Route::resource('/proveedores', ProveedorController::class)->middleware('can:nombre_equipos.index')->names('proveedores');
 
     Route::get('/articulos', ArticuloController::class)->middleware('can:nombre_equipos.index')->name('articulos');
 

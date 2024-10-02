@@ -6,6 +6,7 @@ use App\Models\Biendependiente;
 use App\Models\Equipo;
 use App\Models\Marca;
 use App\Models\Modelo;
+use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -65,9 +66,12 @@ class Index extends Component
 
         $user = Auth::User()->name;
 
+        $rol = Rolequipo::where('rol', 'Dañado')->first();
+
         $equipo->update([
             'desincorporacion' => '1',
             'borrado' => $user,
+            'rolequipo_id' => $rol->id,
         ]);
         
         $this->dispatchBrowserEvent('borrar');

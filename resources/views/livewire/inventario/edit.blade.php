@@ -54,6 +54,26 @@
                             <input type="number" class="form-control @error('bien_menpet') is-invalid @enderror" id="bien-menpet" wire:model="bien_menpet" value="{{ $equipo->bien_menpet }}">
                             @error('bien_menpet') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
+                        <div class="form-group col-12">
+                            <label for="adquisicion">Fecha Adquisición</label>
+                            <input type="date" class="form-control @error('fecha_adquisicion') is-invalid @enderror" id="adquisicion" wire:model="fecha_adquisicion" value="{{ $equipo->fecha_adquisicion }}">
+                            @error('fecha_adquisicion') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="depreciacion">Depreciación (Representada en Meses):</label>
+                            <input type="number" class="form-control @error('depreciacion') is-invalid @enderror" id="depreciacion" wire:model="depreciacion" value="{{ $equipo->depreciacion }}">
+                            @error('depreciacion') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="proveedor">Proveedor</label>
+                            <select name="" id="proveedor" class="form-control @error('proveedor') is-invalid @enderror" wire:model="proveedor">
+                                <option value="">-- Seleccionar --</option>
+                                @foreach ($proveedores as $provee)
+                                <option value="{{ $provee->id }}">{{ $provee->nombre }}</option>
+                                @endforeach
+                            </select>
+                            @error('proveedor') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
 
                         <div class="text-center col-12">
                             <button class="btn btn-primary m-4" type="submit">Actualizar</button>

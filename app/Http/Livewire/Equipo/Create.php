@@ -6,15 +6,17 @@ use App\Models\Departamento;
 use App\Models\Equipo;
 use App\Models\Marca;
 use App\Models\Modelo;
+use App\Models\Proveedor;
 use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Create extends Component
 {
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario, $adquisicion, $depreciacion, $proveedor = 0;
 
     public $marcas = [], $modelos = [], $departamentos = [], $users = [];
 
@@ -30,6 +32,9 @@ class Create extends Component
         'observacion' => 'nullable',
         'departamento' => 'required',
         'usuario' => 'required',
+        'adquisicion' => 'nullable',
+        'depreciacion' => 'nullable',
+        'proveedor' => 'nullable',
     ];
 
     public function mount()
@@ -86,6 +91,9 @@ class Create extends Component
             'observacion' => $this->observacion,
             'departamento_id' => $this->departamento,
             'user_id' => $this->usuario,
+            'fecha_adquisicion' => $this->adquisicion,
+            'depreciacion' => $this->depreciacion,
+            'proveedor_id' => $this->proveedor,
             'creado' => $user,
         ]);
 
@@ -96,7 +104,8 @@ class Create extends Component
     {
         $equipos = Tipoequipo::all();
         $roles = Rolequipo::all();
+        $proveedores = Proveedor::all();
 
-        return view('livewire.equipo.create', compact('equipos', 'roles'));
+        return view('livewire.equipo.create', compact('equipos', 'roles', 'proveedores'));
     }
 }

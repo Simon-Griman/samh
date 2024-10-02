@@ -5,14 +5,16 @@ namespace App\Http\Livewire\Inventario;
 use App\Models\Equipo;
 use App\Models\Marca;
 use App\Models\Modelo;
+use App\Models\Proveedor;
 use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Create extends Component
 {
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $adquisicion, $depreciacion, $proveedor = 0;
 
     public $marcas = [], $modelos = [];
 
@@ -24,6 +26,9 @@ class Create extends Component
         'bien_nacional' => 'nullable|integer|min:1|max:4999|unique:equipos,bien_nacional',
         'bien_pdvsa' => 'nullable|integer|min:100|max:9999999|unique:equipos,bien_pdvsa',
         'bien_menpet' => 'nullable|integer|min:100|max:999999|unique:equipos,bien_menpet',
+        'adquisicion' => 'nullable',
+        'depreciacion' => 'nullable',
+        'proveedor' => 'nullable',
     ];
 
     public function mount()
@@ -70,7 +75,10 @@ class Create extends Component
             'bien_pdvsa' => $this->bien_pdvsa,
             'bien_menpet' => $this->bien_menpet,
             'rolequipo_id' => $this->rol->id,
-            'creado' => $user
+            'creado' => $user,
+            'fecha_adquisicion' => $this->adquisicion,
+            'depreciacion' => $this->depreciacion,
+            'proveedor_id' => $this->proveedor,
         ]);
 
         return redirect()->route('inventario.index')->with('crear', 'Equipo Registrado con Exito');
@@ -79,7 +87,8 @@ class Create extends Component
     public function render()
     {
         $equipos = Tipoequipo::all();
+        $proveedores = Proveedor::all();
 
-        return view('livewire.inventario.create', compact('equipos'));
+        return view('livewire.inventario.create', compact('equipos', 'proveedores'));
     }
 }

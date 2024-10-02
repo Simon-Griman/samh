@@ -334,6 +334,12 @@ return [
             'can'         => 'inventario.index'
         ],
         [
+            'text'        => 'Exportar Bienes',
+            'url'         => 'exportar-equipos',
+            'icon'        => 'fas fa-download',
+            'can'         => 'equipos.index'
+        ],
+        [
             'text'        => 'Almacen',
             'url'         => 'almacen',
             'icon'        => 'fas fa-boxes',
@@ -392,6 +398,12 @@ return [
             'text'        => 'Ubicaciones',
             'url'         => 'ubicaciones',
             'icon'        => 'far fa-clipboard',
+            'can'         => 'nombre_equipos.index'
+        ],
+        [
+            'text'        => 'Proveedores',
+            'url'         => 'proveedores',
+            'icon'        => 'fas fa-users',
             'can'         => 'nombre_equipos.index'
         ],
         [

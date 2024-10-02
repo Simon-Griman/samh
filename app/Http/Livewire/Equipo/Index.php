@@ -84,11 +84,14 @@ class Index extends Component
 
         $user = Auth::User()->name;
 
+        $rol = Rolequipo::where('rol', 'Dañado')->first();
+
         $equipo->update([
             'departamento_id' => null,
             'user_id' => null,
             'desincorporacion' => '1',
             'borrado' => $user,
+            'rolequipo_id' => $rol->id,
         ]);
         
         $this->dispatchBrowserEvent('borrar');
@@ -126,7 +129,7 @@ class Index extends Component
     
     public function render()
     {
-        $equipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rolequipos.id as id_rol', 'rol', 'departamentos.id as id_departamento', 'departamentos.nombre as departamento', 'users.id as id_user', 'name', 'observacion', 'creado', 'actualizado', 'ubicacions.nombre as ubicacion')
+        $equipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'rolequipos.id as id_rol', 'rol', 'departamentos.id as id_departamento', 'departamentos.nombre as departamento', 'users.id as id_user', 'name', 'observacion', 'creado', 'actualizado', 'ubicacions.nombre as ubicacion', 'fecha_adquisicion', 'depreciacion')
             ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
             ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
             ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')

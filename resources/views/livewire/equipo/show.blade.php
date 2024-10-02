@@ -51,6 +51,30 @@
                         <td>Ubicaión:</td>
                         <td>{{ $datos->ubicacion }}</td>
                     </tr>
+                    <tr>
+                        <td>Fecha de Adquisición:</td>
+                        @if ($datos->fecha_adquisicion)
+                        <td>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($datos->fecha_adquisicion))->format('d-m-Y') }}</td>
+                        @else
+                        <td></td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <td>Depreciación (Representada en Meses):</td>
+                        <td>{{ $datos->depreciacion }}</td>
+                    </tr>
+                    <tr>
+                        <td>Depreciación Acumulada (Representada en Meses):</td>
+                        @if ($datos->depreciacion)
+                        <td class="@if ($d_mensual >= $datos->depreciacion) text-danger @endif">{{ $d_mensual }}</td>
+                        @else
+                        <td></td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <td>Proveedor:</td>
+                        <td>{{ $datos->proveedor }}</td>
+                    </tr>
                     @can('user-index')
                     <tr>
                         <td>Creado por:</td>

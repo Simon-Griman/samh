@@ -6,6 +6,7 @@ use App\Models\Departamento;
 use App\Models\Equipo;
 use App\Models\Marca;
 use App\Models\Modelo;
+use App\Models\Proveedor;
 use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
 use App\Models\User;
@@ -16,7 +17,7 @@ class Edit extends Component
 {
     public $equipo;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario, $fecha_adquisicion, $depreciacion, $proveedor;
 
     public $marcas = [], $modelos = [], $departamentos = [], $users = [];
 
@@ -42,6 +43,9 @@ class Edit extends Component
         $this->observacion = $this->equipo->observacion;
         $this->departamento = $this->equipo->id_departamento;
         $this->usuario = $this->equipo->id_user;
+        $this->fecha_adquisicion = $this->equipo->fecha_adquisicion;
+        $this->depreciacion = $this->equipo->depreciacion;
+        $this->proveedor = $this->equipo->id_proveedor;
     }
 
     protected function rules()
@@ -58,6 +62,9 @@ class Edit extends Component
             'observacion' => 'nullable',
             'departamento' => 'required',
             'usuario' => 'required',
+            'fecha_adquisicion' => 'nullable',
+            'depreciacion' => 'nullable',
+            'proveedor' => 'nullable',
         ];
     }
 
@@ -96,6 +103,11 @@ class Edit extends Component
             $this->serial = ' ';
         }
 
+        if (empty($this->fecha_adquisicion))
+        {
+            $this->fecha_adquisicion = null;
+        }
+
         $equipo->update([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,
@@ -108,6 +120,9 @@ class Edit extends Component
             'observacion' => $this->observacion,
             'departamento_id' => $this->departamento,
             'user_id' => $this->usuario,
+            'fecha_adquisicion' => $this->fecha_adquisicion,
+            'depreciacion' => $this->depreciacion,
+            'proveedor_id' => $this->proveedor,
             'actualizado' => $user,
         ]);
 
@@ -121,7 +136,8 @@ class Edit extends Component
     {
         $equipos = Tipoequipo::all();
         $roles = Rolequipo::all();
+        $proveedores = Proveedor::all();
 
-        return view('livewire.equipo.edit', compact('equipos', 'roles'));
+        return view('livewire.equipo.edit', compact('equipos', 'roles', 'proveedores'));
     }
 }

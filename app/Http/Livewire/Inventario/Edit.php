@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Inventario;
 use App\Models\Equipo;
 use App\Models\Marca;
 use App\Models\Modelo;
+use App\Models\Proveedor;
 use App\Models\Tipoequipo;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -13,7 +14,7 @@ class Edit extends Component
 {
     public $equipo;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $fecha_adquisicion, $depreciacion, $proveedor;
 
     public $marcas = [], $modelos = [];
 
@@ -31,6 +32,9 @@ class Edit extends Component
         $this->bien_nacional = $this->equipo->bien_nacional;
         $this->bien_pdvsa = $this->equipo->bien_pdvsa;
         $this->bien_menpet = $this->equipo->bien_menpet;
+        $this->fecha_adquisicion = $this->equipo->fecha_adquisicion;
+        $this->depreciacion = $this->equipo->depreciacion;
+        $this->proveedor = $this->equipo->proveedor_id;
     }
 
     protected function rules()
@@ -43,6 +47,9 @@ class Edit extends Component
             'bien_nacional' => 'nullable|integer|min:1|max:4999|unique:equipos,bien_nacional,' . $this->equipo->id,
             'bien_pdvsa' => 'nullable|integer|min:100|max:9999999|unique:equipos,bien_pdvsa,' . $this->equipo->id,
             'bien_menpet' => 'nullable|integer|min:100|max:999999|unique:equipos,bien_menpet,' . $this->equipo->id,
+            'fecha_adquisicion' => 'nullable',
+            'depreciacion' => 'nullable',
+            'proveedor' => 'nullable',
         ];
     }
 
@@ -75,6 +82,11 @@ class Edit extends Component
             $this->serial = ' ';
         }
 
+        if (empty($this->fecha_adquisicion))
+        {
+            $this->fecha_adquisicion = null;
+        }
+
         $equipo->update([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,
@@ -83,6 +95,9 @@ class Edit extends Component
             'bien_nacional' => $this->bien_nacional,
             'bien_pdvsa' => $this->bien_pdvsa,
             'bien_menpet' => $this->bien_menpet,
+            'fecha_adquisicion' => $this->fecha_adquisicion,
+            'depreciacion' => $this->depreciacion,
+            'proveedor_id' => $this->proveedor,
             'actualizado' => $user,
         ]);
 
@@ -95,7 +110,8 @@ class Edit extends Component
     public function render()
     {
         $equipos = Tipoequipo::all();
+        $proveedores = Proveedor::all();
 
-        return view('livewire.inventario.edit', compact('equipos'));
+        return view('livewire.inventario.edit', compact('equipos', 'proveedores'));
     }
 }
