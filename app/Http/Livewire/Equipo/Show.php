@@ -30,6 +30,20 @@ class Show extends Component
             $perifericos = true;
             $cont = 1;
 
+            if ($datos->fecha_adquisicion)
+            {
+                $d_acumulada = Carbon::createFromFormat('Y-m-d', $datos->fecha_adquisicion);
+                
+                $acumulada = $d_acumulada->diffInDays(now());
+
+                $d_mensual = intdiv($acumulada, 30);
+            }
+
+            else
+            {
+                $d_mensual = null;
+            }
+
             $dependientes = Biendependiente::select('biendependientes.nombre as nombre', 'marcas.nombre as marca', 'modelos.nombre as modelo', 'biendependientes.serial')
                 ->join('marcas', 'marcas.id', '=', 'biendependientes.marca_id')
                 ->join('modelos', 'modelos.id', '=', 'biendependientes.modelo_id')
@@ -38,7 +52,7 @@ class Show extends Component
                 ->get()
             ;
 
-            return view('livewire.equipo.show', compact('datos', 'perifericos', 'dependientes', 'cont'));
+            return view('livewire.equipo.show', compact('datos', 'perifericos', 'dependientes', 'cont', 'd_mensual'));
         }
 
         else
