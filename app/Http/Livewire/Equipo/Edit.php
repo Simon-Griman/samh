@@ -62,7 +62,7 @@ class Edit extends Component
             'observacion' => 'nullable',
             'departamento' => 'required',
             'usuario' => 'required',
-            'fecha_adquisicion' => 'nullable',
+            'fecha_adquisicion' => 'nullable|date|before_or_equal:today',
             'depreciacion' => 'nullable',
             'proveedor' => 'nullable',
         ];
@@ -106,6 +106,16 @@ class Edit extends Component
         if (empty($this->fecha_adquisicion))
         {
             $this->fecha_adquisicion = null;
+        }
+
+        if (empty($this->proveedor))
+        {
+            $this->proveedor = null;
+        }
+
+        if (empty($this->depreciacion))
+        {
+            $this->depreciacion = null;
         }
 
         $equipo->update([

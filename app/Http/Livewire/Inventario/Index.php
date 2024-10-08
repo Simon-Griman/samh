@@ -26,7 +26,7 @@ class Index extends Component
         'nombre' => 'required',
         'marca_id' => 'required',
         'modelo_id' => 'nullable',
-        'serial_dependiente' => 'required|min:5|unique:biendependientes,serial',
+        'serial_dependiente' => 'nullable|min:5|unique:biendependientes,serial',
     ];
 
     public function updatingTipo()
@@ -95,6 +95,11 @@ class Index extends Component
     public function crear()
     {
         $this->validate();
+
+        if (empty($this->modelo_id))
+        {
+            $this->modelo_id = null;
+        }
 
         Biendependiente::create([
             'nombre' => $this->nombre,

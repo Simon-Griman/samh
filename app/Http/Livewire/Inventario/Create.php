@@ -14,7 +14,7 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $adquisicion, $depreciacion, $proveedor = 0;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $adquisicion, $depreciacion, $proveedor;
 
     public $marcas = [], $modelos = [];
 
@@ -64,6 +64,21 @@ class Create extends Component
         if (!$this->serial)
         {
             $this->serial = ' ';
+        }
+
+        if (empty($this->adquisicion))
+        {
+            $this->adquisicion = null; 
+        }
+
+        if (empty($this->proveedor))
+        {
+            $this->proveedor = null;
+        }
+
+        if (empty($this->depreciacion))
+        {
+            $this->depreciacion = null;
         }
 
         Equipo::create([

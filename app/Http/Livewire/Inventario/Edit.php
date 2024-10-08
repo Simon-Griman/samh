@@ -87,6 +87,16 @@ class Edit extends Component
             $this->fecha_adquisicion = null;
         }
 
+        if (empty($this->proveedor))
+        {
+            $this->proveedor = null;
+        }
+
+        if (empty($this->depreciacion))
+        {
+            $this->depreciacion = null;
+        }
+
         $equipo->update([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,

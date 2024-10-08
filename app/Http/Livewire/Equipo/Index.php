@@ -116,6 +116,11 @@ class Index extends Component
     {
         $this->validate();
 
+        if (empty($this->modelo_id))
+        {
+            $this->modelo_id = null;
+        }
+
         Biendependiente::create([
             'nombre' => $this->nombre,
             'marca_id' => $this->marca_id,

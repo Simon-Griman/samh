@@ -46,7 +46,7 @@ class Show extends Component
 
             $dependientes = Biendependiente::select('biendependientes.nombre as nombre', 'marcas.nombre as marca', 'modelos.nombre as modelo', 'biendependientes.serial')
                 ->join('marcas', 'marcas.id', '=', 'biendependientes.marca_id')
-                ->join('modelos', 'modelos.id', '=', 'biendependientes.modelo_id')
+                ->leftjoin('modelos', 'modelos.id', '=', 'biendependientes.modelo_id')
                 ->join('equipos', 'equipos.id', '=', 'biendependientes.bien_nacional_id')
                 ->where('equipos.id', $this->equipo->id)
                 ->get()
