@@ -34,6 +34,7 @@ class User extends Authenticatable
         'profile_photo_path',
         'departamento_id',
         'ubicacion_id',
+        'cargo_id',
     ];
 
     /**

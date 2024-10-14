@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="card" style="max-height: 80vh;">
-
+            @can('users.create')
             <div class="car-header">
                 <div class="text-center p-2" style="background-color: #eee;">
                     <a href="{{ route('users.create') }}" class="btn btn-primary">Nuevo Usuario</a>
                 </div>
             </div>
-            
+            @endcan
             <div class="card-body overflow-auto" >
 
                 <table class="table table-responsive table-hover">
@@ -33,6 +33,7 @@
                             </select>
                             <br>Ubicación
                         </th>
+                        <th>Cargo</th>
                         <th colspan="2" class="text-center">Acciones</th>                    
                     </thead>
                     @if ($users->count())
@@ -44,13 +45,17 @@
                             <td>{{ $user->cedula }}</td>
                             <td>{{ $user->departamento }}</td>
                             <td>{{ $user->ubicacion }}</td>
-                            <td></td>
+                            <td>{{ $user->cargo }}</td>
+                            @can('users.edit')
                             <td>
                                 <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}">Editar</a>
                             </td>
+                            @endcan
+                            @can('users.delete')
                             <td>
                                 <a class="btn btn-danger" wire:click="confirBorrar({{ $user->id }})" data-toggle="modal" data-target="#borrar">Eliminar</a>
                             </td>
+                            @endcan
                         </tr>
                         @endforeach
                     </tbody>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\ArticuloController;
+use App\Http\Controllers\CargoController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\ExportarEquipoController;
@@ -75,6 +76,8 @@ Route::middleware([
     Route::resource('/ubicaciones', UbicacionController::class)->middleware('can:nombre_equipos.index')->names('ubicaciones');
 
     Route::resource('/proveedores', ProveedorController::class)->middleware('can:nombre_equipos.index')->names('proveedores');
+
+    Route::get('/cargos', CargoController::class)->middleware('can:nombre_equipos.index')->name('cargos');
 
     Route::get('/articulos', ArticuloController::class)->middleware('can:nombre_equipos.index')->name('articulos');
 

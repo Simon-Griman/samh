@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddProveedorIdColumnToEquipos extends Migration
+class AddCargoIdColumnToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddProveedorIdColumnToEquipos extends Migration
      */
     public function up()
     {
-        Schema::table('equipos', function (Blueprint $table) {
-            $table->unsignedBigInteger('proveedor_id')->after('depreciacion')->nullable();
-            $table->foreign('proveedor_id')->references('id')->on('proveedors')->onDelete('cascade');
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('cargo_id')->after('ubicacion_id')->nullable();
+            $table->foreign('cargo_id')->references('id')->on('cargos');
         });
     }
 
@@ -26,7 +26,7 @@ class AddProveedorIdColumnToEquipos extends Migration
      */
     public function down()
     {
-        Schema::table('equipos', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

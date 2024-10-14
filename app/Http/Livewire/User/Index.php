@@ -78,9 +78,10 @@ class Index extends Component
 
     public function render()
     {
-        $users = User::select('users.id' ,'name', 'email', 'cedula', 'departamentos.nombre as departamento', 'ubicacions.nombre as ubicacion')
+        $users = User::select('users.id' ,'name', 'email', 'cedula', 'departamentos.nombre as departamento', 'ubicacions.nombre as ubicacion', 'cargos.nombre as cargo')
             ->join('departamentos', 'departamentos.id', '=', 'users.departamento_id')
             ->join('ubicacions', 'ubicacions.id', '=', 'users.ubicacion_id')
+            ->leftjoin('cargos', 'cargos.id', '=', 'users.cargo_id')
             ->where('name', 'LIKE', '%' . $this->nombre . '%')
             ->where('email', 'LIKE', '%' . $this->email . '%')
             ->where('cedula', 'LIKE', $this->cedula . '%')

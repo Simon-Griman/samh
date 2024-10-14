@@ -43,6 +43,17 @@
                             </select>
                             @error('ubicacion') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
+
+                        <div class="form-group col-12">
+                            <label for="cargo">Cargo del Usuario</label>
+                            <select name="" id="cargo" class="form-control @error('cargo') is-invalid @enderror" wire:model="cargo">
+                                <option value="">-- Seleccionar --</option>
+                                @foreach ($cargos as $carga)
+                                <option value="{{ $carga->id }}">{{ $carga->nombre }}</option>
+                                @endforeach
+                            </select>
+                            @error('cargo') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
                         
                         <div class="text-center col-12">
                             <button class="btn btn-primary m-4" type="submit">Crear</button>

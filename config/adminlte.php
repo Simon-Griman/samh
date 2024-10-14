@@ -407,6 +407,12 @@ return [
             'can'         => 'nombre_equipos.index'
         ],
         [
+            'text'        => 'Cargos',
+            'url'         => 'cargos',
+            'icon'        => 'fas fa-address-card',
+            'can'         => 'nombre_equipos.index'
+        ],
+        [
             'text'        => 'Nombre de Articulos',
             'url'         => 'articulos',
             'icon'        => 'far fa-clipboard',

@@ -38,17 +38,25 @@
             </tr>
             <tr>
                 <td class="gris"><strong>RESPONSABLE ADMIN 1:</strong></td>
+                @if ($encontrado)
+                <td>{{ $jefe->name }}</td>
+                @else
                 <td></td>
+                @endif
                 <td></td>
             </tr>
             <tr>
                 <td><strong>CÉDULA DE IDENTIDAD:</strong></td>
+                @if ($encontrado)
+                <td>{{ $jefe->cedula }}</td>
+                @else
                 <td></td>
+                @endif
                 <td></td>
             </tr>
             <tr>
                 <td><strong>CARGO:</strong></td>
-                <td></td>
+                <td>{{ $cargoJefe }}</td>
                 <td></td>
             </tr>
             <tr>
@@ -68,7 +76,7 @@
             </tr>
             <tr>
                 <td><strong>CARGO:</strong></td>
-                <td></td>
+                <td>{{ $cargo }}</td>
                 <td></td>
             </tr>
             <tr>

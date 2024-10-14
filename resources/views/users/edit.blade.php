@@ -36,6 +36,8 @@
             <p class="form-control">{{ $user->name }}</p>
 
             @livewire('user.edit', ['id_user' => $user->id])
+            
+            @can('users.delete')
 
             <h5>Listado de Roles</h5>
 
@@ -66,6 +68,8 @@
                 {!! Form::submit('Asignar Rol', ['class' => 'btn btn-primary mt-2']) !!}
                 
             {!! Form::close() !!}
+
+            @endcan
         </div>
     </div>
 @stop

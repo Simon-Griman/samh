@@ -1,4 +1,5 @@
 <div>
+    @can('users.delete')
     <form wire:submit.prevent="editar" class="mb-0 pl-0">
         <h5>Actualizar Contraseña</h5>
         <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" wire:model="password">
@@ -25,6 +26,7 @@
         </div>
     </form>
     <hr>
+    @endcan
     @can('Super-User')
     <form wire:submit.prevent="editar_departamento" class="mb-0 pl-0">
         <h5>Actualizar Departamento</h5>
@@ -39,4 +41,16 @@
     </form>
     <hr>
     @endcan
+    <form wire:submit.prevent="editar_cargo" class="mb-0 pl-0">
+        <h5>Actualizar Cargo</h5>
+        <select class="form-control" wire:model="cargo">
+            @foreach ($cargos as $carga)
+            <option value="{{ $carga->id }}">{{ $carga->nombre }}</option>
+            @endforeach
+        </select>
+        <div class="mt-4 mb-4">
+            <button class="btn btn-primary" type="submit">Actualizar Cargo</button>
+        </div>
+    </form>
+    <hr>
 </div>

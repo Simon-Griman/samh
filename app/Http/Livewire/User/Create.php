@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\Cargo;
 use App\Models\Departamento;
 use App\Models\Ubicacion;
 use App\Models\User;
@@ -9,10 +10,11 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $name, $email, $cedula, $password, $confirPass, $departamento, $ubicacion;
+    public $name, $email, $cedula, $password, $confirPass, $departamento, $ubicacion, $cargo;
 
     public $departamentos = [];
     public $ubicaciones = [];
+    public $cargos = [];
 
     protected $rules = [
         'name' => 'required',
@@ -20,12 +22,14 @@ class Create extends Component
         'cedula' => 'required|integer|min:1000000|max:50000000|unique:users,cedula',
         'departamento' => 'required',
         'ubicacion' => 'required',
+        'cargo' => 'required',
     ];
 
     public function mount()
     {
         $this->departamentos = Departamento::all();
         $this->ubicaciones = Ubicacion::all();
+        $this->cargos = Cargo::all();
     }
 
     public function updated($propertyName)
@@ -43,6 +47,7 @@ class Create extends Component
             'cedula' => $this->cedula,
             'departamento_id' => $this->departamento,
             'ubicacion_id' => $this->ubicacion,
+            'cargo_id' => $this->cargo,
         ])->assignRole('Nuevo-Usuario');
 
         return redirect()->route('users.index')->with('info', 'Usuario Registrado con Exito');
