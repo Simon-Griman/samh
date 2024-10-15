@@ -15,4 +15,9 @@ class SolicitudController extends Controller
     {
         return view('solicitud.solicitudes');
     }
+
+    public function misSolicitudes()
+    {
+        return view('solicitud.estatus_solicitudes');
+    }
 }

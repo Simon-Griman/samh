@@ -63,6 +63,8 @@ Route::middleware([
 
     Route::get('/solicitudes', [SolicitudController::class, 'solicitudes'])->middleware('can:solicitudes')->name('solicitudes');
 
+    Route::get('/mis-solicitudes', [SolicitudController::class, 'misSolicitudes'])->middleware('can:solicitudes')->name('mis_solicitudes');
+
     Route::resource('/nombre-equipos', NombreEquipoController::class)->middleware('can:nombre_equipos.index')->names('nombre_equipos');
 
     Route::resource('/nombre-marcas', NombreMarcaController::class)->middleware('can:nombre_equipos.index')->names('nombre_marcas');

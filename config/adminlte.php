@@ -363,6 +363,12 @@ return [
             'icon'        => 'fas fa-folder-open',
             'can'         => 'solicitudes'
         ],
+        [
+            'text'        => 'Mis Solicitudes',
+            'url'         => 'mis-solicitudes',
+            'icon'        => 'fas fa-folder-open',
+            'can'         => 'solicitudes'
+        ],
         ['header' => 'CONFIGURACIÓN'],
         [
             'text'        => 'Nombre de Bienes',
