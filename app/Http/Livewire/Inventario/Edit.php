@@ -14,7 +14,7 @@ class Edit extends Component
 {
     public $equipo;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $fecha_adquisicion, $proveedor;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $fecha_adquisicion, $proveedor, $costo_compra;
 
     public $marcas = [], $modelos = [];
 
@@ -34,6 +34,7 @@ class Edit extends Component
         $this->bien_menpet = $this->equipo->bien_menpet;
         $this->fecha_adquisicion = $this->equipo->fecha_adquisicion;
         $this->proveedor = $this->equipo->proveedor_id;
+        $this->costo_compra = $this->equipo->costo_compra;
     }
 
     protected function rules()
@@ -48,6 +49,7 @@ class Edit extends Component
             'bien_menpet' => 'nullable|integer|min:100|max:999999|unique:equipos,bien_menpet,' . $this->equipo->id,
             'fecha_adquisicion' => 'nullable',
             'proveedor' => 'nullable',
+            'costo_compra' => 'nullable|integer|min:0'
         ];
     }
 

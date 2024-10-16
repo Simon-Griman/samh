@@ -25,6 +25,7 @@ class Equipo extends Model
         'fecha_adquisicion',
         'depreciacion_acumulada',
         'proveedor_id',
+        'costo_compra',
         'creado',
         'actualizado',
         'borrado'

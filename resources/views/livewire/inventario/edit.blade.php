@@ -60,6 +60,11 @@
                             @error('fecha_adquisicion') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-12">
+                            <label for="costo_compra">Costo de Compra</label>
+                            <input type="number" class="form-control @error('costo_compra') is-invalid @enderror" id="costo_compra" wire:model="costo_compra" value="{{ $equipo->costo_compra }}">
+                            @error('costo_compra') <span class="text-red">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group col-12">
                             <label for="proveedor">Proveedor</label>
                             <select name="" id="proveedor" class="form-control @error('proveedor') is-invalid @enderror" wire:model="proveedor">
                                 <option value="">-- Seleccionar --</option>

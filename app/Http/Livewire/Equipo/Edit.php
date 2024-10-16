@@ -17,7 +17,7 @@ class Edit extends Component
 {
     public $equipo;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario, $fecha_adquisicion, $proveedor;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario, $fecha_adquisicion, $proveedor, $costo_compra;
 
     public $marcas = [], $modelos = [], $departamentos = [], $users = [];
 
@@ -44,6 +44,7 @@ class Edit extends Component
         $this->departamento = $this->equipo->id_departamento;
         $this->usuario = $this->equipo->id_user;
         $this->fecha_adquisicion = $this->equipo->fecha_adquisicion;
+        $this->costo_compra = $this->equipo->costo_compra;
         $this->proveedor = $this->equipo->id_proveedor;
     }
 
@@ -63,6 +64,7 @@ class Edit extends Component
             'usuario' => 'required',
             'fecha_adquisicion' => 'nullable|date|before_or_equal:today',
             'proveedor' => 'nullable',
+            'costo_compra' => 'nullable|integer|min:0'
         ];
     }
 
@@ -125,6 +127,7 @@ class Edit extends Component
             'user_id' => $this->usuario,
             'fecha_adquisicion' => $this->fecha_adquisicion,
             'proveedor_id' => $this->proveedor,
+            'costo_compra' => $this->costo_compra,
             'actualizado' => $user,
         ]);
 

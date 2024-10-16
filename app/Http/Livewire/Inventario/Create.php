@@ -14,7 +14,7 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $adquisicion, $proveedor;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $adquisicion, $proveedor, $costo_compra;
 
     public $marcas = [], $modelos = [];
 
@@ -26,8 +26,9 @@ class Create extends Component
         'bien_nacional' => 'nullable|integer|min:1|max:4999|unique:equipos,bien_nacional',
         'bien_pdvsa' => 'nullable|integer|min:100|max:9999999|unique:equipos,bien_pdvsa',
         'bien_menpet' => 'nullable|integer|min:100|max:999999|unique:equipos,bien_menpet',
-        'adquisicion' => 'nullable',
+        'adquisicion' => 'nullable|date|before_or_equal:today',
         'proveedor' => 'nullable',
+        'costo_compra' => 'nullable|integer|min:0'
     ];
 
     public function mount()
@@ -75,6 +76,11 @@ class Create extends Component
             $this->proveedor = null;
         }
 
+        if (empty($this->costo_compra))
+        {
+            $this->costo_compra = null;
+        }
+
         Equipo::create([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,
@@ -87,6 +93,7 @@ class Create extends Component
             'creado' => $user,
             'fecha_adquisicion' => $this->adquisicion,
             'proveedor_id' => $this->proveedor,
+            'costo_compra' => $this->costo_compra,
         ]);
 
         return redirect()->route('inventario.index')->with('crear', 'Equipo Registrado con Exito');

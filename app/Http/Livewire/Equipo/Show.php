@@ -13,7 +13,7 @@ class Show extends Component
 
     public function render()
     {
-        if($datos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'equipos.serial', 'bien_nacional', 'bien_pdvsa', 'bien_menpet', 'rolequipos.rol as rol', 'creado', 'actualizado', 'equipos.created_at as f_creado', 'equipos.updated_at as f_actualizado', 'users.name as usuario', 'ubicacions.nombre as ubicacion', 'observacion', 'departamentos.nombre as departamento', 'fecha_adquisicion', 'tipoequipos.depreciacion', 'proveedors.nombre as proveedor')
+        if($datos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'equipos.serial', 'bien_nacional', 'bien_pdvsa', 'bien_menpet', 'rolequipos.rol as rol', 'creado', 'actualizado', 'equipos.created_at as f_creado', 'equipos.updated_at as f_actualizado', 'users.name as usuario', 'ubicacions.nombre as ubicacion', 'observacion', 'departamentos.nombre as departamento', 'fecha_adquisicion', 'tipoequipos.depreciacion', 'proveedors.nombre as proveedor', 'costo_compra')
             ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
             ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
             ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')
@@ -57,7 +57,7 @@ class Show extends Component
 
         else
         {
-            $datos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'equipos.serial', 'bien_nacional', 'bien_pdvsa', 'bien_menpet', 'rolequipos.rol as rol', 'creado', 'actualizado', 'equipos.created_at as f_creado', 'equipos.updated_at as f_actualizado', 'users.name as usuario', 'ubicacions.nombre as ubicacion', 'observacion', 'departamentos.nombre as departamento', 'fecha_adquisicion', 'tipoequipos.depreciacion', 'proveedors.nombre as proveedor')
+            $datos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'equipos.serial', 'bien_nacional', 'bien_pdvsa', 'bien_menpet', 'rolequipos.rol as rol', 'creado', 'actualizado', 'equipos.created_at as f_creado', 'equipos.updated_at as f_actualizado', 'users.name as usuario', 'ubicacions.nombre as ubicacion', 'observacion', 'departamentos.nombre as departamento', 'fecha_adquisicion', 'tipoequipos.depreciacion', 'proveedors.nombre as proveedor', 'costo_compra')
                 ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
                 ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
                 ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')

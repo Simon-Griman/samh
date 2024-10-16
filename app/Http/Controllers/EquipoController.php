@@ -11,7 +11,7 @@ class EquipoController extends Controller
 
     public function __construct()
     {
-        $this->equipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'bien_pdvsa', 'bien_menpet', 'rolequipos.id as id_rol', 'rol', 'departamentos.id as id_departamento', 'departamentos.nombre as departamento', 'users.id as id_user', 'name', 'observacion', 'creado', 'actualizado', 'ubicacions.nombre as ubicacion', 'equipos.created_at as f_creado', 'equipos.updated_at as f_actualizado', 'fecha_adquisicion', 'proveedors.id as id_proveedor')
+        $this->equipos = Equipo::select('equipos.id', 'tipoequipos.id as id_tipo', 'tipoequipos.nombre as equipo', 'marcas.id as id_marca', 'marcas.nombre as marca', 'modelos.id as id_modelo', 'modelos.nombre as modelo', 'serial', 'bien_nacional', 'bien_pdvsa', 'bien_menpet', 'rolequipos.id as id_rol', 'rol', 'departamentos.id as id_departamento', 'departamentos.nombre as departamento', 'users.id as id_user', 'name', 'observacion', 'creado', 'actualizado', 'ubicacions.nombre as ubicacion', 'equipos.created_at as f_creado', 'equipos.updated_at as f_actualizado', 'fecha_adquisicion', 'proveedors.id as id_proveedor', 'costo_compra')
             ->join('tipoequipos', 'tipoequipos.id', '=', 'equipos.tipoequipo_id')
             ->join('marcas', 'marcas.id', '=', 'equipos.marca_id')
             ->join('modelos', 'modelos.id', '=', 'equipos.modelo_id')

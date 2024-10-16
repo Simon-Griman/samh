@@ -48,6 +48,10 @@
                         @endif
                     </tr>
                     <tr>
+                        <td>Costo de Compra</td>
+                        <td>{{ $datos->costo_compra }}</td>
+                    </tr>
+                    <tr>
                         <td>Depreciación (Representada en Meses):</td>
                         <td>{{ $datos->depreciacion }}</td>
                     </tr>
