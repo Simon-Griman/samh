@@ -15,7 +15,7 @@ class AddDepreciacionColumnsToEquipos extends Migration
     {
         Schema::table('equipos', function (Blueprint $table) {
             $table->date('fecha_adquisicion')->after('desincorporacion')->nullable();
-            $table->integer('depreciacion')->after('fecha_adquisicion')->nullable();
+            //$table->integer('depreciacion')->after('fecha_adquisicion')->nullable();
             //$table->integer('depreciacion_acumulada')->after('depreciacion')->nullable();
         });
     }

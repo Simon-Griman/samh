@@ -23,7 +23,6 @@ class Equipo extends Model
         'user_id',
         'desincorporacion',
         'fecha_adquisicion',
-        'depreciacion',
         'depreciacion_acumulada',
         'proveedor_id',
         'creado',

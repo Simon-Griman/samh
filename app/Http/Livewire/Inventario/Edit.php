@@ -14,7 +14,7 @@ class Edit extends Component
 {
     public $equipo;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $fecha_adquisicion, $depreciacion, $proveedor;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $fecha_adquisicion, $proveedor;
 
     public $marcas = [], $modelos = [];
 
@@ -33,7 +33,6 @@ class Edit extends Component
         $this->bien_pdvsa = $this->equipo->bien_pdvsa;
         $this->bien_menpet = $this->equipo->bien_menpet;
         $this->fecha_adquisicion = $this->equipo->fecha_adquisicion;
-        $this->depreciacion = $this->equipo->depreciacion;
         $this->proveedor = $this->equipo->proveedor_id;
     }
 
@@ -48,7 +47,6 @@ class Edit extends Component
             'bien_pdvsa' => 'nullable|integer|min:100|max:9999999|unique:equipos,bien_pdvsa,' . $this->equipo->id,
             'bien_menpet' => 'nullable|integer|min:100|max:999999|unique:equipos,bien_menpet,' . $this->equipo->id,
             'fecha_adquisicion' => 'nullable',
-            'depreciacion' => 'nullable',
             'proveedor' => 'nullable',
         ];
     }
@@ -92,11 +90,6 @@ class Edit extends Component
             $this->proveedor = null;
         }
 
-        if (empty($this->depreciacion))
-        {
-            $this->depreciacion = null;
-        }
-
         $equipo->update([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,
@@ -106,7 +99,6 @@ class Edit extends Component
             'bien_pdvsa' => $this->bien_pdvsa,
             'bien_menpet' => $this->bien_menpet,
             'fecha_adquisicion' => $this->fecha_adquisicion,
-            'depreciacion' => $this->depreciacion,
             'proveedor_id' => $this->proveedor,
             'actualizado' => $user,
         ]);

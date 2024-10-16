@@ -10,6 +10,7 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Departamento</th>
+                            <th>depreciación</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -18,6 +19,7 @@
                         <tr>
                             <td>{{ $equipo->nombre }}</td>
                             <td>{{ $equipo->departamento }}</td>
+                            <td>{{ $equipo->depreciacion }}</td>
                             <td>
                                 <a wire:click="modalEditar({{ $equipo->id }})" class="btn btn-success" data-toggle="modal" data-target="#crear">Editar</a>
 
@@ -76,6 +78,8 @@
                                         </span>
 
                                         @enderror
+
+                                        {{$id_equipo}}
                                     </div>
                                     
                                     <div class="mb-3">
@@ -95,7 +99,21 @@
                                         </span>
 
                                         @enderror
-                                    </div>       
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="depreciacion" class="col-form-label">Depreciación</label>
+
+                                        <input type="number" class="form-control @error('depreciacion') is-invalid @enderror" id="depreciacion" wire:model.defer="depreciacion" name="depreciacion" require value="{{ old('depreciacion') }}">
+
+                                        @error('depreciacion')
+
+                                        <span class="invalid-feedback">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

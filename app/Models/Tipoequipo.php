@@ -11,6 +11,7 @@ class Tipoequipo extends Model
 
     protected $fillable = [
         'nombre',
-        'departamento_id'
+        'departamento_id',
+        'depreciacion'
     ];
 }

@@ -14,7 +14,7 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $adquisicion, $depreciacion, $proveedor;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $adquisicion, $proveedor;
 
     public $marcas = [], $modelos = [];
 
@@ -27,7 +27,6 @@ class Create extends Component
         'bien_pdvsa' => 'nullable|integer|min:100|max:9999999|unique:equipos,bien_pdvsa',
         'bien_menpet' => 'nullable|integer|min:100|max:999999|unique:equipos,bien_menpet',
         'adquisicion' => 'nullable',
-        'depreciacion' => 'nullable',
         'proveedor' => 'nullable',
     ];
 
@@ -76,11 +75,6 @@ class Create extends Component
             $this->proveedor = null;
         }
 
-        if (empty($this->depreciacion))
-        {
-            $this->depreciacion = null;
-        }
-
         Equipo::create([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,
@@ -92,7 +86,6 @@ class Create extends Component
             'rolequipo_id' => $this->rol->id,
             'creado' => $user,
             'fecha_adquisicion' => $this->adquisicion,
-            'depreciacion' => $this->depreciacion,
             'proveedor_id' => $this->proveedor,
         ]);
 

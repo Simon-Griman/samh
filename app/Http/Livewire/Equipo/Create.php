@@ -16,7 +16,7 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario, $adquisicion, $depreciacion, $proveedor;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario, $adquisicion, $proveedor;
 
     public $marcas = [], $modelos = [], $departamentos = [], $users = [];
 
@@ -33,7 +33,6 @@ class Create extends Component
         'departamento' => 'required',
         'usuario' => 'required',
         'adquisicion' => 'nullable|date|before_or_equal:today',
-        'depreciacion' => 'nullable',
         'proveedor' => 'nullable',
     ];
 
@@ -89,11 +88,6 @@ class Create extends Component
             $this->proveedor = null;
         }
 
-        if (empty($this->depreciacion))
-        {
-            $this->depreciacion = null;
-        }
-
         Equipo::create([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,
@@ -107,7 +101,6 @@ class Create extends Component
             'departamento_id' => $this->departamento,
             'user_id' => $this->usuario,
             'fecha_adquisicion' => $this->adquisicion,
-            'depreciacion' => $this->depreciacion,
             'proveedor_id' => $this->proveedor,
             'creado' => $user,
         ]);

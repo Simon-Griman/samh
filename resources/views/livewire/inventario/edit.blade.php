@@ -60,11 +60,6 @@
                             @error('fecha_adquisicion') <span class="text-red">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group col-12">
-                            <label for="depreciacion">Depreciación (Representada en Meses):</label>
-                            <input type="number" class="form-control @error('depreciacion') is-invalid @enderror" id="depreciacion" wire:model="depreciacion" value="{{ $equipo->depreciacion }}">
-                            @error('depreciacion') <span class="text-red">{{ $message }}</span> @enderror
-                        </div>
-                        <div class="form-group col-12">
                             <label for="proveedor">Proveedor</label>
                             <select name="" id="proveedor" class="form-control @error('proveedor') is-invalid @enderror" wire:model="proveedor">
                                 <option value="">-- Seleccionar --</option>

@@ -17,7 +17,7 @@ class Edit extends Component
 {
     public $equipo;
 
-    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario, $fecha_adquisicion, $depreciacion, $proveedor;
+    public $tipo, $marca, $modelo, $serial, $bien_nacional, $bien_pdvsa, $bien_menpet, $rol, $observacion, $departamento, $usuario, $fecha_adquisicion, $proveedor;
 
     public $marcas = [], $modelos = [], $departamentos = [], $users = [];
 
@@ -44,7 +44,6 @@ class Edit extends Component
         $this->departamento = $this->equipo->id_departamento;
         $this->usuario = $this->equipo->id_user;
         $this->fecha_adquisicion = $this->equipo->fecha_adquisicion;
-        $this->depreciacion = $this->equipo->depreciacion;
         $this->proveedor = $this->equipo->id_proveedor;
     }
 
@@ -63,7 +62,6 @@ class Edit extends Component
             'departamento' => 'required',
             'usuario' => 'required',
             'fecha_adquisicion' => 'nullable|date|before_or_equal:today',
-            'depreciacion' => 'nullable',
             'proveedor' => 'nullable',
         ];
     }
@@ -113,11 +111,6 @@ class Edit extends Component
             $this->proveedor = null;
         }
 
-        if (empty($this->depreciacion))
-        {
-            $this->depreciacion = null;
-        }
-
         $equipo->update([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,
@@ -131,7 +124,6 @@ class Edit extends Component
             'departamento_id' => $this->departamento,
             'user_id' => $this->usuario,
             'fecha_adquisicion' => $this->fecha_adquisicion,
-            'depreciacion' => $this->depreciacion,
             'proveedor_id' => $this->proveedor,
             'actualizado' => $user,
         ]);

@@ -4,16 +4,21 @@ namespace App\Http\Livewire\NombreEquipo;
 
 use App\Models\Departamento;
 use App\Models\Tipoequipo;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class Index extends Component
 {
-    public $borrar, $equipo_borrar, $crear = true, $equipo, $id_equipo, $departamento;
+    public $borrar, $equipo_borrar, $crear = true, $equipo, $id_equipo, $departamento, $depreciacion;
 
-    protected $rules = [
-        'equipo' => 'required|unique:tipoequipos,nombre',
-        'departamento' => 'required'
-    ];
+    protected function rules()
+    {
+        return [
+            'equipo' => ['required', Rule::unique('tipoequipos', 'nombre')->ignore($this->id_equipo)],
+            'departamento' => 'required',
+            'depreciacion' => 'nullable|integer'
+        ];
+    }
 
     public function modalCrear()
     {
@@ -26,7 +31,8 @@ class Index extends Component
         $this->validate();
         Tipoequipo::create([
             'nombre' => $this->equipo,
-            'departamento_id' => $this->departamento
+            'departamento_id' => $this->departamento,
+            'depreciacion' => $this->depreciacion
         ]);
         $this->limpiarCampos();
         $this->dispatchBrowserEvent('crear');
@@ -40,6 +46,8 @@ class Index extends Component
 
         $this->id_equipo = $id;
         $this->equipo = $equipo->nombre;
+        $this->departamento = $equipo->departamento_id;
+        $this->depreciacion = $equipo->depreciacion;
     }
 
     public function editar()
@@ -50,7 +58,8 @@ class Index extends Component
 
         $equipo->update([
             'nombre' => $this->equipo,
-            'departamento_id' => $this->departamento
+            'departamento_id' => $this->departamento,
+            'depreciacion' => $this->depreciacion
         ]);
 
         $this->limpiarCampos();
@@ -62,6 +71,8 @@ class Index extends Component
     {
         $this->id_equipo = '';
         $this->equipo = '';
+        $this->departamento = '';
+        $this->depreciacion = '';
     }
 
     public function confirBorrar($id)
@@ -79,7 +90,7 @@ class Index extends Component
 
     public function render()
     {
-        $equipos = Tipoequipo::select('tipoequipos.id', 'tipoequipos.nombre', 'departamentos.nombre as departamento')
+        $equipos = Tipoequipo::select('tipoequipos.id', 'tipoequipos.nombre', 'departamentos.nombre as departamento', 'tipoequipos.depreciacion')
             ->join('departamentos', 'departamentos.id', '=', 'tipoequipos.departamento_id')
             ->get()
         ;
