@@ -46,6 +46,11 @@ class Edit extends Component
         $this->fecha_adquisicion = $this->equipo->fecha_adquisicion;
         $this->costo_compra = $this->equipo->costo_compra;
         $this->proveedor = $this->equipo->id_proveedor;
+
+        if ($this->bien_nacional == 0)
+        {
+            $this->bien_nacional = null;
+        }
     }
 
     protected function rules()
