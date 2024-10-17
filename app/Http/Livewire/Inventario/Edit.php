@@ -92,6 +92,11 @@ class Edit extends Component
             $this->proveedor = null;
         }
 
+        if (empty($this->costo_compra))
+        {
+            $this->costo_compra = null;
+        }
+
         $equipo->update([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,
@@ -102,6 +107,7 @@ class Edit extends Component
             'bien_menpet' => $this->bien_menpet,
             'fecha_adquisicion' => $this->fecha_adquisicion,
             'proveedor_id' => $this->proveedor,
+            'costo_compra' => $this->costo_compra,
             'actualizado' => $user,
         ]);
 

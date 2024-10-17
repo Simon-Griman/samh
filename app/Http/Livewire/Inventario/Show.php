@@ -27,6 +27,11 @@ class Show extends Component
             $perifericos = true;
             $cont = 1;
 
+            $d_mensual = null;
+            $depreciacion = null;
+            $d_bolivares = null;
+            $precio_actual = null;
+
             if ($datos->fecha_adquisicion)
             {
                 $d_acumulada = Carbon::createFromFormat('Y-m-d', $datos->fecha_adquisicion);
@@ -36,10 +41,19 @@ class Show extends Component
                 $d_mensual = intdiv($acumulada, 30);
             }
 
-            else
+            if ($datos->costo_compra && $datos->depreciacion)
             {
-                $d_mensual = null;
+                $depreciacion = ($datos->costo_compra * 0.9) / $datos->depreciacion;
+
+                
+                if ($d_mensual !== null)
+                {
+                    $d_bolivares = $depreciacion * $d_mensual;
+                    $precio_actual = $datos->costo_compra - $d_bolivares;
+                }
             }
+
+            
 
             $dependientes = Biendependiente::select('biendependientes.nombre as nombre', 'marcas.nombre as marca', 'modelos.nombre as modelo', 'biendependientes.serial')
                 ->join('marcas', 'marcas.id', '=', 'biendependientes.marca_id')
@@ -49,7 +63,7 @@ class Show extends Component
                 ->get()
             ;
 
-            return view('livewire.inventario.show', compact('datos', 'perifericos', 'dependientes', 'cont', 'd_mensual'));
+            return view('livewire.inventario.show', compact('datos', 'perifericos', 'dependientes', 'cont', 'd_mensual', 'depreciacion', 'd_bolivares', 'precio_actual'));
         }
 
         else
@@ -67,6 +81,11 @@ class Show extends Component
 
             $perifericos = false;
 
+            $d_mensual = null;
+            $depreciacion = null;
+            $d_bolivares = null;
+            $precio_actual = null;
+
             if ($datos->fecha_adquisicion)
             {
                 $d_acumulada = Carbon::createFromFormat('Y-m-d', $datos->fecha_adquisicion);
@@ -76,12 +95,19 @@ class Show extends Component
                 $d_mensual = intdiv($acumulada, 30);
             }
 
-            else
+            if ($datos->costo_compra && $datos->depreciacion)
             {
-                $d_mensual = null;
+                $depreciacion = ($datos->costo_compra * 0.9) / $datos->depreciacion;
+
+                
+                if ($d_mensual !== null)
+                {
+                    $d_bolivares = $depreciacion * $d_mensual;
+                    $precio_actual = $datos->costo_compra - $d_bolivares;
+                }
             }
 
-            return view('livewire.inventario.show', compact('datos', 'perifericos', 'd_mensual'));
+            return view('livewire.inventario.show', compact('datos', 'perifericos', 'd_mensual', 'depreciacion', 'd_bolivares', 'precio_actual'));
         }
     }
 }

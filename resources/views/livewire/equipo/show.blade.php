@@ -60,20 +60,32 @@
                         @endif
                     </tr>
                     <tr>
-                        <td>Costo de Compra</td>
+                        <td>Costo de Compra (Bolivares)</td>
                         <td>{{ $datos->costo_compra }}</td>
                     </tr>
                     <tr>
-                        <td>Depreciación (Representada en Meses):</td>
+                        <td>Tiempo de Depreciación (Meses):</td>
                         <td>{{ $datos->depreciacion }}</td>
                     </tr>
                     <tr>
-                        <td>Depreciación Acumulada (Representada en Meses):</td>
+                        <td>Depreciación Mensual (Bolivares):</td>
+                        <td>{{ $depreciacion }}</td>
+                    </tr>
+                    <tr>
+                        <td>Depreciación Acumulada (Meses):</td>
                         @if ($datos->depreciacion)
                         <td class="@if ($d_mensual >= $datos->depreciacion) text-danger @endif">{{ $d_mensual }}</td>
                         @else
                         <td></td>
                         @endif
+                    </tr>
+                    <tr>
+                        <td>Depreciación Acumulada (Bolivares):</td>
+                        <td>{{ $d_bolivares }}</td>
+                    </tr>
+                    <tr>
+                        <td>Valor Actual (Bolivares)</td>
+                        <td>{{ $precio_actual }}</td>
                     </tr>
                     <tr>
                         <td>Proveedor:</td>
@@ -118,7 +130,7 @@
                 </table>
             </div>
         </div>
-        <div class="text-center col-12">
+        <div class="text-center col-12 mb-4">
             <a href="{{ route('equipos.edit', $equipo->id) }}" class="btn btn-primary" title="editar">Actualizar</a>
             <a href="{{ route('equipos.index') }}" class="btn btn-danger">Volver</a>
         </div>

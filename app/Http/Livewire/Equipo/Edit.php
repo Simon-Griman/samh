@@ -113,6 +113,11 @@ class Edit extends Component
             $this->proveedor = null;
         }
 
+        if (empty($this->costo_compra))
+        {
+            $this->costo_compra = null;
+        }
+
         $equipo->update([
             'tipoequipo_id' => $this->tipo,
             'marca_id' => $this->marca,

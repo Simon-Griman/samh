@@ -29,6 +29,12 @@ class Index extends Component
     public function crear()
     {
         $this->validate();
+
+        if (empty($this->depreciacion))
+        {
+            $this->depreciacion = null;
+        }
+
         Tipoequipo::create([
             'nombre' => $this->equipo,
             'departamento_id' => $this->departamento,
@@ -55,6 +61,11 @@ class Index extends Component
         $this->validate();
 
         $equipo = Tipoequipo::find($this->id_equipo);
+
+        if (empty($this->depreciacion))
+        {
+            $this->depreciacion = null;
+        }
 
         $equipo->update([
             'nombre' => $this->equipo,
