@@ -7,11 +7,15 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $borrar, $proveedor_borrar, $crear = true, $proveedor, $id_proveedor;
+    public $borrar, $proveedor_borrar, $crear = true, $proveedor, $id_proveedor, $rif;
 
-    protected $rules = [
-        'proveedor' => 'required|unique:proveedors,nombre'
-    ];
+    protected function rules()
+    {
+        return [
+            'proveedor' => 'required|unique:proveedors,nombre,' . $this->id_proveedor,
+            'rif' => 'required|unique:proveedors,rif,' . $this->id_proveedor,
+        ];
+    }
 
     public function modalCrear()
     {
@@ -22,7 +26,10 @@ class Index extends Component
     public function crear()
     {
         $this->validate();
-        Proveedor::create(['nombre' => $this->proveedor]);
+        Proveedor::create([
+            'nombre' => $this->proveedor,
+            'rif' => $this->rif
+        ]);
         $this->limpiarCampos();
         $this->dispatchBrowserEvent('crear');
     }
@@ -35,6 +42,7 @@ class Index extends Component
 
         $this->id_proveedor = $id;
         $this->proveedor = $proveedor->nombre;
+        $this->rif = $proveedor->rif;
     }
 
     public function editar()
@@ -43,7 +51,10 @@ class Index extends Component
 
         $proveedor = Proveedor::find($this->id_proveedor);
 
-        $proveedor->update(['nombre' => $this->proveedor]);
+        $proveedor->update([
+            'nombre' => $this->proveedor,
+            'rif' => $this->rif
+        ]);
 
         $this->limpiarCampos();
 
@@ -54,6 +65,7 @@ class Index extends Component
     {
         $this->id_proveedor = '';
         $this->proveedor = '';
+        $this->rif = '';
     }
 
     public function confirBorrar($id)

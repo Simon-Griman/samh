@@ -76,7 +76,20 @@
                                         </span>
 
                                         @enderror
-                                    </div>                                        
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="rif" class="col-form-label">Rif:</label>
+                                        <input type="text" class="form-control @error('rif') is-invalid @enderror" id="rif" wire:model.defer="rif" name="rif" require value="{{ old('rif') }}">
+
+                                        @error('rif')
+
+                                        <span class="invalid-feedback">
+                                            <strong>{{$message}}</strong>
+                                        </span>
+
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

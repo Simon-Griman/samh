@@ -11,5 +11,6 @@ class Proveedor extends Model
 
     protected $fillable = [
         'nombre',
+        'rif'
     ];
 }
