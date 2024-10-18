@@ -17,8 +17,8 @@ class Index extends Component
 
     public function mount()
     {
-        $this->marcas = Marca::all();
-        $this->modelos = Modelo::all();
+        $this->marcas = Marca::orderBy('nombre')->get();
+        $this->modelos = Modelo::orderBy('nombre')->get();
     }
 
     public function modalCrear($id)

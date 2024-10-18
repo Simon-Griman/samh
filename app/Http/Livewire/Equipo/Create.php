@@ -10,7 +10,6 @@ use App\Models\Proveedor;
 use App\Models\Rolequipo;
 use App\Models\Tipoequipo;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -39,8 +38,8 @@ class Create extends Component
 
     public function mount()
     {
-        $this->marcas = Marca::all();
-        $this->departamentos = Departamento::all();
+        $this->marcas = Marca::orderBy('nombre')->get();
+        $this->departamentos = Departamento::orderBy('nombre')->get();
 
         $this->modelos = collect();
         $this->users = collect();
@@ -48,7 +47,7 @@ class Create extends Component
 
     public function updatedMarca($value)
     {
-        $this->modelos = Modelo::where('marca_id', $value)->get();
+        $this->modelos = Modelo::where('marca_id', $value)->orderBy('nombre')->get();
         $this->modelo = $this->modelos->first()->id ?? null;
     }
 
@@ -117,9 +116,9 @@ class Create extends Component
 
     public function render()
     {
-        $equipos = Tipoequipo::all();
-        $roles = Rolequipo::all();
-        $proveedores = Proveedor::all();
+        $equipos = Tipoequipo::orderBy('nombre')->get();
+        $roles = Rolequipo::orderBy('rol')->get();
+        $proveedores = Proveedor::orderBy('nombre')->get();
 
         return view('livewire.equipo.create', compact('equipos', 'roles', 'proveedores'));
     }

@@ -73,7 +73,7 @@ class Index extends Component
 
     public function render()
     {
-        $marcas = Marca::all();
+        $marcas = Marca::orderBy('nombre')->get();
 
         return view('livewire.nombre-marca.index', compact('marcas'));
     }

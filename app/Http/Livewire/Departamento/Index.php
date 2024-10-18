@@ -72,7 +72,7 @@ class Index extends Component
 
     public function render()
     {
-        $departamentos = Departamento::all();
+        $departamentos = Departamento::orderBy('nombre')->get();
 
         return view('livewire.departamento.index', compact('departamentos'));
     }

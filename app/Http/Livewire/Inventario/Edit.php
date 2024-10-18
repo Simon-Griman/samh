@@ -22,8 +22,8 @@ class Edit extends Component
     {
         $marca = $this->equipo->marca_id;
 
-        $this->marcas = Marca::all();
-        $this->modelos = Modelo::all()->where('marca_id', $marca);
+        $this->marcas = Marca::orderBy('nombre')->get();
+        $this->modelos = Modelo::where('marca_id', $marca)->orderBy('nombre')->get();
 
         $this->tipo = $this->equipo->tipoequipo_id;
         $this->marca = $this->equipo->marca_id;
@@ -60,7 +60,7 @@ class Edit extends Component
 
     public function updatedMarca($value)
     {
-        $this->modelos = Modelo::where('marca_id', $value)->get();
+        $this->modelos = Modelo::where('marca_id', $value)->orderBy('nombre')->get();
         $this->modelo = $this->modelos->first()->id ?? null;
     }
 
@@ -124,8 +124,8 @@ class Edit extends Component
 
     public function render()
     {
-        $equipos = Tipoequipo::all();
-        $proveedores = Proveedor::all();
+        $equipos = Tipoequipo::orderBy('nombre')->get();
+        $proveedores = Proveedor::orderBy('nombre')->get();
 
         return view('livewire.inventario.edit', compact('equipos', 'proveedores'));
     }

@@ -72,7 +72,7 @@ class Index extends Component
 
     public function render()
     {
-        $ubicaciones = Ubicacion::all();
+        $ubicaciones = Ubicacion::orderBy('nombre')->get();
 
         return view('livewire.ubicacion.index', compact('ubicaciones'));
     }

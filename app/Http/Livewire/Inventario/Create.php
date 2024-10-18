@@ -33,7 +33,7 @@ class Create extends Component
 
     public function mount()
     {
-        $this->marcas = Marca::all();
+        $this->marcas = Marca::orderBy('nombre')->get();
         $this->modelos = collect();
 
         $this->rol = Rolequipo::where('rol', 'Disponible')->first();
@@ -41,7 +41,7 @@ class Create extends Component
 
     public function updatedMarca($value)
     {
-        $this->modelos = Modelo::where('marca_id', $value)->get();
+        $this->modelos = Modelo::where('marca_id', $value)->orderBy('nombre')->get();
         $this->modelo = $this->modelos->first()->id ?? null;
     }
 
@@ -101,8 +101,8 @@ class Create extends Component
 
     public function render()
     {
-        $equipos = Tipoequipo::all();
-        $proveedores = Proveedor::all();
+        $equipos = Tipoequipo::orderBy('nombre')->get();
+        $proveedores = Proveedor::orderBy('nombre')->get();
 
         return view('livewire.inventario.create', compact('equipos', 'proveedores'));
     }

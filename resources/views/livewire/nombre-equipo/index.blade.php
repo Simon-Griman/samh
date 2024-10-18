@@ -78,8 +78,6 @@
                                         </span>
 
                                         @enderror
-
-                                        {{$id_equipo}}
                                     </div>
                                     
                                     <div class="mb-3">

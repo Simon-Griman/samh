@@ -103,6 +103,7 @@ class Index extends Component
     {
         $equipos = Tipoequipo::select('tipoequipos.id', 'tipoequipos.nombre', 'departamentos.nombre as departamento', 'tipoequipos.depreciacion')
             ->join('departamentos', 'departamentos.id', '=', 'tipoequipos.departamento_id')
+            ->orderBy('tipoequipos.nombre')
             ->get()
         ;
 

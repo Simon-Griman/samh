@@ -83,7 +83,7 @@ class Index extends Component
 
     public function render()
     {
-        $proveedores = Proveedor::all();
+        $proveedores = Proveedor::orderBy('nombre')->get();
 
         return view('livewire.proveedor.index', compact('proveedores'));
     }

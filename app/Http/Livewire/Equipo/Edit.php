@@ -26,11 +26,11 @@ class Edit extends Component
         $marca = $this->equipo->id_marca;
         $departamento = $this->equipo->id_departamento;
 
-        $this->marcas = Marca::all();
-        $this->modelos = Modelo::all()->where('marca_id', $marca);
+        $this->marcas = Marca::orderBy('nombre')->get();
+        $this->modelos = Modelo::where('marca_id', $marca)->orderBy('nombre')->get();
 
-        $this->departamentos = Departamento::all();
-        $this->users = User::all()->where('departamento_id', $departamento);
+        $this->departamentos = Departamento::orderBy('nombre')->get();
+        $this->users = User::where('departamento_id', $departamento)->orderBy('name')->get();
 
         $this->tipo = $this->equipo->id_tipo;
         $this->marca = $this->equipo->id_marca;
@@ -75,7 +75,7 @@ class Edit extends Component
 
     public function updatedMarca($value)
     {
-        $this->modelos = Modelo::where('marca_id', $value)->get();
+        $this->modelos = Modelo::where('marca_id', $value)->orderBy('nombre')->get();
         $this->modelo = $this->modelos->first()->id ?? null;
     }
 
@@ -149,9 +149,9 @@ class Edit extends Component
 
     public function render()
     {
-        $equipos = Tipoequipo::all();
-        $roles = Rolequipo::all();
-        $proveedores = Proveedor::all();
+        $equipos = Tipoequipo::orderBy('nombre')->get();
+        $roles = Rolequipo::orderBy('rol')->get();
+        $proveedores = Proveedor::orderBy('nombre')->get();
 
         return view('livewire.equipo.edit', compact('equipos', 'roles', 'proveedores'));
     }
