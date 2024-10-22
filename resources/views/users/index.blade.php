@@ -6,10 +6,8 @@
     <link rel="stylesheet" href="{{ url('css/toastr.css') }}">
 @stop
 
-@livewireStyles
-
 @section('content')
-
+    @livewireStyles
     @if (session('info'))
     @section('js')
         <script>
@@ -27,6 +25,5 @@
     <img src="{{ url('storage/' . $cintillo) }}" alt="" class="cintillo" style="width:100%">
     <br><br>
     @livewire('user.index')
+    @livewireScripts
 @stop
-
-@livewireScripts

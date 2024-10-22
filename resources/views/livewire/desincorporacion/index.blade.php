@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="text-center">
+    <div class="text-center mt-2">
         <a class="btn btn-danger" data-toggle="modal" data-target="#borrartodo">Borrar Todo</a>
     </div>
     <div class="row d-flex justify-content-center">
-        <div class="card mt-2" style="max-height: 75vh;">
+        <div class="card mt-2" style="max-height: 70vh;">
             <div class="card-body overflow-auto">
                 <table class="table table-responsive table-hover">
                     <thead>
@@ -57,7 +57,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="card-footer">
+            <div class="card-footer pb-0">
                 {{ $equipos->links() }}
             </div>
         </div>

@@ -2,9 +2,8 @@
 
 @section('title', 'Inicio')
 
-@livewireStyles
-
 @section('content')
+    @livewireStyles
     <img src="{{ url('storage/' . $cintillo) }}" alt="" class="cintillo" style="width:100%">
     <br><br>
     @can('nuevo_usuario')
@@ -16,6 +15,5 @@
         <img src="{{ url('vendor/adminlte/dist/img/LOGO_SAMH.jpg') }}" alt="logo samh" class="w-75">
     </div>
     @endcan
+    @livewireScripts
 @stop
-
-@livewireScripts

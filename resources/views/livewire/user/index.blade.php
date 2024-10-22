@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="card" style="max-height: 80vh;">
+        <div class="card" style="max-height: 75vh;">
             @can('users.create')
             <div class="car-header">
                 <div class="text-center p-2" style="background-color: #eee;">
@@ -70,7 +70,7 @@
                     @endif
                 </table>
             </div>
-            <div class="card-footer">
+            <div class="card-footer pb-0">
                 
                 {{ $users->links() }}
             </div>

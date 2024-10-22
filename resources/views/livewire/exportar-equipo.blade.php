@@ -1,7 +1,7 @@
 <div class="">
     <div class="row d-flex justify-content-center">
         <h2 class="text-center mt-2">Exportar Registros</h2>
-        <div class="card mt-2" style="max-height: 75vh; width: 75vw">
+        <div class="card mt-2" style="max-height: 70vh; width: 75vw">
             <div class="card-head">
                 <h3 class="h3 text-center mt-2">Aplicar Filtros</h3>
             </div>

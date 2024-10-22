@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="card mt-2" style="max-height: 75vh;">
+        <div class="card mt-2" style="max-height: 70vh;">
             <div class="card-body overflow-auto">
                 <table class="table table-responsive table-hover">
                     <thead>
@@ -54,7 +54,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="card-footer">
+            <div class="card-footer pb-0">
                 {{ $equipos->links() }}
             </div>
         </div>

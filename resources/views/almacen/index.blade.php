@@ -2,9 +2,11 @@
 
 @section('title', 'Almacen')
 
-@livewireStyles
+
 
 @section('content')
+
+    @livewireStyles
 
     @if (session('crear'))
         @section('js')
@@ -39,6 +41,7 @@
     </div>
 
     @livewire('almacen.index')
+
+    @livewireScripts
 @stop
 
-@livewireScripts

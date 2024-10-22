@@ -1,6 +1,6 @@
 <div class="">
     <div class="row d-flex justify-content-center">
-        <div class="card mt-2" style="max-height: 75vh;">
+        <div class="card mt-2" style="max-height: 70vh;">
             <div class="card-body overflow-auto">
                 <table class="table table-responsive table-hover">
                     <thead>
@@ -26,7 +26,7 @@
                             </th>
                             <th><input wire:model="modelo" type="text" class="form-control" placeholder="Buscar:"><br>Modelo</th>
                             <th><input wire:model="serial" type="text" class="form-control" placeholder="Buscar:"><br>Serial</th>
-                            <th><input wire:model="bien_nacional" type="text" class="form-control" placeholder="Buscar:"><br>Bien N.</th>
+                            <th><input wire:model="bien_nacional" type="text" class="form-control" placeholder="Buscar:"><br>Bien_N.</th>
                             <th wire:ignore>
                                 <select class="form-control" wire:model="rol">
                                     <option value="">Todo</option>                            
