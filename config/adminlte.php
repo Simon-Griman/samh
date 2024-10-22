@@ -437,6 +437,12 @@ return [
             'can'         => 'roles.index'
         ],
         [
+            'text'        => 'Cintillos',
+            'url'         => 'cintillos',
+            'icon'        => 'fas fa-wrench',
+            'can'         => 'equipos.index'
+        ],
+        [
             'text' => 'profile',
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',

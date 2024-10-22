@@ -14,7 +14,7 @@
 <body>
 
     <?php 
-        $imagen = 'storage/profile-photos/cintillo_osti.jpg';
+        $imagen = 'storage/' . $cintillo;
         $base64 = base64_encode(file_get_contents($imagen));
     ?>
 

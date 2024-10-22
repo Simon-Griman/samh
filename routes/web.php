@@ -3,6 +3,7 @@
 use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\CargoController;
+use App\Http\Controllers\CintilloController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\ExportarEquipoController;
@@ -86,4 +87,6 @@ Route::middleware([
     Route::resource('/users', UserController::class)->only('index', 'edit', 'update', 'create')->middleware('can:users.index')->names('users');
 
     Route::resource('/roles', RoleController::class)->middleware('can:roles.index')->names('roles');
+
+    Route::get('/cintillos', CintilloController::class)->middleware('can:equipos.index')->name('cintillos');
 });
