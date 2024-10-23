@@ -123,6 +123,12 @@
                             <td>Serial:</td>
                             <td>{{ $dependiente->serial }}</td>
                         </tr>
+                        <tr class="text-center">
+                            <td colspan="2">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#editar" wire:click="modalEditar({{ $dependiente->id }})">Actualizar</button>
+                                <button class="btn btn-danger" wire:click="modalBorrar({{ $dependiente->id }})" data-toggle="modal" data-target="#borrar">Eliminar</button>
+                            </td>
+                        </tr>
 
                         @php $cont++ @endphp
                         @endforeach
@@ -135,4 +141,133 @@
             <a href="{{ route('equipos.index') }}" class="btn btn-danger">Volver</a>
         </div>
     </div>
+    @if($perifericos)
+    <div class="modal fade" id="borrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h5>
+                        ¿Realmente desea borrar el <b>periférico: {{ $periferico_borrar }}</b>? 
+                    </h5>
+                    <h5>El usuario asignado perdera el periférico</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" wire:click.defer="borrar()">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Periferico</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nombre" class="col-form-label">Nombre:</label>
+                            
+                            <select name="nombre" id="nombre" class="form-control @error('nombre') is-invalid @enderror" wire:model.defer="nombre">
+                                <option value="">-- Seleccionar --</option>
+                                <option value="Teclado">Teclado</option>
+                                <option value="Mouse">Mouse</option>
+                                <option value="Cornetas">Cornetas</option>
+                            </select>
+
+                            @error('nombre')
+                            <span class="invalid-feedback">
+                                <strong>{{$message}}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="marca_id" class="col-form-label">Marca:</label>
+
+                            <select class="form-control select2 @error('marca_id') is-invalid @enderror" id="marca_id" wire:model.defer="marca_id">
+                                <option value="">-- Seleccionar --</option>                            
+                                @foreach ($marcas as $marca)
+                                    <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
+                                @endforeach
+                            </select>
+                            
+                            @error('marca_id')
+                            <span class="invalid-feedback">
+                                <strong>{{$message}}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="modelo" class="col-form-label">Modelo:</label>
+
+                            <select class="form-control select2 @error('modelo_id') is-invalid @enderror" id="modelo" wire:model.defer="modelo_id">
+                                <option value="">-- Seleccionar --</option>                            
+                                @foreach ($modelos as $modelo)
+                                    @if($modelo->nombre != 'S/M')
+                                    <option value="{{ $modelo->id }}">{{ $modelo->nombre }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+
+                            @error('modelo_id')
+                            <span class="invalid-feedback">
+                                <strong>{{$message}}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="serial">Serial: </label>
+
+                            <input type="text" class="form-control @error('serial_dependiente') is-invalid @enderror" id="serial" wire:model.defer="serial_dependiente">
+
+                            @error('serial_dependiente')
+                            <span class="invalid-feedback">
+                                <strong>{{$message}}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" wire:click.prevent="editar()">Añadir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endif
+
+    <script src="{{ url('js/jquery.js') }}"></script>
+    <script src="{{ url('js/toastr.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            toastr.options = {
+                "positionClass": "toast-bottom-right",
+                "progressBar": true,
+                "closeButton": true,
+            }
+
+            window.addEventListener('borrar', event => {
+
+                $('#borrar').modal('hide');
+                toastr.success("El registro ha sido eliminado", "¡Hecho!");
+            });
+
+            window.addEventListener('editar', event => {
+
+                $('#editar').modal('hide');
+                toastr.success("El periferico ha sido actualizado con exito", "¡Hecho!");
+            });
+            
+        });
+    </script>
 </div>
