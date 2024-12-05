@@ -340,6 +340,28 @@ return [
             'can'         => 'equipos.index'
         ],
         [
+            'text'        => 'Notas',
+            'icon'        => 'fas fa-file',
+            'can'         => 'equipos.index',//crear nuevo rol
+            'submenu'     => [
+                [
+                    'text'        => 'Nota de Entrada',
+                    'url'         => 'entrada',
+                    'icon'        => 'far fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Nota de Salida',
+                    'url'         => 'salida',
+                    'icon'        => 'far fa-circle nav-icon',
+                ],
+                [
+                    'text'        => 'Nota de Entrega',
+                    'url'         => 'entrega',
+                    'icon'        => 'far fa-circle nav-icon',
+                ],
+            ]
+        ],
+        [
             'text'        => 'Almacen',
             'url'         => 'almacen',
             'icon'        => 'fas fa-boxes',

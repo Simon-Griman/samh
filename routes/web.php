@@ -12,6 +12,7 @@ use App\Http\Controllers\MiEquipoController;
 use App\Http\Controllers\NombreEquipoController;
 use App\Http\Controllers\NombreMarcaController;
 use App\Http\Controllers\NombreModeloController;
+use App\Http\Controllers\NotaEntregaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolEquipoController;
@@ -59,6 +60,10 @@ Route::middleware([
     Route::get('/exportar-equipos', [ExportarEquipoController::class, 'index'])->middleware('can:equipos.index')->name('exportar_equipos');
 
     Route::get('/exportar-equipos-pdf/{user_id?}/{departamento_id?}/{ubicacion_id?}/{f_adquisicion?}/{rol_id?}', [ExportarEquipoController::class, 'downloadEquipos'])->middleware('can:equipos.index')->name('exportar_equipos.pdf');
+
+    Route::get('/entrega', [NotaEntregaController::class, 'index'])->middleware('can:equipos.index')->name('entrega');
+
+    Route::get('/entrega-pdf/{selecciones}/{user_id}/{observacion?}', [NotaEntregaController::class, 'downloadEquipos'])->middleware('can:equipos.index')->name('entrega.pdf');
 
     Route::get('/solicitar', [SolicitudController::class, 'solicitar'])->middleware('can:solicitar')->name('solicitar');
 
