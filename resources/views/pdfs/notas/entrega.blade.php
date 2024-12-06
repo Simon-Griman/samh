@@ -28,7 +28,7 @@
             <table class="table table-responsive table-hover tabla">
                 <thead>
                     <tr>
-                        <th colspan="3" class="text-center" style="border-bottom: 0">NOTA DE ENTREGA</th>
+                        <th colspan="3" class="text-center" style="border-bottom: 0">NOTA DE {{ $nota }}</th>
                     </tr>
                     <tr>
                         <th class="border border1">Fecha: {{ $fecha }}</th>
@@ -98,10 +98,6 @@
                                     <td>V-{{ $user->cedula }}</td>
                                 </tr>
                             </table>
-
-                            {{--<span class="firma">Firma: </span><span style="font-size: 14px">Sello:</span><br><br><br><br><br><br>
-                            <small class="firma">RECIBIDO POR: </small><small>{{ $user->name }} - @if ($cargo) {{ $cargo->nombre }} @endif</small><br>
-                            <div class="firma"></div><small class="text-center">V-{{ $user->cedula }}</small>--}}
                         </td>
                     </tr>
                 </tfoot>

@@ -345,8 +345,8 @@ return [
             'can'         => 'equipos.index',//crear nuevo rol
             'submenu'     => [
                 [
-                    'text'        => 'Nota de Entrada',
-                    'url'         => 'entrada',
+                    'text'        => 'Nota de Traslado',
+                    'url'         => 'traslado',
                     'icon'        => 'far fa-circle nav-icon',
                 ],
                 [

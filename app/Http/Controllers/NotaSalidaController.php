@@ -8,11 +8,11 @@ use App\Models\NroControl;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 
-class NotaEntregaController extends Controller
+class NotaSalidaController extends Controller
 {
     public function index()
     {
-        return view('notas.entrega');
+        return view('notas.salida');
     }
 
     public function downloadEquipos($selecciones, $usuario, $observacion = '')
@@ -41,18 +41,18 @@ class NotaEntregaController extends Controller
 
         $cargo = Cargo::find($user->cargo_id);
 
-        $control = NroControl::whereNotNull('entrega')->latest()->first()->entrega;
+        $control = NroControl::whereNotNull('salida')->latest()->first()->salida;
 
         $nro = ++$control;
 
-        NroControl::create(['entrega' => $nro]);
+        NroControl::create(['salida' => $nro]);
 
-        $nota = 'ENTREGA';
+        $nota = 'SALIDA';
 
         $pdf = Pdf::loadView('pdfs.notas.entrega', ['equipos' => $equipos, 'bienes' => $bienes, 'user' => $user, 'fecha' => $fecha, 'cargo' => $cargo, 'nro' => $nro, 'observacion' => $observacion, 'nota' => $nota]);
 
         //return view('pdfs.notas.entrega', compact('equipos', 'bienes', 'user', 'fecha', 'cargo'));
 
-        return $pdf->download('entrega.pdf');
+        return $pdf->download('salida.pdf');
     }
 }
