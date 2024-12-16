@@ -14,6 +14,7 @@ use App\Http\Controllers\NombreMarcaController;
 use App\Http\Controllers\NombreModeloController;
 use App\Http\Controllers\NotaEntregaController;
 use App\Http\Controllers\NotaSalidaController;
+use App\Http\Controllers\NotaTrasladoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolEquipoController;
@@ -69,6 +70,10 @@ Route::middleware([
     Route::get('/salida', [NotaSalidaController::class, 'index'])->middleware('can:equipos.index')->name('salida');
 
     Route::get('/salida-pdf/{selecciones}/{user_id}/{observacion?}', [NotaSalidaController::class, 'downloadEquipos'])->middleware('can:equipos.index')->name('salida.pdf');
+
+    Route::get('/traslado', [NotaTrasladoController::class, 'index'])->middleware('can:equipos.index')->name('traslado');
+
+    Route::get('/traslado-pdf/{selecciones}/{user_id}/{origen}/{destino}', [NotaTrasladoController::class, 'downloadEquipos'])->middleware('can:equipos.index')->name('traslado.pdf');
 
     Route::get('/solicitar', [SolicitudController::class, 'solicitar'])->middleware('can:solicitar')->name('solicitar');
 

@@ -83,7 +83,7 @@
                         </td>
                         <td></td>
                         <td class="subtabla">
-                            <table class="tabla2">
+                            <table class="tabla3">
                                 <tr>
                                     <td style="text-align: left">Firma:</td>
                                     <td>Sello:</td>
