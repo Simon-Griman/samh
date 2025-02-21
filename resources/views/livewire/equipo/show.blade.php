@@ -133,6 +133,10 @@
                         @php $cont++ @endphp
                         @endforeach
                     @endif
+
+                    <tr>
+                        <td colspan="2">{!! DNS1D::getBarcodeHTML($datos->bien_nacional, 'C39') !!}</td>
+                    </tr>
                 </table>
             </div>
         </div>

@@ -14,6 +14,7 @@
     <div class="text-center">
         <img src="{{ url('vendor/adminlte/dist/img/LOGO_SAMH.jpg') }}" alt="logo samh" class="w-75">
     </div>
+    {{--{!! DNS1D::getBarcodeHTML($cintillo, 'C39') !!}--}}
     @endcan
     @livewireScripts
 @stop
