@@ -63,17 +63,17 @@ Route::middleware([
 
     Route::get('/exportar-equipos-pdf/{user_id?}/{departamento_id?}/{ubicacion_id?}/{f_adquisicion?}/{rol_id?}', [ExportarEquipoController::class, 'downloadEquipos'])->middleware('can:equipos.index')->name('exportar_equipos.pdf');
 
-    Route::get('/entrega', [NotaEntregaController::class, 'index'])->middleware('can:equipos.index')->name('entrega');
+    Route::get('/entrega', [NotaEntregaController::class, 'index'])->middleware('can:notas.entrega')->name('entrega');
 
-    Route::get('/entrega-pdf/{selecciones}/{user_id}/{observacion?}', [NotaEntregaController::class, 'downloadEquipos'])->middleware('can:equipos.index')->name('entrega.pdf');
+    Route::get('/entrega-pdf/{selecciones}/{user_id}/{observacion?}', [NotaEntregaController::class, 'downloadEquipos'])->middleware('can:notas.entrega')->name('entrega.pdf');
 
-    Route::get('/salida', [NotaSalidaController::class, 'index'])->middleware('can:equipos.index')->name('salida');
+    Route::get('/salida', [NotaSalidaController::class, 'index'])->middleware('can:notas.salida')->name('salida');
 
-    Route::get('/salida-pdf/{selecciones}/{user_id}/{observacion?}', [NotaSalidaController::class, 'downloadEquipos'])->middleware('can:equipos.index')->name('salida.pdf');
+    Route::get('/salida-pdf/{selecciones}/{user_id}/{observacion?}', [NotaSalidaController::class, 'downloadEquipos'])->middleware('can:notas.salida')->name('salida.pdf');
 
-    Route::get('/traslado', [NotaTrasladoController::class, 'index'])->middleware('can:equipos.index')->name('traslado');
+    Route::get('/traslado', [NotaTrasladoController::class, 'index'])->middleware('can:notas.traslado')->name('traslado');
 
-    Route::get('/traslado-pdf/{selecciones}/{user_id}/{origen}/{destino}', [NotaTrasladoController::class, 'downloadEquipos'])->middleware('can:equipos.index')->name('traslado.pdf');
+    Route::get('/traslado-pdf/{selecciones}/{user_id}/{origen}/{destino}', [NotaTrasladoController::class, 'downloadEquipos'])->middleware('can:notas.traslado')->name('traslado.pdf');
 
     Route::get('/solicitar', [SolicitudController::class, 'solicitar'])->middleware('can:solicitar')->name('solicitar');
 

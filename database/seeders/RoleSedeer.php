@@ -15,13 +15,14 @@ class RoleSedeer extends Seeder
      */
     public function run()
     {
-        Role::create(['name' => 'Super-Admin']);
+        /*Role::create(['name' => 'Super-Admin']);
         $rolAdmin = Role::create(['name' => 'Admin']);
         $rolBN = Role::create(['name' => 'Bien-Nacional']);
         $rolJefe = Role::create(['name' => 'Jefe']);
         $rolJefe2 = Role::create(['name' => 'Jefe2']);
         $rolStandar = Role::create(['name' => 'Standar']);
         $rolNuevoUsuario = Role::create(['name' => 'Nuevo-Usuario']);
+        
 
         Permission::create(['name' => 'equipos.index'])->syncRoles([$rolAdmin, $rolBN]);
         Permission::create(['name' => 'equipos.create'])->syncRoles([$rolAdmin, $rolBN]);
@@ -56,6 +57,15 @@ class RoleSedeer extends Seeder
 
         Permission::create(['name' => 'nuevo_usuario'])->syncRoles([$rolNuevoUsuario]);
 
-        Permission::create(['name' => 'asignar_equipos'])->syncRoles([$rolAdmin, $rolJefe2]);
+        Permission::create(['name' => 'asignar_equipos'])->syncRoles([$rolAdmin, $rolJefe2]);*/
+
+
+        $rolOsti = Role::create(['name' => 'Osti']);
+
+        Permission::create(['name' => 'notas.traslado'])->syncRoles([$rolOsti]);
+        Permission::create(['name' => 'notas.salida'])->syncRoles([$rolOsti]);
+        Permission::create(['name' => 'notas.entrega'])->syncRoles([$rolOsti]);
+
+
     }
 }

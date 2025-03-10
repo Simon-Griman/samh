@@ -342,22 +342,25 @@ return [
         [
             'text'        => 'Notas',
             'icon'        => 'fas fa-file',
-            'can'         => 'equipos.index',//crear nuevo rol
+            'can'         => 'notas.traslado',
             'submenu'     => [
                 [
                     'text'        => 'Nota de Traslado',
                     'url'         => 'traslado',
                     'icon'        => 'far fa-circle nav-icon',
+                    'can'         => 'notas.traslado',
                 ],
                 [
                     'text'        => 'Nota de Salida',
                     'url'         => 'salida',
                     'icon'        => 'far fa-circle nav-icon',
+                    'can'         => 'notas.salida',
                 ],
                 [
                     'text'        => 'Nota de Entrega',
                     'url'         => 'entrega',
                     'icon'        => 'far fa-circle nav-icon',
+                    'can'         => 'notas.entrega',
                 ],
             ]
         ],
